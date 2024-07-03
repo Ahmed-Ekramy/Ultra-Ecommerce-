@@ -1,4 +1,4 @@
-name: doctor_appoment
+name: doctor_appointment
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -35,6 +35,16 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
+  dio: ^5.5.0
+  retrofit: ^4.1.0
+  flutter_bloc: ^8.1.6
+  retrofit_generator: ^8.1.1
+  equatable: ^2.0.5
+  json_annotation: ^4.9.0
+  json_serializable: ^6.8.0
+  get_it: ^7.7.0
+  shared_preferences: ^2.2.3
+  flutter_screenutil: ^5.9.3
 
 dev_dependencies:
   flutter_test:
