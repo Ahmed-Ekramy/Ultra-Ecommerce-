@@ -1,6 +1,5 @@
-
-import 'package:doctor_appointment/ultra_app.dart';
 import 'package:flutter/material.dart';
+import 'package:ultra/ultra_app.dart';
 void main() {
   runApp(const Ultra());
 }

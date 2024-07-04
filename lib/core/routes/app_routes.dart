@@ -1,6 +1,6 @@
 
-import 'package:doctor_appointment/core/routes/routing.dart';
 import 'package:flutter/material.dart';
+import 'package:ultra/core/routes/routing.dart';
 import '../../feature/login/presentation/pages/login_view.dart';
 class AppRoutes {
   Route generateRoute(RouteSettings settings) {

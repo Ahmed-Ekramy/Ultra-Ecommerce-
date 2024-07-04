@@ -1,7 +1,7 @@
-import 'package:doctor_appointment/core/thiming/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ultra/core/thiming/colors.dart';
 
 class CustomTextStyles{
 
@@ -36,6 +36,13 @@ class CustomTextStyles{
    static final  TextStyle hankenW500S8Black = GoogleFonts.hankenGrotesk(
     textStyle: TextStyle(
       fontSize: 8.sp,
+      fontWeight: FontWeight.w500,
+      color: Colors.black,
+    ),
+  );
+   static final  TextStyle hankenW500S14Black = GoogleFonts.hankenGrotesk(
+    textStyle: TextStyle(
+      fontSize: 14.sp,
       fontWeight: FontWeight.w500,
       color: Colors.black,
     ),
