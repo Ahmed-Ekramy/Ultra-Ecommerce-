@@ -4,4 +4,5 @@ class AppImages{
   static String apple = "assets/images/apple.png";
   static String google = "assets/images/google.png";
   static String facebook = "assets/images/Facebook.png";
+  static String arrow = "assets/images/arrow.png";
 }

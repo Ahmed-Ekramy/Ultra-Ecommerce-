@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ultra/core/thiming/images.dart';
-
-import '../../../../core/thiming/colors.dart';
-import '../../../../core/thiming/string.dart';
-import '../../../../core/wigdet/custom_text_form_field.dart';
+import 'package:ultra/core/theming/images.dart';
+import '../../../../core/theming/string.dart';
+import '../../../../core/widget/custom_elevated_button.dart';
+import '../../../../core/widget/custom_text_form_field.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -14,9 +13,11 @@ class LoginView extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
       body: SingleChildScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         child: Padding(
           padding: EdgeInsets.only(top: 60.0.h, right: 20.w, left: 20.w),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(
               "Welcome back!",
               style: CustomTextStyles.hankenW400S45Black,
@@ -31,11 +32,20 @@ class LoginView extends StatelessWidget {
             SizedBox(
               height: 40.h,
             ),
-            const CustomTextFormField(),
+            CustomTextFormField(
+              keyboardType: TextInputType.emailAddress,
+              hintText: "Email",
+              prefixIcon: Icons.email,
+            ),
             SizedBox(
               height: 15.h,
             ),
-            const CustomTextFormField(),
+            CustomTextFormField(
+              keyboardType: TextInputType.visiblePassword,
+              hintText: "Password",
+              prefixIcon: Icons.password,
+              suffixIcon: Icons.visibility_off,
+            ),
             SizedBox(
               height: 10.h,
             ),
@@ -48,126 +58,43 @@ class LoginView extends StatelessWidget {
             SizedBox(
               height: 15.h,
             ),
-            SizedBox(
-              width: double.infinity,
-              height: 56.h,
-              child: ElevatedButton(
-                  style: ButtonStyle(
-
-                    backgroundColor: MaterialStateProperty.all(
-                      AppColors.primaryColor,
-                    ),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.r),
-                      ),
-                    ),
-                  ),
-                  onPressed: () {},
-                  child: Text(
-                    "Login",
-                    style: CustomTextStyles.hankenW500S14White,
-                  )),
+            const CustomElevationButton(
+              buttonName: "Login",
             ),
             SizedBox(
               height: 30.h,
             ),
-            Center(child: Text("OR", style: CustomTextStyles.hankenW400S14Black)),
+            Center(
+                child: Text("OR", style: CustomTextStyles.hankenW400S14Black)),
             SizedBox(
               height: 15.h,
             ),
-            SizedBox(
-              width: double.infinity,
-              height: 56.h,
-              child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(
-                      AppColors.whiteColor,
-                    ),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        side: BorderSide(color: AppColors.blackColor, width: 1.w),
-                        borderRadius: BorderRadius.circular(5.r),
-                      ),
-                    ),
-                  ),
-                  onPressed: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text("Continue with Google",
-                          style: CustomTextStyles.hankenW500S14Black),
-                      Image.asset(
-                        AppImages.google,
-                        height: 18.h,
-                        width: 18.w,
-                      ),
-                    ],
-                  )),
+            CustomElevationButton(
+              buttonName: "Continue with Google",
+              image: AppImages.google,
+              backgroundButtonColor: Colors.white,
+              borderColor: Colors.black,
+              textColor: Colors.black,
             ),
             SizedBox(
               height: 15.h,
             ),
-            SizedBox(
-              width: double.infinity,
-              height: 56.h,
-              child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(
-                      AppColors.whiteColor,
-                    ),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        side: BorderSide(color: AppColors.blackColor, width: 1.w),
-                        borderRadius: BorderRadius.circular(5.r),
-                      ),
-                    ),
-                  ),
-                  onPressed: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text("Continue with apple",
-                          style: CustomTextStyles.hankenW500S14Black),
-                      Image.asset(
-                        AppImages.apple,
-                        height: 30.h,
-                        width: 25.w,
-                      ),
-                    ],
-                  )),
+            CustomElevationButton(
+              buttonName: "Continue with Apple",
+              image: AppImages.apple,
+              backgroundButtonColor: Colors.white,
+              borderColor: Colors.black,
+              textColor: Colors.black,
             ),
             SizedBox(
               height: 15.h,
             ),
-            SizedBox(
-              width: double.infinity,
-              height: 56.h,
-              child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(
-                      AppColors.whiteColor,
-                    ),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        side: BorderSide(color: AppColors.blackColor, width: 1.w),
-                        borderRadius: BorderRadius.circular(5.r),
-                      ),
-                    ),
-                  ),
-                  onPressed: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text("Continue with Facebook",
-                          style: CustomTextStyles.hankenW500S14Black),
-                      Image.asset(
-                        AppImages.facebook,
-                        height: 18.h,
-                        width: 18.w,
-                      ),
-                    ],
-                  )),
+            CustomElevationButton(
+              buttonName: "Continue with Facebook",
+              image: AppImages.facebook,
+              backgroundButtonColor: Colors.white,
+              borderColor: Colors.black,
+              textColor: Colors.black,
             ),
             SizedBox(
               height: 15.h,
