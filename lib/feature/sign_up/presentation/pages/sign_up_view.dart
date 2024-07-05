@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ultra/core/theming/images.dart';
-import '../../../../core/routes/routing.dart';
+import 'package:ultra/core/routes/routing.dart';
+
+import '../../../../core/theming/images.dart';
 import '../../../../core/theming/string.dart';
 import '../../../../core/widget/custom_elevated_button.dart';
 import '../../../../core/widget/custom_text_form_field.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class SignUpView extends StatelessWidget {
+  const SignUpView({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return
-      SafeArea(
+    return SafeArea(
         child: Scaffold(
       body: SingleChildScrollView(
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -20,18 +21,34 @@ class LoginView extends StatelessWidget {
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(
-              "Welcome back!",
+              "Join With Us",
               style: CustomTextStyles.hankenW400S45Black,
             ),
             SizedBox(
               height: 5.h,
             ),
             Text(
-              "Sign in and Enjoy Latest Offers",
+              "4.000.000 + Shoes Already to buy or sell",
               style: CustomTextStyles.hankenW400S14Black,
             ),
             SizedBox(
               height: 40.h,
+            ),
+            CustomTextFormField(
+              keyboardType: TextInputType.name,
+              hintText: "First Name",
+              prefixIcon: Icons.person,
+            ),
+            SizedBox(
+              height: 15.h,
+            ),
+            CustomTextFormField(
+              keyboardType: TextInputType.name,
+              hintText: "Last Name",
+              prefixIcon: Icons.person_2,
+            ),
+            SizedBox(
+              height: 15.h,
             ),
             CustomTextFormField(
               keyboardType: TextInputType.emailAddress,
@@ -50,17 +67,14 @@ class LoginView extends StatelessWidget {
             SizedBox(
               height: 10.h,
             ),
-            TextButton(
-                onPressed: () {},
-                child: Text(
-                  "Forget Password?",
-                  style: CustomTextStyles.hankenW400S12Black,
-                )),
+            SizedBox(
+              height: 10.h,
+            ),
             SizedBox(
               height: 15.h,
             ),
             const CustomElevationButton(
-              buttonName: "Login",
+              buttonName: "Sign Up",
             ),
             SizedBox(
               height: 30.h,
@@ -109,10 +123,10 @@ class LoginView extends StatelessWidget {
                 ),
                 TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.register);
+                      Navigator.pushNamed(context, Routes.login);
                     },
                     child: Text(
-                      "Sign Up",
+                      "Sign In",
                       style: CustomTextStyles.hankenW600S12Primary,
                     ))
               ],
