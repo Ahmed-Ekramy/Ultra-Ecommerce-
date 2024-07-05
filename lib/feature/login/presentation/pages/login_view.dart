@@ -7,7 +7,6 @@ import '../../../../core/widget/custom_text_form_field.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
