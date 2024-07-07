@@ -55,7 +55,7 @@ class CustomBanner extends StatelessWidget {
         ),
         Positioned(
             left: 220.w,
-            bottom: 5.h,
+            bottom: 0.h,
             child: Image.asset(AppImages.man, )),
       ],
     );

@@ -77,10 +77,10 @@ class HomeTab extends StatelessWidget {
                         Text(
                           "Shop our top ",
                           style: CustomTextStyles.hankenW400S16Black
-                              .copyWith(fontWeight: FontWeight.bold),
+                              .copyWith(fontWeight: FontWeight.bold,fontSize: 18.sp),
                         ),
                         Text("Categories",
-                            style: CustomTextStyles.hankenW700S14Primary),
+                            style: CustomTextStyles.hankenW700S14Primary.copyWith(fontWeight: FontWeight.bold,fontSize: 18.sp)),
                       ],
                     ),
                     Row(
@@ -138,7 +138,7 @@ class HomeTab extends StatelessWidget {
                       children: [
                         Text("Shop our top  Categories",
                             style: CustomTextStyles.hankenW600S14Primary
-                                .copyWith(fontSize: 16.sp)),
+                                .copyWith(fontWeight: FontWeight.bold,fontSize: 18.sp),),
                       ],
                     ),
                     Row(
@@ -171,7 +171,7 @@ class HomeTab extends StatelessWidget {
                   children: [
                     Text("Popular Brand",
                         style: CustomTextStyles.hankenW700S12Black
-                            .copyWith(fontSize: 16.sp)),
+                            .copyWith(fontSize: 18.sp)),
                     Row(
                       children: [
                         Text(
@@ -206,7 +206,7 @@ class HomeTab extends StatelessWidget {
                   children: [
                     Text("Beauty",
                         style: CustomTextStyles.hankenW700S12Black
-                            .copyWith(fontSize: 16.sp)),
+                            .copyWith(fontSize: 18.sp)),
                     Row(
                       children: [
                         Text(
