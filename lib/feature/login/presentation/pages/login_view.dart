@@ -59,7 +59,12 @@ class LoginView extends StatelessWidget {
             SizedBox(
               height: 15.h,
             ),
-            const CustomElevationButton(
+             CustomElevationButton(
+              onPressed: () {
+                Navigator.pushNamedAndRemoveUntil(context, Routes.home,
+                (route) => false,
+                );
+              },
               buttonName: "Login",
             ),
             SizedBox(

@@ -11,7 +11,7 @@ class CustomElevationButton extends StatelessWidget {
     this.image,
     this.borderColor,
     this.textColor,
-    super.key,
+    super.key, this.onPressed, this.width, this.height, this.child,
   });
 
   final String? buttonName;
@@ -19,12 +19,16 @@ class CustomElevationButton extends StatelessWidget {
   final String? image;
   final Color? borderColor;
   final Color? textColor;
+  final VoidCallback? onPressed;
+  final double? width;
+  final double? height;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
-      height: 56.h,
+      width: width?? double.infinity,
+      height:height?? 56.h,
       child: ElevatedButton(
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(
@@ -38,8 +42,8 @@ class CustomElevationButton extends StatelessWidget {
               ),
             ),
           ),
-          onPressed: () {},
-          child: Row(
+          onPressed: onPressed,
+          child:child?? Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
@@ -52,7 +56,7 @@ class CustomElevationButton extends StatelessWidget {
                 width: 20.w,
               ),
             ],
-          )),
+          ),),
     );
   }
 }

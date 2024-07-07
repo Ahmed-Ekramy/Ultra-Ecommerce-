@@ -140,6 +140,13 @@ class CustomTextStyles{
    static final  TextStyle hankenW700S14Primary = GoogleFonts.hankenGrotesk(
     textStyle: TextStyle(
       fontSize: 14.sp,
+      fontWeight: FontWeight.w700,
+      color: AppColors.primaryColor,
+    ),
+  );
+   static final  TextStyle hankenW600S14Primary = GoogleFonts.hankenGrotesk(
+    textStyle: TextStyle(
+      fontSize: 12.sp,
       fontWeight: FontWeight.w600,
       color: AppColors.primaryColor,
     ),
@@ -163,6 +170,7 @@ class CustomTextStyles{
   );
    static final  TextStyle hankenW400S8GrayDark = GoogleFonts.hankenGrotesk(
     textStyle: TextStyle(
+
       fontSize: 8.sp,
       fontWeight: FontWeight.w400,
       color: AppColors.darkGreyColor,
@@ -179,6 +187,7 @@ class CustomTextStyles{
 
    static final  TextStyle hankenW400S10LightGray = GoogleFonts.hankenGrotesk(
     textStyle: TextStyle(
+
       fontSize: 10.sp,
       fontWeight: FontWeight.w400,
       color: AppColors.lightGreyColor,
