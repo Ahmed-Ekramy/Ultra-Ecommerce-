@@ -278,18 +278,20 @@ class HomeTab extends StatelessWidget {
                   children: [
                     Image.asset(
                       AppImages.nike,
-                      height: 60.h,
-                      fit: BoxFit.cover,
+                      height: 80.h,
+                      fit: BoxFit.fill,
                     ),
                     Positioned(
                       top: 5.h,
                       left: 20.w,
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Beauty and skin care",
+                            "Buy the best clothes from the\n most famous brands",
                             style: CustomTextStyles.hankenW500S14White,
                           ),
+                          SizedBox(height: 10.h,),
                           Text(
                             "UP to 50% OFF",
                             style: CustomTextStyles.hankenW500S14White,
