@@ -7,6 +7,7 @@ import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/string.dart';
 import '../../manager/home_cubit.dart';
 import '../../widgets/custom_gridview_search.dart';
+import '../../widgets/custom_list_search.dart';
 
 class SearchTab extends StatelessWidget {
   const SearchTab({super.key});
@@ -21,7 +22,7 @@ class SearchTab extends StatelessWidget {
         return Padding(
           padding: EdgeInsets.only(top: 20.0.w, right: 10.w, left: 10.w),
           child: CustomScrollView(
-            dragStartBehavior: DragStartBehavior.down ,
+            dragStartBehavior: DragStartBehavior.down,
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             physics: const BouncingScrollPhysics(),
             slivers: [
@@ -40,19 +41,22 @@ class SearchTab extends StatelessWidget {
                         prefixIconColor: AppColors.darkGreyColor,
                       ),
                     ),
-                    Icon(
-                      Icons.grid_view_rounded,
-                      size: 25.sp,
-                    ),
-                    Icon(
-                      Icons.list,
-                      size: 25.sp,
+                    IconButton(
+                      icon: Icon(
+                        HomeCubit.get(context).isGridView
+                            ? Icons.list_rounded
+                            : Icons.grid_view_rounded,
+                        size: 35.sp,
+                      ),
+                      onPressed: () {
+                        HomeCubit.get(context).changeGridViewListView();
+                      },
                     ),
                   ],
                 ),
               ),
               SliverToBoxAdapter(
-                  child: Padding(
+                child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 10.0.h),
                   child: SizedBox(
                     height: 50.h,
@@ -68,16 +72,18 @@ class SearchTab extends StatelessWidget {
                               horizontal: 8.0.w, vertical: 10.h),
                           child: Container(
                             decoration: BoxDecoration(
-                                color: HomeCubit.get(context).searchIndexByName ==
-                                        index
-                                    ? AppColors.primaryColor
-                                    : AppColors.lightGreyColor,
+                                color:
+                                    HomeCubit.get(context).searchIndexByName ==
+                                            index
+                                        ? AppColors.primaryColor
+                                        : AppColors.lightGreyColor,
                                 borderRadius: BorderRadius.circular(20.r)),
                             padding: EdgeInsets.symmetric(horizontal: 20.w),
                             child: Center(
                               child: Text(
                                 "Jordan",
-                                style: HomeCubit.get(context).searchIndexByName ==
+                                style: HomeCubit.get(context)
+                                            .searchIndexByName ==
                                         index
                                     ? CustomTextStyles.hankenW700S12LightGray
                                     : CustomTextStyles.hankenW400S14GrayDark,
@@ -89,20 +95,32 @@ class SearchTab extends StatelessWidget {
                       itemCount: 10,
                     ),
                   ),
-                                ),
                 ),
-              SliverGrid(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 5.0.w,
-                  mainAxisSpacing: 10.0.h,
-                  childAspectRatio: 0.65,
-                ),
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) => CustomGridViewSearch(),
-                  childCount: 10,
-                ),
-              )
+              ),
+              HomeCubit.get(context).isGridView
+                  ? SliverFixedExtentList(
+                      itemExtent: 115.h,
+                      delegate: SliverChildBuilderDelegate(
+                        (context, index) => const CustomListViewSearch(
+                          name: "Nike Free Terr Vista Next Nature",
+                          label: "Men’s Shoes",
+                          price: "\$120.00",
+                        ),
+                        childCount: 10,
+                      ),
+                    )
+                  : SliverGrid(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 5.0.w,
+                        mainAxisSpacing: 10.0.h,
+                        childAspectRatio: 0.71,
+                      ),
+                      delegate: SliverChildBuilderDelegate(
+                        (context, index) => CustomGridViewSearch(),
+                        childCount: 10,
+                      ),
+                    )
             ],
           ),
         );

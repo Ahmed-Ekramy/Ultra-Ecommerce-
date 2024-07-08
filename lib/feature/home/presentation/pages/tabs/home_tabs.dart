@@ -28,7 +28,7 @@ class HomeTab extends StatelessWidget {
       builder: (context, state) {
         return SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.only(top: 20.0.w, right: 10.w, left: 10.w),
+            padding: EdgeInsets.only(top: 20.0.h, right: 10.w, left: 10.w),
             child: Column(
               children: [
                 Row(

@@ -66,38 +66,38 @@ class CustomGridViewSearch extends StatelessWidget {
               SizedBox(
                 height: 5.h,
               ),
-              Center(
-                child: SizedBox(
-                  width: 150.w,
-                  height: 30.h,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          side: BorderSide(
-                              color: AppColors.primaryColor, width: 1.w),
-                          borderRadius: BorderRadius.circular(20.r),
-                        ),
-                      ),
-                    ),
-                    onPressed: () {},
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "add to cart",
-                          style: CustomTextStyles.hankenW600S14Primary,
-                        ),
-                        Icon(
-                          Icons.add_shopping_cart,
-                          color: AppColors.primaryColor,
-                          size: 20.sp,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              )
+              // Center(
+              //   child: SizedBox(
+              //     width: 150.w,
+              //     height: 30.h,
+              //     child: ElevatedButton(
+              //       style: ButtonStyle(
+              //         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              //           RoundedRectangleBorder(
+              //             side: BorderSide(
+              //                 color: AppColors.primaryColor, width: 1.w),
+              //             borderRadius: BorderRadius.circular(20.r),
+              //           ),
+              //         ),
+              //       ),
+              //       onPressed: () {},
+              //       child: Row(
+              //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //         children: [
+              //           Text(
+              //             "add to cart",
+              //             style: CustomTextStyles.hankenW600S14Primary,
+              //           ),
+              //           Icon(
+              //             Icons.add_shopping_cart,
+              //             color: AppColors.primaryColor,
+              //             size: 20.sp,
+              //           )
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+              // )
             ],
           ),
         ),

@@ -18,7 +18,12 @@ class HomeCubit extends Cubit<HomeState> {
   int selectedIndexBrandMakeUp = 0;
   int selectedIndexTypeOfClothes = 0;
   int searchIndexByName = 0;
+  bool isGridView = true;
 
+  void changeGridViewListView() {
+    isGridView = !isGridView;
+    emit(ChangeGridViewListViewState());
+  }
   void changeNav(value) {
     currentIndex = value;
     emit(ChangeNavState());
