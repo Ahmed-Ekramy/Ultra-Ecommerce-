@@ -18,4 +18,5 @@ class AppImages{
   static String shampoo = "assets/images/shampoo.png";
   static String makeupBackground = "assets/images/makeupBackground.jpg";
   static String nike = "assets/images/nike.jpg";
+  static String jordan = "assets/images/jordan.png";
 }

@@ -8,3 +8,4 @@ final class ChangeNavState extends HomeState {}
 final class ChangeSelectedIndexBrandState extends HomeState {}
 final class ChangeSelectedIndexBrandMakeUpState extends HomeState {}
 final class ChangeSelectedIndexTypeOfClothesState extends HomeState {}
+final class SearchIndexByNameState extends HomeState {}

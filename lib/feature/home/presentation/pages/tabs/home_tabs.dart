@@ -28,7 +28,7 @@ class HomeTab extends StatelessWidget {
       builder: (context, state) {
         return SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.only(top: 50.0.w, right: 10.w, left: 10.w),
+            padding: EdgeInsets.only(top: 20.0.w, right: 10.w, left: 10.w),
             child: Column(
               children: [
                 Row(
@@ -63,7 +63,7 @@ class HomeTab extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 90.h,
+                  height: 80.h,
                 ),
                 const CustomBanner(),
                 SizedBox(

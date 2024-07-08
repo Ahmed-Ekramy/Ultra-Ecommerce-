@@ -17,6 +17,7 @@ class HomeCubit extends Cubit<HomeState> {
   int selectedIndexBrandShoes = 0;
   int selectedIndexBrandMakeUp = 0;
   int selectedIndexTypeOfClothes = 0;
+  int searchIndexByName = 0;
 
   void changeNav(value) {
     currentIndex = value;
@@ -34,6 +35,10 @@ class HomeCubit extends Cubit<HomeState> {
   void changeTypeOfClothes(int index) {
     selectedIndexTypeOfClothes = index;
     emit(ChangeSelectedIndexTypeOfClothesState());
+  }
+  void searchByName(int index) {
+    searchIndexByName = index;
+    emit(SearchIndexByNameState());
   }
 
   List<Widget> tabs = [
