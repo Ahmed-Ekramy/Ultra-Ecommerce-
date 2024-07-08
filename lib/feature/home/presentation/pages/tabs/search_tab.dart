@@ -1,11 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ultra/core/widget/custom_text_form_field.dart';
-
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/string.dart';
 import '../../manager/home_cubit.dart';
