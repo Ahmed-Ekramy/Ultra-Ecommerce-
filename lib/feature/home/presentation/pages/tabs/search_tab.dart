@@ -44,8 +44,7 @@ class SearchTab extends StatelessWidget {
                     IconButton(
                       icon: Icon(
                         HomeCubit.get(context).isGridView
-                            ? Icons.list_rounded
-                            : Icons.grid_view_rounded,
+                            ? Icons.grid_view_rounded : Icons.list_rounded,
                         size: 35.sp,
                       ),
                       onPressed: () {

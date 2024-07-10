@@ -51,7 +51,9 @@ class LoginView extends StatelessWidget {
               height: 10.h,
             ),
             TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.verifyEmail);
+                },
                 child: Text(
                   "Forget Password?",
                   style: CustomTextStyles.hankenW400S12Black,

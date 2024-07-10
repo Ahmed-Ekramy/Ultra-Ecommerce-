@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ultra/core/theming/colors.dart';
 import 'package:ultra/core/theming/string.dart';
+import 'package:ultra/core/widget/custom_elevated_button.dart';
 
+import '../../../../../core/routes/routing.dart';
 import '../../widgets/custom_profile_item.dart';
 
 class ProfileTab extends StatelessWidget {
@@ -23,10 +25,15 @@ class ProfileTab extends StatelessWidget {
           SizedBox(
             height: 30.h,
           ),
-          CustomProfileItem(
-            label:"Edit your password,name,address,shoe size,email" ,
-            name: "Profile",
-            icon:Icon(Icons.person_pin, size: 40.sp,) ,
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, Routes.profile);
+            },
+            child: CustomProfileItem(
+              label:"Edit your password,name,address,shoe size,email" ,
+              name: "Profile",
+              icon:Icon(Icons.person_pin, size: 40.sp,) ,
+            ),
           ),
           CustomProfileItem(
             label: "FaceID, Two-Step Verification",
@@ -43,7 +50,66 @@ class ProfileTab extends StatelessWidget {
             name: "Settings",
             icon:   Icon(Icons.settings, size: 40.sp,) ,
           ),
+          SizedBox(height: 50.h,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+            Text(
+              "Rate Application",
+              style: CustomTextStyles.hankenW600S18Black,
+            ),
+            SizedBox(
+              width: 10.w,
+            ),
+         Icon(Icons.arrow_forward_ios_outlined, size: 20.sp,),
+          ],),
+          Divider(
+            thickness: 1.h,
+          ),
 
+ SizedBox(height: 20.h,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+            Text(
+              "Reviews",
+              style: CustomTextStyles.hankenW600S18Black,
+            ),
+            SizedBox(
+              width: 10.w,
+            ),
+         Icon(Icons.arrow_forward_ios_outlined, size: 20.sp,),
+          ],),
+          Divider(
+            thickness: 1.h,
+          ),
+
+ SizedBox(height: 20.h,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+            Text(
+              "Currency",
+              style: CustomTextStyles.hankenW600S18Black,
+            ),
+            SizedBox(
+              width: 10.w,
+            ),
+              Text(
+                "USD",
+                style: CustomTextStyles.hankenW600S14Primary,
+              ),
+         Icon(Icons.arrow_forward_ios_outlined, size: 20.sp,),
+          ],),
+          Divider(
+            thickness: 1.h,
+          ),
+          SizedBox(height: 20.h,),
+          const CustomElevationButton(
+            backgroundButtonColor: Colors.red,
+            borderColor: Colors.red,
+            buttonName: "Log Out",
+          ),
         ],
       ),
     );
