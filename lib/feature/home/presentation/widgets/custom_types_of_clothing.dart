@@ -6,6 +6,7 @@ import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/images.dart';
 import '../../../../core/theming/string.dart';
 import '../manager/home_cubit.dart';
+import '../manager/home_state.dart';
 
 class CustomTypeOfClothes extends StatelessWidget {
   const CustomTypeOfClothes({
@@ -16,7 +17,7 @@ class CustomTypeOfClothes extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 100.h,
-      child: BlocBuilder<HomeCubit, HomeState>(
+      child: BlocBuilder<HomeCubit, ResultState>(
         builder: (context, state) {
           return ListView.builder(
             scrollDirection: Axis.horizontal,

@@ -5,7 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ultra/core/widget/custom_text_form_field.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/string.dart';
+import '../../../data/models/product_model.dart';
 import '../../manager/home_cubit.dart';
+import '../../manager/home_state.dart';
 import '../../widgets/custom_gridview_search.dart';
 import '../../widgets/custom_list_search.dart';
 
@@ -14,7 +16,7 @@ class SearchTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HomeCubit, HomeState>(
+    return BlocConsumer<HomeCubit, ResultState<List<ProductModel>>>(
       listener: (context, state) {
         // TODO: implement listener
       },

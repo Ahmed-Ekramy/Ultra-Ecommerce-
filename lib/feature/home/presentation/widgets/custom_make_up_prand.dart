@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ultra/feature/home/presentation/manager/home_state.dart';
 
 import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/images.dart';
@@ -16,7 +17,7 @@ class CustomMakeUpBrand extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 100.h,
-      child: BlocBuilder<HomeCubit, HomeState>(
+      child: BlocBuilder<HomeCubit, ResultState>(
         builder: (context, state) {
           return ListView.builder(
             scrollDirection: Axis.horizontal,

@@ -13,7 +13,7 @@ class CustomListShoesBrand extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 320.h,
+      height: 325.h,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 10,
