@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ultra/feature/home/data/repositories/home%20repo_imp.dart';
@@ -10,9 +12,8 @@ import '../pages/tabs/home_tabs.dart';
 import '../pages/tabs/search_tab.dart';
 
 class HomeCubit extends Cubit<ResultState<List<ProductModel>>> {
-  HomeCubit(this.homeRepoImp) : super(const Idle());
+  HomeCubit(this.homeRepoImp) : super(const Loading());
   HomeRepoImp homeRepoImp;
-
   static HomeCubit get(context) => BlocProvider.of(context);
   int currentIndex = 0;
   int selectedIndex = 0;
@@ -66,7 +67,9 @@ class HomeCubit extends Cubit<ResultState<List<ProductModel>>> {
    emit(ResultState.success(productModel));
  },
     failure: (NetworkExceptions networkExceptions) {
+   log(networkExceptions.toString());
       emit(ResultState.error(networkExceptions));
+
     });
   }
 }

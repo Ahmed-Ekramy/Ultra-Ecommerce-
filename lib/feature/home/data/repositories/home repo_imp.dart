@@ -11,9 +11,6 @@ class HomeRepoImp {
   Future<ApiResult < List<ProductModel>>> getProducts() async {
    try {
       var response = await apiService.getProducts();
-      response
-          .map((productModel) => ProductModel.fromJson(productModel.toJson()))
-          .toList();
       return ApiResult.success(response);
     }catch (e) {
       return ApiResult.failure(NetworkExceptions.getDioException(e));

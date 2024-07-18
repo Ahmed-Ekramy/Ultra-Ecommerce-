@@ -10,4 +10,6 @@ class Routes {
   static const String verifyEmail = '/verifyEmail';
   static const String verifyCode = '/verifyCode';
   static const String verifyPassword = '/verifyPassword';
+  static const String productDetails = '/productDetails';
+
 }

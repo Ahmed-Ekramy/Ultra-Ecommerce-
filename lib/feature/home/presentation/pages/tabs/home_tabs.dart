@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +7,7 @@ import 'package:ultra/core/theming/colors.dart';
 import 'package:ultra/core/theming/images.dart';
 import 'package:ultra/core/theming/string.dart';
 import 'package:ultra/feature/home/data/models/product_model.dart';
+import '../../../../../core/routes/routing.dart';
 import '../../manager/home_cubit.dart';
 import '../../widgets/custom_banner.dart';
 import '../../widgets/custom_clothes_list.dart';
@@ -160,7 +162,7 @@ class HomeTab extends StatelessWidget {
             SizedBox(
               height: 20.h,
             ),
-            const CustomTopCategories(
+      const CustomTopCategories(
             ),
             SizedBox(
               height: 10.h,
