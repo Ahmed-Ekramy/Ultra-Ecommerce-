@@ -11,5 +11,5 @@ class Routes {
   static const String verifyCode = '/verifyCode';
   static const String verifyPassword = '/verifyPassword';
   static const String productDetails = '/productDetails';
-
+  static const String viewAllProduct = '/viewAllProduct';
 }

@@ -21,6 +21,62 @@ class _ApiService implements ApiService {
   String? baseUrl;
 
   @override
+  Future<LoginModel> login(LoginRequestBody loginRequestBody) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(loginRequestBody.toJson());
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<LoginModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/user/login',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = LoginModel.fromJson(_result.data!);
+    return _value;
+  }
+
+  @override
+  Future<SignUpModel> signup(SignUpRequestBody signUpRequestBody) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(signUpRequestBody.toJson());
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<SignUpModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/user/signup',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = SignUpModel.fromJson(_result.data!);
+    return _value;
+  }
+
+  @override
   Future<List<ProductModel>> getProducts() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -73,6 +129,33 @@ class _ApiService implements ApiService {
               baseUrl,
             ))));
     final _value = ProductDetailModel.fromJson(_result.data!);
+    return _value;
+  }
+
+  @override
+  Future<CategoryModel> getCategories() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<CategoryModel>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/categories',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = CategoryModel.fromJson(_result.data!);
     return _value;
   }
 

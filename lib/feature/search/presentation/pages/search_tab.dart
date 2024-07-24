@@ -3,23 +3,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ultra/core/widget/custom_text_form_field.dart';
-import '../../../../../core/theming/colors.dart';
-import '../../../../../core/theming/string.dart';
-import '../../../data/models/product_model.dart';
-import '../../manager/home_cubit.dart';
-import '../../manager/home_state.dart';
-import '../../widgets/custom_gridview_search.dart';
-import '../../widgets/custom_list_search.dart';
+import 'package:ultra/feature/search/presentation/manager/search_cubit.dart';
+import 'package:ultra/feature/search/presentation/manager/search_state.dart';
+import '../../../../core/theming/colors.dart';
+import '../../../../core/theming/string.dart';
+import '../../../home/data/models/product_model.dart';
+import '../../../home/presentation/manager/home_cubit.dart';
+import '../../../home/presentation/manager/home_state.dart';
+import '../widgets/custom_gridview_search.dart';
+import '../widgets/custom_list_search.dart';
 
 class SearchTab extends StatelessWidget {
   const SearchTab({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HomeCubit, ResultState<List<ProductModel>>>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+    return BlocProvider(
+  create: (context) => SearchCubit(),
+  child: BlocBuilder<SearchCubit, SearchState<dynamic>>(
+      buildWhen: (previous, current) =>
+          current is ChangeGridViewListViewState ||
+          current is SearchIndexByNameState,
       builder: (context, state) {
         return Padding(
           padding: EdgeInsets.only(top: 20.0.w, right: 10.w, left: 10.w),
@@ -45,12 +49,13 @@ class SearchTab extends StatelessWidget {
                     ),
                     IconButton(
                       icon: Icon(
-                        HomeCubit.get(context).isGridView
-                            ? Icons.grid_view_rounded : Icons.list_rounded,
+                        SearchCubit.get(context).isGridView
+                            ? Icons.grid_view_rounded
+                            : Icons.list_rounded,
                         size: 35.sp,
                       ),
                       onPressed: () {
-                        HomeCubit.get(context).changeGridViewListView();
+                        SearchCubit.get(context).changeGridViewListView();
                       },
                     ),
                   ],
@@ -66,7 +71,7 @@ class SearchTab extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) => InkWell(
                         onTap: () {
-                          HomeCubit.get(context).searchByName(index);
+                          SearchCubit.get(context).searchByName(index);
                         },
                         child: Padding(
                           padding: EdgeInsets.symmetric(
@@ -74,7 +79,7 @@ class SearchTab extends StatelessWidget {
                           child: Container(
                             decoration: BoxDecoration(
                                 color:
-                                    HomeCubit.get(context).searchIndexByName ==
+                                SearchCubit.get(context).searchIndexByName ==
                                             index
                                         ? AppColors.primaryColor
                                         : AppColors.lightGreyColor,
@@ -83,7 +88,7 @@ class SearchTab extends StatelessWidget {
                             child: Center(
                               child: Text(
                                 "Jordan",
-                                style: HomeCubit.get(context)
+                                style: SearchCubit.get(context)
                                             .searchIndexByName ==
                                         index
                                     ? CustomTextStyles.hankenW700S12LightGray
@@ -98,7 +103,7 @@ class SearchTab extends StatelessWidget {
                   ),
                 ),
               ),
-              HomeCubit.get(context).isGridView
+              SearchCubit.get(context).isGridView
                   ? SliverFixedExtentList(
                       itemExtent: 115.h,
                       delegate: SliverChildBuilderDelegate(
@@ -126,6 +131,7 @@ class SearchTab extends StatelessWidget {
           ),
         );
       },
-    );
+    ),
+);
   }
 }

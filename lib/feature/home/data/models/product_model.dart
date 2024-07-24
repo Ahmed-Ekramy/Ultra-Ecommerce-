@@ -3,7 +3,7 @@ part 'product_model.g.dart';
 @JsonSerializable()
 class ProductModel {
   @JsonKey(name: "productid")
-  final int productid;
+  final int productId;
   @JsonKey(name: "name")
   final String name;
   @JsonKey(name: "discount")
@@ -16,7 +16,7 @@ class ProductModel {
   final List<ProductImage> productImage;
 
   ProductModel({
-    required this.productid,
+    required this.productId,
     required this.name,
     required this.discount,
     required this.price,

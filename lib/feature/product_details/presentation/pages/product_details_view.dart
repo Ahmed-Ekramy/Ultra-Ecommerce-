@@ -5,6 +5,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:readmore/readmore.dart';
 import 'package:ultra/core/theming/colors.dart';
 import 'package:ultra/core/widget/custom_elevated_button.dart';
 import 'package:ultra/feature/product_details/data/models/product_details_model.dart';
@@ -21,14 +22,13 @@ class ProductDetailsView extends StatelessWidget {
     super.key,
     this.productModel,
   });
-
   final ProductModel? productModel;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<ProductDetailsCubit>()
-        ..getProductDetails(productModel?.productid ?? 0),
+        ..getProductDetails(productModel?.productId ?? 0),
       child: Scaffold(
           appBar: AppBar(
             leading: IconButton(
@@ -62,9 +62,6 @@ class ProductDetailsView extends StatelessWidget {
               return state.when(loading: () {
                 return const Center(child: CircularProgressIndicator());
               }, success: (ProductDetailModel productDetailsModel) {
-                log(
-                  "${productDetailsModel.name}ccccccc",
-                );
                 return Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: 10.0.w, vertical: 20.h),
@@ -77,10 +74,10 @@ class ProductDetailsView extends StatelessWidget {
                             disableCenter: true,
                             autoPlayAnimationDuration:
                                 const Duration(seconds: 3),
-                            autoPlay: true,
+                            autoPlay: false,
                             autoPlayCurve: Curves.ease),
                         items: productDetailsModel.productImage
-                            ?.map(
+                            .map(
                               (e) => Padding(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 10.0),
@@ -104,35 +101,19 @@ class ProductDetailsView extends StatelessWidget {
                               ),
                             )
                             .toList(),
-                        // items: productDetailsModel.productImage!.map((i) {
-                        //   return Container(
-                        //     margin: EdgeInsets.symmetric(
-                        //         horizontal: 5.0.w, vertical: 7.0.h),
-                        //     padding: EdgeInsets.symmetric(
-                        //         horizontal: 3.0.w, vertical: 3.h),
-                        //     decoration: BoxDecoration(
-                        //         border:
-                        //             Border.all(color: AppColors.primaryColor),
-                        //         borderRadius: BorderRadius.circular(5.r)),
-                        //     child: CachedNetworkImage(
-                        //       imageUrl: "${i.imageurl}",
-                        //       fit: BoxFit.cover,
-                        //     ),
-                        //   );
-                        // }).toList(),
                       ),
                       SizedBox(
                         height: 10.h,
                       ),
                       Text(
-                        "${productDetailsModel.name}",
+                        productDetailsModel.name,
                         style: CustomTextStyles.hankenW600S18Black,
                       ),
                       SizedBox(
                         height: 10.h,
                       ),
                       Text(
-                          "${productDetailsModel.highlights?[0]}\n ${productDetailsModel.highlights?[1]}\n ${productDetailsModel.highlights?[2]}",
+                          "${productDetailsModel.highlights[0]}\n ${productDetailsModel.highlights[1]}\n ${productDetailsModel.highlights[2]}",
                           style: CustomTextStyles.hankenW500S14Black
                               .copyWith(color: Colors.grey)),
                       SizedBox(
@@ -145,10 +126,23 @@ class ProductDetailsView extends StatelessWidget {
                       SizedBox(
                         height: 10.h,
                       ),
-                      Text(
-                        "${productDetailsModel.description}",
+                      ReadMoreText(
                         style: CustomTextStyles.hankenW400S12Black
                             .copyWith(fontSize: 14.sp),
+                        productDetailsModel.description,
+                        trimMode: TrimMode.Line,
+                        trimLines: 4,
+                        colorClickableText: Colors.pink,
+                        trimCollapsedText: ' ..Read more',
+                        trimExpandedText: ' ..Read less',
+                        moreStyle: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.primaryColor),
+                        lessStyle: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.redAccent),
                       ),
                       SizedBox(
                         height: 10.h,

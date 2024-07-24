@@ -15,11 +15,14 @@ class CustomTextFormField extends StatelessWidget {
       this.suffixIconColor,
       this.borderColor,
       this.labelText,
-      this.obscureText});
+      this.obscureText,
+        this.validator,
+
+      this.controller});
 
   final String? hintText;
   final IconData? prefixIcon;
-  final IconData? suffixIcon;
+  final Widget? suffixIcon;
   final TextInputType? keyboardType;
   final double? borderRadius;
   final Color? prefixIconColor;
@@ -27,10 +30,16 @@ class CustomTextFormField extends StatelessWidget {
   final Color? borderColor;
   final Widget? labelText;
   final bool ?obscureText;
+  final TextEditingController? controller;
+  final Function(String?) ?validator;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: (value) {
+         return validator!(value);
+      },
+      controller: controller,
       obscureText: obscureText ?? false,
       keyboardType: keyboardType,
       decoration: InputDecoration(
@@ -43,11 +52,7 @@ class CustomTextFormField extends StatelessWidget {
             prefixIcon,
             color: prefixIconColor ?? AppColors.primaryColor,
           ),
-          suffixIcon: Icon(
-            suffixIcon,
-            color: suffixIconColor ?? AppColors.primaryColor,
-            size: 20.h,
-          ),
+          suffixIcon: suffixIcon,
           hintStyle: CustomTextStyles.hankenW400S14GrayDark,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(borderRadius ?? 5),
@@ -57,7 +62,18 @@ class CustomTextFormField extends StatelessWidget {
             borderRadius: BorderRadius.circular(borderRadius ?? 5),
             borderSide: BorderSide(
                 color: borderColor ?? AppColors.primaryColor, width: 1.2.w),
-          )),
+          ),
+        errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(borderRadius ?? 5),
+            borderSide: BorderSide(
+                color: Colors.red, width: 1.2.w)),
+        focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(borderRadius ?? 5),
+            borderSide: BorderSide(
+                color: Colors.red, width: 1.2.w),
+        ),
+
+      ),
     );
   }
 }

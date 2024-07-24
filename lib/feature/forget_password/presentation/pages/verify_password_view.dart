@@ -46,7 +46,9 @@ class VerifyPasswordView extends StatelessWidget {
             ),
              const CustomTextFormField(
               hintText: "New Password",
-suffixIcon: Icons.visibility_off_sharp,
+suffixIcon: Icon(
+  Icons.visibility_off_sharp,
+),
               keyboardType: TextInputType.emailAddress,
             ),
             SizedBox(
@@ -61,7 +63,10 @@ suffixIcon: Icons.visibility_off_sharp,
             ),
             const CustomTextFormField(
               hintText: 'Confirm Password',
-              suffixIcon: Icons.visibility_off_sharp,
+              suffixIcon:  Icon(
+                Icons.visibility_off_sharp,
+              ),
+
               keyboardType: TextInputType.emailAddress,
             ),
             SizedBox(

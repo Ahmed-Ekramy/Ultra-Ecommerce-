@@ -6,29 +6,27 @@ part 'home_state.freezed.dart';
 @freezed
 class ResultState<T> with _$ResultState<T> {
   const factory ResultState.idle() = Idle<T>;
-
   const factory ResultState.loading() = Loading<T>;
+  const factory ResultState.categoryLoading() = CategoryLoading<T>;
 
   const factory ResultState.success(T data) = Success<T>;
+  const factory ResultState.categoriesSuccess(T data) = CatogriesSuccess<T>;
 
   const factory ResultState.error(NetworkExceptions networkExceptions) =
       Error<T>;
+const factory ResultState.categoryError(NetworkExceptions networkExceptions) =
+CategoryError<T>;
 
-  const factory ResultState.changeGridViewListViewState() =
-      ChangeGridViewListViewState;
+  const factory ResultState.changeSelectedIndexBrandState(T data ) =
+      ChangeSelectedIndexBrandState<T>;
 
-  const factory ResultState.changeNavState() = ChangeNavState;
+  const factory ResultState.changeSelectedIndexBrandMakeUpState (  T data )=
+      ChangeSelectedIndexBrandMakeUpState<T>;
 
-  const factory ResultState.changeSelectedIndexBrandState() =
-      ChangeSelectedIndexBrandState;
+  const factory ResultState.changeSelectedIndexTypeOfClothesState( T data) =
+      ChangeSelectedIndexTypeOfClothesState<T>;
 
-  const factory ResultState.changeSelectedIndexBrandMakeUpState ()=
-      ChangeSelectedIndexBrandMakeUpState;
 
-  const factory ResultState.changeSelectedIndexTypeOfClothesState() =
-      ChangeSelectedIndexTypeOfClothesState;
-
-  const factory ResultState.searchIndexByNameState() = SearchIndexByNameState;
 }
 // part of 'home_cubit.dart';
 //

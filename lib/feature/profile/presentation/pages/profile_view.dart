@@ -88,7 +88,10 @@ class ProfileView extends StatelessWidget {
                     CustomTextFormField(
                       keyboardType: TextInputType.visiblePassword,
                       hintText: "Password",
-                      suffixIcon: Icons.visibility_off_outlined,
+                      suffixIcon:  Icon(
+                        Icons.visibility_off_sharp,
+                      ),
+
                     ),
                     SizedBox(
                       height: 20.h,

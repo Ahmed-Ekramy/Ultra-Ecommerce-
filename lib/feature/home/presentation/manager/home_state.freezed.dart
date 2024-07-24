@@ -20,42 +20,43 @@ mixin _$ResultState<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() loading,
+    required TResult Function() categoryLoading,
     required TResult Function(T data) success,
+    required TResult Function(T data) categoriesSuccess,
     required TResult Function(NetworkExceptions networkExceptions) error,
-    required TResult Function() changeGridViewListViewState,
-    required TResult Function() changeNavState,
-    required TResult Function() changeSelectedIndexBrandState,
-    required TResult Function() changeSelectedIndexBrandMakeUpState,
-    required TResult Function() changeSelectedIndexTypeOfClothesState,
-    required TResult Function() searchIndexByNameState,
+    required TResult Function(NetworkExceptions networkExceptions)
+        categoryError,
+    required TResult Function(T data) changeSelectedIndexBrandState,
+    required TResult Function(T data) changeSelectedIndexBrandMakeUpState,
+    required TResult Function(T data) changeSelectedIndexTypeOfClothesState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? idle,
     TResult? Function()? loading,
+    TResult? Function()? categoryLoading,
     TResult? Function(T data)? success,
+    TResult? Function(T data)? categoriesSuccess,
     TResult? Function(NetworkExceptions networkExceptions)? error,
-    TResult? Function()? changeGridViewListViewState,
-    TResult? Function()? changeNavState,
-    TResult? Function()? changeSelectedIndexBrandState,
-    TResult? Function()? changeSelectedIndexBrandMakeUpState,
-    TResult? Function()? changeSelectedIndexTypeOfClothesState,
-    TResult? Function()? searchIndexByNameState,
+    TResult? Function(NetworkExceptions networkExceptions)? categoryError,
+    TResult? Function(T data)? changeSelectedIndexBrandState,
+    TResult? Function(T data)? changeSelectedIndexBrandMakeUpState,
+    TResult? Function(T data)? changeSelectedIndexTypeOfClothesState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
+    TResult Function()? categoryLoading,
     TResult Function(T data)? success,
+    TResult Function(T data)? categoriesSuccess,
     TResult Function(NetworkExceptions networkExceptions)? error,
-    TResult Function()? changeGridViewListViewState,
-    TResult Function()? changeNavState,
-    TResult Function()? changeSelectedIndexBrandState,
-    TResult Function()? changeSelectedIndexBrandMakeUpState,
-    TResult Function()? changeSelectedIndexTypeOfClothesState,
-    TResult Function()? searchIndexByNameState,
+    TResult Function(NetworkExceptions networkExceptions)? categoryError,
+    TResult Function(T data)? changeSelectedIndexBrandState,
+    TResult Function(T data)? changeSelectedIndexBrandMakeUpState,
+    TResult Function(T data)? changeSelectedIndexTypeOfClothesState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,55 +64,51 @@ mixin _$ResultState<T> {
   TResult map<TResult extends Object?>({
     required TResult Function(Idle<T> value) idle,
     required TResult Function(Loading<T> value) loading,
+    required TResult Function(CategoryLoading<T> value) categoryLoading,
     required TResult Function(Success<T> value) success,
+    required TResult Function(CatogriesSuccess<T> value) categoriesSuccess,
     required TResult Function(Error<T> value) error,
-    required TResult Function(ChangeGridViewListViewState<T> value)
-        changeGridViewListViewState,
-    required TResult Function(ChangeNavState<T> value) changeNavState,
+    required TResult Function(CategoryError<T> value) categoryError,
     required TResult Function(ChangeSelectedIndexBrandState<T> value)
         changeSelectedIndexBrandState,
     required TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)
         changeSelectedIndexBrandMakeUpState,
     required TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)
         changeSelectedIndexTypeOfClothesState,
-    required TResult Function(SearchIndexByNameState<T> value)
-        searchIndexByNameState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Idle<T> value)? idle,
     TResult? Function(Loading<T> value)? loading,
+    TResult? Function(CategoryLoading<T> value)? categoryLoading,
     TResult? Function(Success<T> value)? success,
+    TResult? Function(CatogriesSuccess<T> value)? categoriesSuccess,
     TResult? Function(Error<T> value)? error,
-    TResult? Function(ChangeGridViewListViewState<T> value)?
-        changeGridViewListViewState,
-    TResult? Function(ChangeNavState<T> value)? changeNavState,
+    TResult? Function(CategoryError<T> value)? categoryError,
     TResult? Function(ChangeSelectedIndexBrandState<T> value)?
         changeSelectedIndexBrandState,
     TResult? Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
         changeSelectedIndexBrandMakeUpState,
     TResult? Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
         changeSelectedIndexTypeOfClothesState,
-    TResult? Function(SearchIndexByNameState<T> value)? searchIndexByNameState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Idle<T> value)? idle,
     TResult Function(Loading<T> value)? loading,
+    TResult Function(CategoryLoading<T> value)? categoryLoading,
     TResult Function(Success<T> value)? success,
+    TResult Function(CatogriesSuccess<T> value)? categoriesSuccess,
     TResult Function(Error<T> value)? error,
-    TResult Function(ChangeGridViewListViewState<T> value)?
-        changeGridViewListViewState,
-    TResult Function(ChangeNavState<T> value)? changeNavState,
+    TResult Function(CategoryError<T> value)? categoryError,
     TResult Function(ChangeSelectedIndexBrandState<T> value)?
         changeSelectedIndexBrandState,
     TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
         changeSelectedIndexBrandMakeUpState,
     TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
         changeSelectedIndexTypeOfClothesState,
-    TResult Function(SearchIndexByNameState<T> value)? searchIndexByNameState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -175,14 +172,15 @@ class _$IdleImpl<T> implements Idle<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() loading,
+    required TResult Function() categoryLoading,
     required TResult Function(T data) success,
+    required TResult Function(T data) categoriesSuccess,
     required TResult Function(NetworkExceptions networkExceptions) error,
-    required TResult Function() changeGridViewListViewState,
-    required TResult Function() changeNavState,
-    required TResult Function() changeSelectedIndexBrandState,
-    required TResult Function() changeSelectedIndexBrandMakeUpState,
-    required TResult Function() changeSelectedIndexTypeOfClothesState,
-    required TResult Function() searchIndexByNameState,
+    required TResult Function(NetworkExceptions networkExceptions)
+        categoryError,
+    required TResult Function(T data) changeSelectedIndexBrandState,
+    required TResult Function(T data) changeSelectedIndexBrandMakeUpState,
+    required TResult Function(T data) changeSelectedIndexTypeOfClothesState,
   }) {
     return idle();
   }
@@ -192,14 +190,14 @@ class _$IdleImpl<T> implements Idle<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? idle,
     TResult? Function()? loading,
+    TResult? Function()? categoryLoading,
     TResult? Function(T data)? success,
+    TResult? Function(T data)? categoriesSuccess,
     TResult? Function(NetworkExceptions networkExceptions)? error,
-    TResult? Function()? changeGridViewListViewState,
-    TResult? Function()? changeNavState,
-    TResult? Function()? changeSelectedIndexBrandState,
-    TResult? Function()? changeSelectedIndexBrandMakeUpState,
-    TResult? Function()? changeSelectedIndexTypeOfClothesState,
-    TResult? Function()? searchIndexByNameState,
+    TResult? Function(NetworkExceptions networkExceptions)? categoryError,
+    TResult? Function(T data)? changeSelectedIndexBrandState,
+    TResult? Function(T data)? changeSelectedIndexBrandMakeUpState,
+    TResult? Function(T data)? changeSelectedIndexTypeOfClothesState,
   }) {
     return idle?.call();
   }
@@ -209,14 +207,14 @@ class _$IdleImpl<T> implements Idle<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
+    TResult Function()? categoryLoading,
     TResult Function(T data)? success,
+    TResult Function(T data)? categoriesSuccess,
     TResult Function(NetworkExceptions networkExceptions)? error,
-    TResult Function()? changeGridViewListViewState,
-    TResult Function()? changeNavState,
-    TResult Function()? changeSelectedIndexBrandState,
-    TResult Function()? changeSelectedIndexBrandMakeUpState,
-    TResult Function()? changeSelectedIndexTypeOfClothesState,
-    TResult Function()? searchIndexByNameState,
+    TResult Function(NetworkExceptions networkExceptions)? categoryError,
+    TResult Function(T data)? changeSelectedIndexBrandState,
+    TResult Function(T data)? changeSelectedIndexBrandMakeUpState,
+    TResult Function(T data)? changeSelectedIndexTypeOfClothesState,
     required TResult orElse(),
   }) {
     if (idle != null) {
@@ -230,19 +228,17 @@ class _$IdleImpl<T> implements Idle<T> {
   TResult map<TResult extends Object?>({
     required TResult Function(Idle<T> value) idle,
     required TResult Function(Loading<T> value) loading,
+    required TResult Function(CategoryLoading<T> value) categoryLoading,
     required TResult Function(Success<T> value) success,
+    required TResult Function(CatogriesSuccess<T> value) categoriesSuccess,
     required TResult Function(Error<T> value) error,
-    required TResult Function(ChangeGridViewListViewState<T> value)
-        changeGridViewListViewState,
-    required TResult Function(ChangeNavState<T> value) changeNavState,
+    required TResult Function(CategoryError<T> value) categoryError,
     required TResult Function(ChangeSelectedIndexBrandState<T> value)
         changeSelectedIndexBrandState,
     required TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)
         changeSelectedIndexBrandMakeUpState,
     required TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)
         changeSelectedIndexTypeOfClothesState,
-    required TResult Function(SearchIndexByNameState<T> value)
-        searchIndexByNameState,
   }) {
     return idle(this);
   }
@@ -252,18 +248,17 @@ class _$IdleImpl<T> implements Idle<T> {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Idle<T> value)? idle,
     TResult? Function(Loading<T> value)? loading,
+    TResult? Function(CategoryLoading<T> value)? categoryLoading,
     TResult? Function(Success<T> value)? success,
+    TResult? Function(CatogriesSuccess<T> value)? categoriesSuccess,
     TResult? Function(Error<T> value)? error,
-    TResult? Function(ChangeGridViewListViewState<T> value)?
-        changeGridViewListViewState,
-    TResult? Function(ChangeNavState<T> value)? changeNavState,
+    TResult? Function(CategoryError<T> value)? categoryError,
     TResult? Function(ChangeSelectedIndexBrandState<T> value)?
         changeSelectedIndexBrandState,
     TResult? Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
         changeSelectedIndexBrandMakeUpState,
     TResult? Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
         changeSelectedIndexTypeOfClothesState,
-    TResult? Function(SearchIndexByNameState<T> value)? searchIndexByNameState,
   }) {
     return idle?.call(this);
   }
@@ -273,18 +268,17 @@ class _$IdleImpl<T> implements Idle<T> {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Idle<T> value)? idle,
     TResult Function(Loading<T> value)? loading,
+    TResult Function(CategoryLoading<T> value)? categoryLoading,
     TResult Function(Success<T> value)? success,
+    TResult Function(CatogriesSuccess<T> value)? categoriesSuccess,
     TResult Function(Error<T> value)? error,
-    TResult Function(ChangeGridViewListViewState<T> value)?
-        changeGridViewListViewState,
-    TResult Function(ChangeNavState<T> value)? changeNavState,
+    TResult Function(CategoryError<T> value)? categoryError,
     TResult Function(ChangeSelectedIndexBrandState<T> value)?
         changeSelectedIndexBrandState,
     TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
         changeSelectedIndexBrandMakeUpState,
     TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
         changeSelectedIndexTypeOfClothesState,
-    TResult Function(SearchIndexByNameState<T> value)? searchIndexByNameState,
     required TResult orElse(),
   }) {
     if (idle != null) {
@@ -338,14 +332,15 @@ class _$LoadingImpl<T> implements Loading<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() loading,
+    required TResult Function() categoryLoading,
     required TResult Function(T data) success,
+    required TResult Function(T data) categoriesSuccess,
     required TResult Function(NetworkExceptions networkExceptions) error,
-    required TResult Function() changeGridViewListViewState,
-    required TResult Function() changeNavState,
-    required TResult Function() changeSelectedIndexBrandState,
-    required TResult Function() changeSelectedIndexBrandMakeUpState,
-    required TResult Function() changeSelectedIndexTypeOfClothesState,
-    required TResult Function() searchIndexByNameState,
+    required TResult Function(NetworkExceptions networkExceptions)
+        categoryError,
+    required TResult Function(T data) changeSelectedIndexBrandState,
+    required TResult Function(T data) changeSelectedIndexBrandMakeUpState,
+    required TResult Function(T data) changeSelectedIndexTypeOfClothesState,
   }) {
     return loading();
   }
@@ -355,14 +350,14 @@ class _$LoadingImpl<T> implements Loading<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? idle,
     TResult? Function()? loading,
+    TResult? Function()? categoryLoading,
     TResult? Function(T data)? success,
+    TResult? Function(T data)? categoriesSuccess,
     TResult? Function(NetworkExceptions networkExceptions)? error,
-    TResult? Function()? changeGridViewListViewState,
-    TResult? Function()? changeNavState,
-    TResult? Function()? changeSelectedIndexBrandState,
-    TResult? Function()? changeSelectedIndexBrandMakeUpState,
-    TResult? Function()? changeSelectedIndexTypeOfClothesState,
-    TResult? Function()? searchIndexByNameState,
+    TResult? Function(NetworkExceptions networkExceptions)? categoryError,
+    TResult? Function(T data)? changeSelectedIndexBrandState,
+    TResult? Function(T data)? changeSelectedIndexBrandMakeUpState,
+    TResult? Function(T data)? changeSelectedIndexTypeOfClothesState,
   }) {
     return loading?.call();
   }
@@ -372,14 +367,14 @@ class _$LoadingImpl<T> implements Loading<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
+    TResult Function()? categoryLoading,
     TResult Function(T data)? success,
+    TResult Function(T data)? categoriesSuccess,
     TResult Function(NetworkExceptions networkExceptions)? error,
-    TResult Function()? changeGridViewListViewState,
-    TResult Function()? changeNavState,
-    TResult Function()? changeSelectedIndexBrandState,
-    TResult Function()? changeSelectedIndexBrandMakeUpState,
-    TResult Function()? changeSelectedIndexTypeOfClothesState,
-    TResult Function()? searchIndexByNameState,
+    TResult Function(NetworkExceptions networkExceptions)? categoryError,
+    TResult Function(T data)? changeSelectedIndexBrandState,
+    TResult Function(T data)? changeSelectedIndexBrandMakeUpState,
+    TResult Function(T data)? changeSelectedIndexTypeOfClothesState,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -393,19 +388,17 @@ class _$LoadingImpl<T> implements Loading<T> {
   TResult map<TResult extends Object?>({
     required TResult Function(Idle<T> value) idle,
     required TResult Function(Loading<T> value) loading,
+    required TResult Function(CategoryLoading<T> value) categoryLoading,
     required TResult Function(Success<T> value) success,
+    required TResult Function(CatogriesSuccess<T> value) categoriesSuccess,
     required TResult Function(Error<T> value) error,
-    required TResult Function(ChangeGridViewListViewState<T> value)
-        changeGridViewListViewState,
-    required TResult Function(ChangeNavState<T> value) changeNavState,
+    required TResult Function(CategoryError<T> value) categoryError,
     required TResult Function(ChangeSelectedIndexBrandState<T> value)
         changeSelectedIndexBrandState,
     required TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)
         changeSelectedIndexBrandMakeUpState,
     required TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)
         changeSelectedIndexTypeOfClothesState,
-    required TResult Function(SearchIndexByNameState<T> value)
-        searchIndexByNameState,
   }) {
     return loading(this);
   }
@@ -415,18 +408,17 @@ class _$LoadingImpl<T> implements Loading<T> {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Idle<T> value)? idle,
     TResult? Function(Loading<T> value)? loading,
+    TResult? Function(CategoryLoading<T> value)? categoryLoading,
     TResult? Function(Success<T> value)? success,
+    TResult? Function(CatogriesSuccess<T> value)? categoriesSuccess,
     TResult? Function(Error<T> value)? error,
-    TResult? Function(ChangeGridViewListViewState<T> value)?
-        changeGridViewListViewState,
-    TResult? Function(ChangeNavState<T> value)? changeNavState,
+    TResult? Function(CategoryError<T> value)? categoryError,
     TResult? Function(ChangeSelectedIndexBrandState<T> value)?
         changeSelectedIndexBrandState,
     TResult? Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
         changeSelectedIndexBrandMakeUpState,
     TResult? Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
         changeSelectedIndexTypeOfClothesState,
-    TResult? Function(SearchIndexByNameState<T> value)? searchIndexByNameState,
   }) {
     return loading?.call(this);
   }
@@ -436,18 +428,17 @@ class _$LoadingImpl<T> implements Loading<T> {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Idle<T> value)? idle,
     TResult Function(Loading<T> value)? loading,
+    TResult Function(CategoryLoading<T> value)? categoryLoading,
     TResult Function(Success<T> value)? success,
+    TResult Function(CatogriesSuccess<T> value)? categoriesSuccess,
     TResult Function(Error<T> value)? error,
-    TResult Function(ChangeGridViewListViewState<T> value)?
-        changeGridViewListViewState,
-    TResult Function(ChangeNavState<T> value)? changeNavState,
+    TResult Function(CategoryError<T> value)? categoryError,
     TResult Function(ChangeSelectedIndexBrandState<T> value)?
         changeSelectedIndexBrandState,
     TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
         changeSelectedIndexBrandMakeUpState,
     TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
         changeSelectedIndexTypeOfClothesState,
-    TResult Function(SearchIndexByNameState<T> value)? searchIndexByNameState,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -459,6 +450,166 @@ class _$LoadingImpl<T> implements Loading<T> {
 
 abstract class Loading<T> implements ResultState<T> {
   const factory Loading() = _$LoadingImpl<T>;
+}
+
+/// @nodoc
+abstract class _$$CategoryLoadingImplCopyWith<T, $Res> {
+  factory _$$CategoryLoadingImplCopyWith(_$CategoryLoadingImpl<T> value,
+          $Res Function(_$CategoryLoadingImpl<T>) then) =
+      __$$CategoryLoadingImplCopyWithImpl<T, $Res>;
+}
+
+/// @nodoc
+class __$$CategoryLoadingImplCopyWithImpl<T, $Res>
+    extends _$ResultStateCopyWithImpl<T, $Res, _$CategoryLoadingImpl<T>>
+    implements _$$CategoryLoadingImplCopyWith<T, $Res> {
+  __$$CategoryLoadingImplCopyWithImpl(_$CategoryLoadingImpl<T> _value,
+      $Res Function(_$CategoryLoadingImpl<T>) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CategoryLoadingImpl<T> implements CategoryLoading<T> {
+  const _$CategoryLoadingImpl();
+
+  @override
+  String toString() {
+    return 'ResultState<$T>.categoryLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CategoryLoadingImpl<T>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() idle,
+    required TResult Function() loading,
+    required TResult Function() categoryLoading,
+    required TResult Function(T data) success,
+    required TResult Function(T data) categoriesSuccess,
+    required TResult Function(NetworkExceptions networkExceptions) error,
+    required TResult Function(NetworkExceptions networkExceptions)
+        categoryError,
+    required TResult Function(T data) changeSelectedIndexBrandState,
+    required TResult Function(T data) changeSelectedIndexBrandMakeUpState,
+    required TResult Function(T data) changeSelectedIndexTypeOfClothesState,
+  }) {
+    return categoryLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? idle,
+    TResult? Function()? loading,
+    TResult? Function()? categoryLoading,
+    TResult? Function(T data)? success,
+    TResult? Function(T data)? categoriesSuccess,
+    TResult? Function(NetworkExceptions networkExceptions)? error,
+    TResult? Function(NetworkExceptions networkExceptions)? categoryError,
+    TResult? Function(T data)? changeSelectedIndexBrandState,
+    TResult? Function(T data)? changeSelectedIndexBrandMakeUpState,
+    TResult? Function(T data)? changeSelectedIndexTypeOfClothesState,
+  }) {
+    return categoryLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? idle,
+    TResult Function()? loading,
+    TResult Function()? categoryLoading,
+    TResult Function(T data)? success,
+    TResult Function(T data)? categoriesSuccess,
+    TResult Function(NetworkExceptions networkExceptions)? error,
+    TResult Function(NetworkExceptions networkExceptions)? categoryError,
+    TResult Function(T data)? changeSelectedIndexBrandState,
+    TResult Function(T data)? changeSelectedIndexBrandMakeUpState,
+    TResult Function(T data)? changeSelectedIndexTypeOfClothesState,
+    required TResult orElse(),
+  }) {
+    if (categoryLoading != null) {
+      return categoryLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Idle<T> value) idle,
+    required TResult Function(Loading<T> value) loading,
+    required TResult Function(CategoryLoading<T> value) categoryLoading,
+    required TResult Function(Success<T> value) success,
+    required TResult Function(CatogriesSuccess<T> value) categoriesSuccess,
+    required TResult Function(Error<T> value) error,
+    required TResult Function(CategoryError<T> value) categoryError,
+    required TResult Function(ChangeSelectedIndexBrandState<T> value)
+        changeSelectedIndexBrandState,
+    required TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)
+        changeSelectedIndexBrandMakeUpState,
+    required TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)
+        changeSelectedIndexTypeOfClothesState,
+  }) {
+    return categoryLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Idle<T> value)? idle,
+    TResult? Function(Loading<T> value)? loading,
+    TResult? Function(CategoryLoading<T> value)? categoryLoading,
+    TResult? Function(Success<T> value)? success,
+    TResult? Function(CatogriesSuccess<T> value)? categoriesSuccess,
+    TResult? Function(Error<T> value)? error,
+    TResult? Function(CategoryError<T> value)? categoryError,
+    TResult? Function(ChangeSelectedIndexBrandState<T> value)?
+        changeSelectedIndexBrandState,
+    TResult? Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
+        changeSelectedIndexBrandMakeUpState,
+    TResult? Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
+        changeSelectedIndexTypeOfClothesState,
+  }) {
+    return categoryLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Idle<T> value)? idle,
+    TResult Function(Loading<T> value)? loading,
+    TResult Function(CategoryLoading<T> value)? categoryLoading,
+    TResult Function(Success<T> value)? success,
+    TResult Function(CatogriesSuccess<T> value)? categoriesSuccess,
+    TResult Function(Error<T> value)? error,
+    TResult Function(CategoryError<T> value)? categoryError,
+    TResult Function(ChangeSelectedIndexBrandState<T> value)?
+        changeSelectedIndexBrandState,
+    TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
+        changeSelectedIndexBrandMakeUpState,
+    TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
+        changeSelectedIndexTypeOfClothesState,
+    required TResult orElse(),
+  }) {
+    if (categoryLoading != null) {
+      return categoryLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CategoryLoading<T> implements ResultState<T> {
+  const factory CategoryLoading() = _$CategoryLoadingImpl<T>;
 }
 
 /// @nodoc
@@ -528,14 +679,15 @@ class _$SuccessImpl<T> implements Success<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() loading,
+    required TResult Function() categoryLoading,
     required TResult Function(T data) success,
+    required TResult Function(T data) categoriesSuccess,
     required TResult Function(NetworkExceptions networkExceptions) error,
-    required TResult Function() changeGridViewListViewState,
-    required TResult Function() changeNavState,
-    required TResult Function() changeSelectedIndexBrandState,
-    required TResult Function() changeSelectedIndexBrandMakeUpState,
-    required TResult Function() changeSelectedIndexTypeOfClothesState,
-    required TResult Function() searchIndexByNameState,
+    required TResult Function(NetworkExceptions networkExceptions)
+        categoryError,
+    required TResult Function(T data) changeSelectedIndexBrandState,
+    required TResult Function(T data) changeSelectedIndexBrandMakeUpState,
+    required TResult Function(T data) changeSelectedIndexTypeOfClothesState,
   }) {
     return success(data);
   }
@@ -545,14 +697,14 @@ class _$SuccessImpl<T> implements Success<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? idle,
     TResult? Function()? loading,
+    TResult? Function()? categoryLoading,
     TResult? Function(T data)? success,
+    TResult? Function(T data)? categoriesSuccess,
     TResult? Function(NetworkExceptions networkExceptions)? error,
-    TResult? Function()? changeGridViewListViewState,
-    TResult? Function()? changeNavState,
-    TResult? Function()? changeSelectedIndexBrandState,
-    TResult? Function()? changeSelectedIndexBrandMakeUpState,
-    TResult? Function()? changeSelectedIndexTypeOfClothesState,
-    TResult? Function()? searchIndexByNameState,
+    TResult? Function(NetworkExceptions networkExceptions)? categoryError,
+    TResult? Function(T data)? changeSelectedIndexBrandState,
+    TResult? Function(T data)? changeSelectedIndexBrandMakeUpState,
+    TResult? Function(T data)? changeSelectedIndexTypeOfClothesState,
   }) {
     return success?.call(data);
   }
@@ -562,14 +714,14 @@ class _$SuccessImpl<T> implements Success<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
+    TResult Function()? categoryLoading,
     TResult Function(T data)? success,
+    TResult Function(T data)? categoriesSuccess,
     TResult Function(NetworkExceptions networkExceptions)? error,
-    TResult Function()? changeGridViewListViewState,
-    TResult Function()? changeNavState,
-    TResult Function()? changeSelectedIndexBrandState,
-    TResult Function()? changeSelectedIndexBrandMakeUpState,
-    TResult Function()? changeSelectedIndexTypeOfClothesState,
-    TResult Function()? searchIndexByNameState,
+    TResult Function(NetworkExceptions networkExceptions)? categoryError,
+    TResult Function(T data)? changeSelectedIndexBrandState,
+    TResult Function(T data)? changeSelectedIndexBrandMakeUpState,
+    TResult Function(T data)? changeSelectedIndexTypeOfClothesState,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -583,19 +735,17 @@ class _$SuccessImpl<T> implements Success<T> {
   TResult map<TResult extends Object?>({
     required TResult Function(Idle<T> value) idle,
     required TResult Function(Loading<T> value) loading,
+    required TResult Function(CategoryLoading<T> value) categoryLoading,
     required TResult Function(Success<T> value) success,
+    required TResult Function(CatogriesSuccess<T> value) categoriesSuccess,
     required TResult Function(Error<T> value) error,
-    required TResult Function(ChangeGridViewListViewState<T> value)
-        changeGridViewListViewState,
-    required TResult Function(ChangeNavState<T> value) changeNavState,
+    required TResult Function(CategoryError<T> value) categoryError,
     required TResult Function(ChangeSelectedIndexBrandState<T> value)
         changeSelectedIndexBrandState,
     required TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)
         changeSelectedIndexBrandMakeUpState,
     required TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)
         changeSelectedIndexTypeOfClothesState,
-    required TResult Function(SearchIndexByNameState<T> value)
-        searchIndexByNameState,
   }) {
     return success(this);
   }
@@ -605,18 +755,17 @@ class _$SuccessImpl<T> implements Success<T> {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Idle<T> value)? idle,
     TResult? Function(Loading<T> value)? loading,
+    TResult? Function(CategoryLoading<T> value)? categoryLoading,
     TResult? Function(Success<T> value)? success,
+    TResult? Function(CatogriesSuccess<T> value)? categoriesSuccess,
     TResult? Function(Error<T> value)? error,
-    TResult? Function(ChangeGridViewListViewState<T> value)?
-        changeGridViewListViewState,
-    TResult? Function(ChangeNavState<T> value)? changeNavState,
+    TResult? Function(CategoryError<T> value)? categoryError,
     TResult? Function(ChangeSelectedIndexBrandState<T> value)?
         changeSelectedIndexBrandState,
     TResult? Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
         changeSelectedIndexBrandMakeUpState,
     TResult? Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
         changeSelectedIndexTypeOfClothesState,
-    TResult? Function(SearchIndexByNameState<T> value)? searchIndexByNameState,
   }) {
     return success?.call(this);
   }
@@ -626,18 +775,17 @@ class _$SuccessImpl<T> implements Success<T> {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Idle<T> value)? idle,
     TResult Function(Loading<T> value)? loading,
+    TResult Function(CategoryLoading<T> value)? categoryLoading,
     TResult Function(Success<T> value)? success,
+    TResult Function(CatogriesSuccess<T> value)? categoriesSuccess,
     TResult Function(Error<T> value)? error,
-    TResult Function(ChangeGridViewListViewState<T> value)?
-        changeGridViewListViewState,
-    TResult Function(ChangeNavState<T> value)? changeNavState,
+    TResult Function(CategoryError<T> value)? categoryError,
     TResult Function(ChangeSelectedIndexBrandState<T> value)?
         changeSelectedIndexBrandState,
     TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
         changeSelectedIndexBrandMakeUpState,
     TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
         changeSelectedIndexTypeOfClothesState,
-    TResult Function(SearchIndexByNameState<T> value)? searchIndexByNameState,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -653,6 +801,199 @@ abstract class Success<T> implements ResultState<T> {
   T get data;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<T, _$SuccessImpl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CatogriesSuccessImplCopyWith<T, $Res> {
+  factory _$$CatogriesSuccessImplCopyWith(_$CatogriesSuccessImpl<T> value,
+          $Res Function(_$CatogriesSuccessImpl<T>) then) =
+      __$$CatogriesSuccessImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({T data});
+}
+
+/// @nodoc
+class __$$CatogriesSuccessImplCopyWithImpl<T, $Res>
+    extends _$ResultStateCopyWithImpl<T, $Res, _$CatogriesSuccessImpl<T>>
+    implements _$$CatogriesSuccessImplCopyWith<T, $Res> {
+  __$$CatogriesSuccessImplCopyWithImpl(_$CatogriesSuccessImpl<T> _value,
+      $Res Function(_$CatogriesSuccessImpl<T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_$CatogriesSuccessImpl<T>(
+      freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CatogriesSuccessImpl<T> implements CatogriesSuccess<T> {
+  const _$CatogriesSuccessImpl(this.data);
+
+  @override
+  final T data;
+
+  @override
+  String toString() {
+    return 'ResultState<$T>.categoriesSuccess(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CatogriesSuccessImpl<T> &&
+            const DeepCollectionEquality().equals(other.data, data));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CatogriesSuccessImplCopyWith<T, _$CatogriesSuccessImpl<T>> get copyWith =>
+      __$$CatogriesSuccessImplCopyWithImpl<T, _$CatogriesSuccessImpl<T>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() idle,
+    required TResult Function() loading,
+    required TResult Function() categoryLoading,
+    required TResult Function(T data) success,
+    required TResult Function(T data) categoriesSuccess,
+    required TResult Function(NetworkExceptions networkExceptions) error,
+    required TResult Function(NetworkExceptions networkExceptions)
+        categoryError,
+    required TResult Function(T data) changeSelectedIndexBrandState,
+    required TResult Function(T data) changeSelectedIndexBrandMakeUpState,
+    required TResult Function(T data) changeSelectedIndexTypeOfClothesState,
+  }) {
+    return categoriesSuccess(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? idle,
+    TResult? Function()? loading,
+    TResult? Function()? categoryLoading,
+    TResult? Function(T data)? success,
+    TResult? Function(T data)? categoriesSuccess,
+    TResult? Function(NetworkExceptions networkExceptions)? error,
+    TResult? Function(NetworkExceptions networkExceptions)? categoryError,
+    TResult? Function(T data)? changeSelectedIndexBrandState,
+    TResult? Function(T data)? changeSelectedIndexBrandMakeUpState,
+    TResult? Function(T data)? changeSelectedIndexTypeOfClothesState,
+  }) {
+    return categoriesSuccess?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? idle,
+    TResult Function()? loading,
+    TResult Function()? categoryLoading,
+    TResult Function(T data)? success,
+    TResult Function(T data)? categoriesSuccess,
+    TResult Function(NetworkExceptions networkExceptions)? error,
+    TResult Function(NetworkExceptions networkExceptions)? categoryError,
+    TResult Function(T data)? changeSelectedIndexBrandState,
+    TResult Function(T data)? changeSelectedIndexBrandMakeUpState,
+    TResult Function(T data)? changeSelectedIndexTypeOfClothesState,
+    required TResult orElse(),
+  }) {
+    if (categoriesSuccess != null) {
+      return categoriesSuccess(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Idle<T> value) idle,
+    required TResult Function(Loading<T> value) loading,
+    required TResult Function(CategoryLoading<T> value) categoryLoading,
+    required TResult Function(Success<T> value) success,
+    required TResult Function(CatogriesSuccess<T> value) categoriesSuccess,
+    required TResult Function(Error<T> value) error,
+    required TResult Function(CategoryError<T> value) categoryError,
+    required TResult Function(ChangeSelectedIndexBrandState<T> value)
+        changeSelectedIndexBrandState,
+    required TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)
+        changeSelectedIndexBrandMakeUpState,
+    required TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)
+        changeSelectedIndexTypeOfClothesState,
+  }) {
+    return categoriesSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Idle<T> value)? idle,
+    TResult? Function(Loading<T> value)? loading,
+    TResult? Function(CategoryLoading<T> value)? categoryLoading,
+    TResult? Function(Success<T> value)? success,
+    TResult? Function(CatogriesSuccess<T> value)? categoriesSuccess,
+    TResult? Function(Error<T> value)? error,
+    TResult? Function(CategoryError<T> value)? categoryError,
+    TResult? Function(ChangeSelectedIndexBrandState<T> value)?
+        changeSelectedIndexBrandState,
+    TResult? Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
+        changeSelectedIndexBrandMakeUpState,
+    TResult? Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
+        changeSelectedIndexTypeOfClothesState,
+  }) {
+    return categoriesSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Idle<T> value)? idle,
+    TResult Function(Loading<T> value)? loading,
+    TResult Function(CategoryLoading<T> value)? categoryLoading,
+    TResult Function(Success<T> value)? success,
+    TResult Function(CatogriesSuccess<T> value)? categoriesSuccess,
+    TResult Function(Error<T> value)? error,
+    TResult Function(CategoryError<T> value)? categoryError,
+    TResult Function(ChangeSelectedIndexBrandState<T> value)?
+        changeSelectedIndexBrandState,
+    TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
+        changeSelectedIndexBrandMakeUpState,
+    TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
+        changeSelectedIndexTypeOfClothesState,
+    required TResult orElse(),
+  }) {
+    if (categoriesSuccess != null) {
+      return categoriesSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CatogriesSuccess<T> implements ResultState<T> {
+  const factory CatogriesSuccess(final T data) = _$CatogriesSuccessImpl<T>;
+
+  T get data;
+  @JsonKey(ignore: true)
+  _$$CatogriesSuccessImplCopyWith<T, _$CatogriesSuccessImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -733,14 +1074,15 @@ class _$ErrorImpl<T> implements Error<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() loading,
+    required TResult Function() categoryLoading,
     required TResult Function(T data) success,
+    required TResult Function(T data) categoriesSuccess,
     required TResult Function(NetworkExceptions networkExceptions) error,
-    required TResult Function() changeGridViewListViewState,
-    required TResult Function() changeNavState,
-    required TResult Function() changeSelectedIndexBrandState,
-    required TResult Function() changeSelectedIndexBrandMakeUpState,
-    required TResult Function() changeSelectedIndexTypeOfClothesState,
-    required TResult Function() searchIndexByNameState,
+    required TResult Function(NetworkExceptions networkExceptions)
+        categoryError,
+    required TResult Function(T data) changeSelectedIndexBrandState,
+    required TResult Function(T data) changeSelectedIndexBrandMakeUpState,
+    required TResult Function(T data) changeSelectedIndexTypeOfClothesState,
   }) {
     return error(networkExceptions);
   }
@@ -750,14 +1092,14 @@ class _$ErrorImpl<T> implements Error<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? idle,
     TResult? Function()? loading,
+    TResult? Function()? categoryLoading,
     TResult? Function(T data)? success,
+    TResult? Function(T data)? categoriesSuccess,
     TResult? Function(NetworkExceptions networkExceptions)? error,
-    TResult? Function()? changeGridViewListViewState,
-    TResult? Function()? changeNavState,
-    TResult? Function()? changeSelectedIndexBrandState,
-    TResult? Function()? changeSelectedIndexBrandMakeUpState,
-    TResult? Function()? changeSelectedIndexTypeOfClothesState,
-    TResult? Function()? searchIndexByNameState,
+    TResult? Function(NetworkExceptions networkExceptions)? categoryError,
+    TResult? Function(T data)? changeSelectedIndexBrandState,
+    TResult? Function(T data)? changeSelectedIndexBrandMakeUpState,
+    TResult? Function(T data)? changeSelectedIndexTypeOfClothesState,
   }) {
     return error?.call(networkExceptions);
   }
@@ -767,14 +1109,14 @@ class _$ErrorImpl<T> implements Error<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
+    TResult Function()? categoryLoading,
     TResult Function(T data)? success,
+    TResult Function(T data)? categoriesSuccess,
     TResult Function(NetworkExceptions networkExceptions)? error,
-    TResult Function()? changeGridViewListViewState,
-    TResult Function()? changeNavState,
-    TResult Function()? changeSelectedIndexBrandState,
-    TResult Function()? changeSelectedIndexBrandMakeUpState,
-    TResult Function()? changeSelectedIndexTypeOfClothesState,
-    TResult Function()? searchIndexByNameState,
+    TResult Function(NetworkExceptions networkExceptions)? categoryError,
+    TResult Function(T data)? changeSelectedIndexBrandState,
+    TResult Function(T data)? changeSelectedIndexBrandMakeUpState,
+    TResult Function(T data)? changeSelectedIndexTypeOfClothesState,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -788,19 +1130,17 @@ class _$ErrorImpl<T> implements Error<T> {
   TResult map<TResult extends Object?>({
     required TResult Function(Idle<T> value) idle,
     required TResult Function(Loading<T> value) loading,
+    required TResult Function(CategoryLoading<T> value) categoryLoading,
     required TResult Function(Success<T> value) success,
+    required TResult Function(CatogriesSuccess<T> value) categoriesSuccess,
     required TResult Function(Error<T> value) error,
-    required TResult Function(ChangeGridViewListViewState<T> value)
-        changeGridViewListViewState,
-    required TResult Function(ChangeNavState<T> value) changeNavState,
+    required TResult Function(CategoryError<T> value) categoryError,
     required TResult Function(ChangeSelectedIndexBrandState<T> value)
         changeSelectedIndexBrandState,
     required TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)
         changeSelectedIndexBrandMakeUpState,
     required TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)
         changeSelectedIndexTypeOfClothesState,
-    required TResult Function(SearchIndexByNameState<T> value)
-        searchIndexByNameState,
   }) {
     return error(this);
   }
@@ -810,18 +1150,17 @@ class _$ErrorImpl<T> implements Error<T> {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Idle<T> value)? idle,
     TResult? Function(Loading<T> value)? loading,
+    TResult? Function(CategoryLoading<T> value)? categoryLoading,
     TResult? Function(Success<T> value)? success,
+    TResult? Function(CatogriesSuccess<T> value)? categoriesSuccess,
     TResult? Function(Error<T> value)? error,
-    TResult? Function(ChangeGridViewListViewState<T> value)?
-        changeGridViewListViewState,
-    TResult? Function(ChangeNavState<T> value)? changeNavState,
+    TResult? Function(CategoryError<T> value)? categoryError,
     TResult? Function(ChangeSelectedIndexBrandState<T> value)?
         changeSelectedIndexBrandState,
     TResult? Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
         changeSelectedIndexBrandMakeUpState,
     TResult? Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
         changeSelectedIndexTypeOfClothesState,
-    TResult? Function(SearchIndexByNameState<T> value)? searchIndexByNameState,
   }) {
     return error?.call(this);
   }
@@ -831,18 +1170,17 @@ class _$ErrorImpl<T> implements Error<T> {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Idle<T> value)? idle,
     TResult Function(Loading<T> value)? loading,
+    TResult Function(CategoryLoading<T> value)? categoryLoading,
     TResult Function(Success<T> value)? success,
+    TResult Function(CatogriesSuccess<T> value)? categoriesSuccess,
     TResult Function(Error<T> value)? error,
-    TResult Function(ChangeGridViewListViewState<T> value)?
-        changeGridViewListViewState,
-    TResult Function(ChangeNavState<T> value)? changeNavState,
+    TResult Function(CategoryError<T> value)? categoryError,
     TResult Function(ChangeSelectedIndexBrandState<T> value)?
         changeSelectedIndexBrandState,
     TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
         changeSelectedIndexBrandMakeUpState,
     TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
         changeSelectedIndexTypeOfClothesState,
-    TResult Function(SearchIndexByNameState<T> value)? searchIndexByNameState,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -863,60 +1201,94 @@ abstract class Error<T> implements ResultState<T> {
 }
 
 /// @nodoc
-abstract class _$$ChangeGridViewListViewStateImplCopyWith<T, $Res> {
-  factory _$$ChangeGridViewListViewStateImplCopyWith(
-          _$ChangeGridViewListViewStateImpl<T> value,
-          $Res Function(_$ChangeGridViewListViewStateImpl<T>) then) =
-      __$$ChangeGridViewListViewStateImplCopyWithImpl<T, $Res>;
+abstract class _$$CategoryErrorImplCopyWith<T, $Res> {
+  factory _$$CategoryErrorImplCopyWith(_$CategoryErrorImpl<T> value,
+          $Res Function(_$CategoryErrorImpl<T>) then) =
+      __$$CategoryErrorImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({NetworkExceptions networkExceptions});
+
+  $NetworkExceptionsCopyWith<$Res> get networkExceptions;
 }
 
 /// @nodoc
-class __$$ChangeGridViewListViewStateImplCopyWithImpl<T, $Res>
-    extends _$ResultStateCopyWithImpl<T, $Res,
-        _$ChangeGridViewListViewStateImpl<T>>
-    implements _$$ChangeGridViewListViewStateImplCopyWith<T, $Res> {
-  __$$ChangeGridViewListViewStateImplCopyWithImpl(
-      _$ChangeGridViewListViewStateImpl<T> _value,
-      $Res Function(_$ChangeGridViewListViewStateImpl<T>) _then)
+class __$$CategoryErrorImplCopyWithImpl<T, $Res>
+    extends _$ResultStateCopyWithImpl<T, $Res, _$CategoryErrorImpl<T>>
+    implements _$$CategoryErrorImplCopyWith<T, $Res> {
+  __$$CategoryErrorImplCopyWithImpl(_$CategoryErrorImpl<T> _value,
+      $Res Function(_$CategoryErrorImpl<T>) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? networkExceptions = null,
+  }) {
+    return _then(_$CategoryErrorImpl<T>(
+      null == networkExceptions
+          ? _value.networkExceptions
+          : networkExceptions // ignore: cast_nullable_to_non_nullable
+              as NetworkExceptions,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $NetworkExceptionsCopyWith<$Res> get networkExceptions {
+    return $NetworkExceptionsCopyWith<$Res>(_value.networkExceptions, (value) {
+      return _then(_value.copyWith(networkExceptions: value));
+    });
+  }
 }
 
 /// @nodoc
 
-class _$ChangeGridViewListViewStateImpl<T>
-    implements ChangeGridViewListViewState<T> {
-  const _$ChangeGridViewListViewStateImpl();
+class _$CategoryErrorImpl<T> implements CategoryError<T> {
+  const _$CategoryErrorImpl(this.networkExceptions);
+
+  @override
+  final NetworkExceptions networkExceptions;
 
   @override
   String toString() {
-    return 'ResultState<$T>.changeGridViewListViewState()';
+    return 'ResultState<$T>.categoryError(networkExceptions: $networkExceptions)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChangeGridViewListViewStateImpl<T>);
+            other is _$CategoryErrorImpl<T> &&
+            (identical(other.networkExceptions, networkExceptions) ||
+                other.networkExceptions == networkExceptions));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, networkExceptions);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CategoryErrorImplCopyWith<T, _$CategoryErrorImpl<T>> get copyWith =>
+      __$$CategoryErrorImplCopyWithImpl<T, _$CategoryErrorImpl<T>>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() loading,
+    required TResult Function() categoryLoading,
     required TResult Function(T data) success,
+    required TResult Function(T data) categoriesSuccess,
     required TResult Function(NetworkExceptions networkExceptions) error,
-    required TResult Function() changeGridViewListViewState,
-    required TResult Function() changeNavState,
-    required TResult Function() changeSelectedIndexBrandState,
-    required TResult Function() changeSelectedIndexBrandMakeUpState,
-    required TResult Function() changeSelectedIndexTypeOfClothesState,
-    required TResult Function() searchIndexByNameState,
+    required TResult Function(NetworkExceptions networkExceptions)
+        categoryError,
+    required TResult Function(T data) changeSelectedIndexBrandState,
+    required TResult Function(T data) changeSelectedIndexBrandMakeUpState,
+    required TResult Function(T data) changeSelectedIndexTypeOfClothesState,
   }) {
-    return changeGridViewListViewState();
+    return categoryError(networkExceptions);
   }
 
   @override
@@ -924,16 +1296,16 @@ class _$ChangeGridViewListViewStateImpl<T>
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? idle,
     TResult? Function()? loading,
+    TResult? Function()? categoryLoading,
     TResult? Function(T data)? success,
+    TResult? Function(T data)? categoriesSuccess,
     TResult? Function(NetworkExceptions networkExceptions)? error,
-    TResult? Function()? changeGridViewListViewState,
-    TResult? Function()? changeNavState,
-    TResult? Function()? changeSelectedIndexBrandState,
-    TResult? Function()? changeSelectedIndexBrandMakeUpState,
-    TResult? Function()? changeSelectedIndexTypeOfClothesState,
-    TResult? Function()? searchIndexByNameState,
+    TResult? Function(NetworkExceptions networkExceptions)? categoryError,
+    TResult? Function(T data)? changeSelectedIndexBrandState,
+    TResult? Function(T data)? changeSelectedIndexBrandMakeUpState,
+    TResult? Function(T data)? changeSelectedIndexTypeOfClothesState,
   }) {
-    return changeGridViewListViewState?.call();
+    return categoryError?.call(networkExceptions);
   }
 
   @override
@@ -941,18 +1313,18 @@ class _$ChangeGridViewListViewStateImpl<T>
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
+    TResult Function()? categoryLoading,
     TResult Function(T data)? success,
+    TResult Function(T data)? categoriesSuccess,
     TResult Function(NetworkExceptions networkExceptions)? error,
-    TResult Function()? changeGridViewListViewState,
-    TResult Function()? changeNavState,
-    TResult Function()? changeSelectedIndexBrandState,
-    TResult Function()? changeSelectedIndexBrandMakeUpState,
-    TResult Function()? changeSelectedIndexTypeOfClothesState,
-    TResult Function()? searchIndexByNameState,
+    TResult Function(NetworkExceptions networkExceptions)? categoryError,
+    TResult Function(T data)? changeSelectedIndexBrandState,
+    TResult Function(T data)? changeSelectedIndexBrandMakeUpState,
+    TResult Function(T data)? changeSelectedIndexTypeOfClothesState,
     required TResult orElse(),
   }) {
-    if (changeGridViewListViewState != null) {
-      return changeGridViewListViewState();
+    if (categoryError != null) {
+      return categoryError(networkExceptions);
     }
     return orElse();
   }
@@ -962,21 +1334,19 @@ class _$ChangeGridViewListViewStateImpl<T>
   TResult map<TResult extends Object?>({
     required TResult Function(Idle<T> value) idle,
     required TResult Function(Loading<T> value) loading,
+    required TResult Function(CategoryLoading<T> value) categoryLoading,
     required TResult Function(Success<T> value) success,
+    required TResult Function(CatogriesSuccess<T> value) categoriesSuccess,
     required TResult Function(Error<T> value) error,
-    required TResult Function(ChangeGridViewListViewState<T> value)
-        changeGridViewListViewState,
-    required TResult Function(ChangeNavState<T> value) changeNavState,
+    required TResult Function(CategoryError<T> value) categoryError,
     required TResult Function(ChangeSelectedIndexBrandState<T> value)
         changeSelectedIndexBrandState,
     required TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)
         changeSelectedIndexBrandMakeUpState,
     required TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)
         changeSelectedIndexTypeOfClothesState,
-    required TResult Function(SearchIndexByNameState<T> value)
-        searchIndexByNameState,
   }) {
-    return changeGridViewListViewState(this);
+    return categoryError(this);
   }
 
   @override
@@ -984,20 +1354,19 @@ class _$ChangeGridViewListViewStateImpl<T>
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Idle<T> value)? idle,
     TResult? Function(Loading<T> value)? loading,
+    TResult? Function(CategoryLoading<T> value)? categoryLoading,
     TResult? Function(Success<T> value)? success,
+    TResult? Function(CatogriesSuccess<T> value)? categoriesSuccess,
     TResult? Function(Error<T> value)? error,
-    TResult? Function(ChangeGridViewListViewState<T> value)?
-        changeGridViewListViewState,
-    TResult? Function(ChangeNavState<T> value)? changeNavState,
+    TResult? Function(CategoryError<T> value)? categoryError,
     TResult? Function(ChangeSelectedIndexBrandState<T> value)?
         changeSelectedIndexBrandState,
     TResult? Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
         changeSelectedIndexBrandMakeUpState,
     TResult? Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
         changeSelectedIndexTypeOfClothesState,
-    TResult? Function(SearchIndexByNameState<T> value)? searchIndexByNameState,
   }) {
-    return changeGridViewListViewState?.call(this);
+    return categoryError?.call(this);
   }
 
   @override
@@ -1005,193 +1374,34 @@ class _$ChangeGridViewListViewStateImpl<T>
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Idle<T> value)? idle,
     TResult Function(Loading<T> value)? loading,
+    TResult Function(CategoryLoading<T> value)? categoryLoading,
     TResult Function(Success<T> value)? success,
+    TResult Function(CatogriesSuccess<T> value)? categoriesSuccess,
     TResult Function(Error<T> value)? error,
-    TResult Function(ChangeGridViewListViewState<T> value)?
-        changeGridViewListViewState,
-    TResult Function(ChangeNavState<T> value)? changeNavState,
+    TResult Function(CategoryError<T> value)? categoryError,
     TResult Function(ChangeSelectedIndexBrandState<T> value)?
         changeSelectedIndexBrandState,
     TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
         changeSelectedIndexBrandMakeUpState,
     TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
         changeSelectedIndexTypeOfClothesState,
-    TResult Function(SearchIndexByNameState<T> value)? searchIndexByNameState,
     required TResult orElse(),
   }) {
-    if (changeGridViewListViewState != null) {
-      return changeGridViewListViewState(this);
+    if (categoryError != null) {
+      return categoryError(this);
     }
     return orElse();
   }
 }
 
-abstract class ChangeGridViewListViewState<T> implements ResultState<T> {
-  const factory ChangeGridViewListViewState() =
-      _$ChangeGridViewListViewStateImpl<T>;
-}
+abstract class CategoryError<T> implements ResultState<T> {
+  const factory CategoryError(final NetworkExceptions networkExceptions) =
+      _$CategoryErrorImpl<T>;
 
-/// @nodoc
-abstract class _$$ChangeNavStateImplCopyWith<T, $Res> {
-  factory _$$ChangeNavStateImplCopyWith(_$ChangeNavStateImpl<T> value,
-          $Res Function(_$ChangeNavStateImpl<T>) then) =
-      __$$ChangeNavStateImplCopyWithImpl<T, $Res>;
-}
-
-/// @nodoc
-class __$$ChangeNavStateImplCopyWithImpl<T, $Res>
-    extends _$ResultStateCopyWithImpl<T, $Res, _$ChangeNavStateImpl<T>>
-    implements _$$ChangeNavStateImplCopyWith<T, $Res> {
-  __$$ChangeNavStateImplCopyWithImpl(_$ChangeNavStateImpl<T> _value,
-      $Res Function(_$ChangeNavStateImpl<T>) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$ChangeNavStateImpl<T> implements ChangeNavState<T> {
-  const _$ChangeNavStateImpl();
-
-  @override
-  String toString() {
-    return 'ResultState<$T>.changeNavState()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ChangeNavStateImpl<T>);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() idle,
-    required TResult Function() loading,
-    required TResult Function(T data) success,
-    required TResult Function(NetworkExceptions networkExceptions) error,
-    required TResult Function() changeGridViewListViewState,
-    required TResult Function() changeNavState,
-    required TResult Function() changeSelectedIndexBrandState,
-    required TResult Function() changeSelectedIndexBrandMakeUpState,
-    required TResult Function() changeSelectedIndexTypeOfClothesState,
-    required TResult Function() searchIndexByNameState,
-  }) {
-    return changeNavState();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? idle,
-    TResult? Function()? loading,
-    TResult? Function(T data)? success,
-    TResult? Function(NetworkExceptions networkExceptions)? error,
-    TResult? Function()? changeGridViewListViewState,
-    TResult? Function()? changeNavState,
-    TResult? Function()? changeSelectedIndexBrandState,
-    TResult? Function()? changeSelectedIndexBrandMakeUpState,
-    TResult? Function()? changeSelectedIndexTypeOfClothesState,
-    TResult? Function()? searchIndexByNameState,
-  }) {
-    return changeNavState?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? idle,
-    TResult Function()? loading,
-    TResult Function(T data)? success,
-    TResult Function(NetworkExceptions networkExceptions)? error,
-    TResult Function()? changeGridViewListViewState,
-    TResult Function()? changeNavState,
-    TResult Function()? changeSelectedIndexBrandState,
-    TResult Function()? changeSelectedIndexBrandMakeUpState,
-    TResult Function()? changeSelectedIndexTypeOfClothesState,
-    TResult Function()? searchIndexByNameState,
-    required TResult orElse(),
-  }) {
-    if (changeNavState != null) {
-      return changeNavState();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Idle<T> value) idle,
-    required TResult Function(Loading<T> value) loading,
-    required TResult Function(Success<T> value) success,
-    required TResult Function(Error<T> value) error,
-    required TResult Function(ChangeGridViewListViewState<T> value)
-        changeGridViewListViewState,
-    required TResult Function(ChangeNavState<T> value) changeNavState,
-    required TResult Function(ChangeSelectedIndexBrandState<T> value)
-        changeSelectedIndexBrandState,
-    required TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)
-        changeSelectedIndexBrandMakeUpState,
-    required TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)
-        changeSelectedIndexTypeOfClothesState,
-    required TResult Function(SearchIndexByNameState<T> value)
-        searchIndexByNameState,
-  }) {
-    return changeNavState(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Idle<T> value)? idle,
-    TResult? Function(Loading<T> value)? loading,
-    TResult? Function(Success<T> value)? success,
-    TResult? Function(Error<T> value)? error,
-    TResult? Function(ChangeGridViewListViewState<T> value)?
-        changeGridViewListViewState,
-    TResult? Function(ChangeNavState<T> value)? changeNavState,
-    TResult? Function(ChangeSelectedIndexBrandState<T> value)?
-        changeSelectedIndexBrandState,
-    TResult? Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
-        changeSelectedIndexBrandMakeUpState,
-    TResult? Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
-        changeSelectedIndexTypeOfClothesState,
-    TResult? Function(SearchIndexByNameState<T> value)? searchIndexByNameState,
-  }) {
-    return changeNavState?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Idle<T> value)? idle,
-    TResult Function(Loading<T> value)? loading,
-    TResult Function(Success<T> value)? success,
-    TResult Function(Error<T> value)? error,
-    TResult Function(ChangeGridViewListViewState<T> value)?
-        changeGridViewListViewState,
-    TResult Function(ChangeNavState<T> value)? changeNavState,
-    TResult Function(ChangeSelectedIndexBrandState<T> value)?
-        changeSelectedIndexBrandState,
-    TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
-        changeSelectedIndexBrandMakeUpState,
-    TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
-        changeSelectedIndexTypeOfClothesState,
-    TResult Function(SearchIndexByNameState<T> value)? searchIndexByNameState,
-    required TResult orElse(),
-  }) {
-    if (changeNavState != null) {
-      return changeNavState(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ChangeNavState<T> implements ResultState<T> {
-  const factory ChangeNavState() = _$ChangeNavStateImpl<T>;
+  NetworkExceptions get networkExceptions;
+  @JsonKey(ignore: true)
+  _$$CategoryErrorImplCopyWith<T, _$CategoryErrorImpl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1200,6 +1410,8 @@ abstract class _$$ChangeSelectedIndexBrandStateImplCopyWith<T, $Res> {
           _$ChangeSelectedIndexBrandStateImpl<T> value,
           $Res Function(_$ChangeSelectedIndexBrandStateImpl<T>) then) =
       __$$ChangeSelectedIndexBrandStateImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({T data});
 }
 
 /// @nodoc
@@ -1211,44 +1423,71 @@ class __$$ChangeSelectedIndexBrandStateImplCopyWithImpl<T, $Res>
       _$ChangeSelectedIndexBrandStateImpl<T> _value,
       $Res Function(_$ChangeSelectedIndexBrandStateImpl<T>) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_$ChangeSelectedIndexBrandStateImpl<T>(
+      freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$ChangeSelectedIndexBrandStateImpl<T>
     implements ChangeSelectedIndexBrandState<T> {
-  const _$ChangeSelectedIndexBrandStateImpl();
+  const _$ChangeSelectedIndexBrandStateImpl(this.data);
+
+  @override
+  final T data;
 
   @override
   String toString() {
-    return 'ResultState<$T>.changeSelectedIndexBrandState()';
+    return 'ResultState<$T>.changeSelectedIndexBrandState(data: $data)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChangeSelectedIndexBrandStateImpl<T>);
+            other is _$ChangeSelectedIndexBrandStateImpl<T> &&
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeSelectedIndexBrandStateImplCopyWith<T,
+          _$ChangeSelectedIndexBrandStateImpl<T>>
+      get copyWith => __$$ChangeSelectedIndexBrandStateImplCopyWithImpl<T,
+          _$ChangeSelectedIndexBrandStateImpl<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() loading,
+    required TResult Function() categoryLoading,
     required TResult Function(T data) success,
+    required TResult Function(T data) categoriesSuccess,
     required TResult Function(NetworkExceptions networkExceptions) error,
-    required TResult Function() changeGridViewListViewState,
-    required TResult Function() changeNavState,
-    required TResult Function() changeSelectedIndexBrandState,
-    required TResult Function() changeSelectedIndexBrandMakeUpState,
-    required TResult Function() changeSelectedIndexTypeOfClothesState,
-    required TResult Function() searchIndexByNameState,
+    required TResult Function(NetworkExceptions networkExceptions)
+        categoryError,
+    required TResult Function(T data) changeSelectedIndexBrandState,
+    required TResult Function(T data) changeSelectedIndexBrandMakeUpState,
+    required TResult Function(T data) changeSelectedIndexTypeOfClothesState,
   }) {
-    return changeSelectedIndexBrandState();
+    return changeSelectedIndexBrandState(data);
   }
 
   @override
@@ -1256,16 +1495,16 @@ class _$ChangeSelectedIndexBrandStateImpl<T>
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? idle,
     TResult? Function()? loading,
+    TResult? Function()? categoryLoading,
     TResult? Function(T data)? success,
+    TResult? Function(T data)? categoriesSuccess,
     TResult? Function(NetworkExceptions networkExceptions)? error,
-    TResult? Function()? changeGridViewListViewState,
-    TResult? Function()? changeNavState,
-    TResult? Function()? changeSelectedIndexBrandState,
-    TResult? Function()? changeSelectedIndexBrandMakeUpState,
-    TResult? Function()? changeSelectedIndexTypeOfClothesState,
-    TResult? Function()? searchIndexByNameState,
+    TResult? Function(NetworkExceptions networkExceptions)? categoryError,
+    TResult? Function(T data)? changeSelectedIndexBrandState,
+    TResult? Function(T data)? changeSelectedIndexBrandMakeUpState,
+    TResult? Function(T data)? changeSelectedIndexTypeOfClothesState,
   }) {
-    return changeSelectedIndexBrandState?.call();
+    return changeSelectedIndexBrandState?.call(data);
   }
 
   @override
@@ -1273,18 +1512,18 @@ class _$ChangeSelectedIndexBrandStateImpl<T>
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
+    TResult Function()? categoryLoading,
     TResult Function(T data)? success,
+    TResult Function(T data)? categoriesSuccess,
     TResult Function(NetworkExceptions networkExceptions)? error,
-    TResult Function()? changeGridViewListViewState,
-    TResult Function()? changeNavState,
-    TResult Function()? changeSelectedIndexBrandState,
-    TResult Function()? changeSelectedIndexBrandMakeUpState,
-    TResult Function()? changeSelectedIndexTypeOfClothesState,
-    TResult Function()? searchIndexByNameState,
+    TResult Function(NetworkExceptions networkExceptions)? categoryError,
+    TResult Function(T data)? changeSelectedIndexBrandState,
+    TResult Function(T data)? changeSelectedIndexBrandMakeUpState,
+    TResult Function(T data)? changeSelectedIndexTypeOfClothesState,
     required TResult orElse(),
   }) {
     if (changeSelectedIndexBrandState != null) {
-      return changeSelectedIndexBrandState();
+      return changeSelectedIndexBrandState(data);
     }
     return orElse();
   }
@@ -1294,19 +1533,17 @@ class _$ChangeSelectedIndexBrandStateImpl<T>
   TResult map<TResult extends Object?>({
     required TResult Function(Idle<T> value) idle,
     required TResult Function(Loading<T> value) loading,
+    required TResult Function(CategoryLoading<T> value) categoryLoading,
     required TResult Function(Success<T> value) success,
+    required TResult Function(CatogriesSuccess<T> value) categoriesSuccess,
     required TResult Function(Error<T> value) error,
-    required TResult Function(ChangeGridViewListViewState<T> value)
-        changeGridViewListViewState,
-    required TResult Function(ChangeNavState<T> value) changeNavState,
+    required TResult Function(CategoryError<T> value) categoryError,
     required TResult Function(ChangeSelectedIndexBrandState<T> value)
         changeSelectedIndexBrandState,
     required TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)
         changeSelectedIndexBrandMakeUpState,
     required TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)
         changeSelectedIndexTypeOfClothesState,
-    required TResult Function(SearchIndexByNameState<T> value)
-        searchIndexByNameState,
   }) {
     return changeSelectedIndexBrandState(this);
   }
@@ -1316,18 +1553,17 @@ class _$ChangeSelectedIndexBrandStateImpl<T>
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Idle<T> value)? idle,
     TResult? Function(Loading<T> value)? loading,
+    TResult? Function(CategoryLoading<T> value)? categoryLoading,
     TResult? Function(Success<T> value)? success,
+    TResult? Function(CatogriesSuccess<T> value)? categoriesSuccess,
     TResult? Function(Error<T> value)? error,
-    TResult? Function(ChangeGridViewListViewState<T> value)?
-        changeGridViewListViewState,
-    TResult? Function(ChangeNavState<T> value)? changeNavState,
+    TResult? Function(CategoryError<T> value)? categoryError,
     TResult? Function(ChangeSelectedIndexBrandState<T> value)?
         changeSelectedIndexBrandState,
     TResult? Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
         changeSelectedIndexBrandMakeUpState,
     TResult? Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
         changeSelectedIndexTypeOfClothesState,
-    TResult? Function(SearchIndexByNameState<T> value)? searchIndexByNameState,
   }) {
     return changeSelectedIndexBrandState?.call(this);
   }
@@ -1337,18 +1573,17 @@ class _$ChangeSelectedIndexBrandStateImpl<T>
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Idle<T> value)? idle,
     TResult Function(Loading<T> value)? loading,
+    TResult Function(CategoryLoading<T> value)? categoryLoading,
     TResult Function(Success<T> value)? success,
+    TResult Function(CatogriesSuccess<T> value)? categoriesSuccess,
     TResult Function(Error<T> value)? error,
-    TResult Function(ChangeGridViewListViewState<T> value)?
-        changeGridViewListViewState,
-    TResult Function(ChangeNavState<T> value)? changeNavState,
+    TResult Function(CategoryError<T> value)? categoryError,
     TResult Function(ChangeSelectedIndexBrandState<T> value)?
         changeSelectedIndexBrandState,
     TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
         changeSelectedIndexBrandMakeUpState,
     TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
         changeSelectedIndexTypeOfClothesState,
-    TResult Function(SearchIndexByNameState<T> value)? searchIndexByNameState,
     required TResult orElse(),
   }) {
     if (changeSelectedIndexBrandState != null) {
@@ -1359,8 +1594,14 @@ class _$ChangeSelectedIndexBrandStateImpl<T>
 }
 
 abstract class ChangeSelectedIndexBrandState<T> implements ResultState<T> {
-  const factory ChangeSelectedIndexBrandState() =
+  const factory ChangeSelectedIndexBrandState(final T data) =
       _$ChangeSelectedIndexBrandStateImpl<T>;
+
+  T get data;
+  @JsonKey(ignore: true)
+  _$$ChangeSelectedIndexBrandStateImplCopyWith<T,
+          _$ChangeSelectedIndexBrandStateImpl<T>>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1369,6 +1610,8 @@ abstract class _$$ChangeSelectedIndexBrandMakeUpStateImplCopyWith<T, $Res> {
           _$ChangeSelectedIndexBrandMakeUpStateImpl<T> value,
           $Res Function(_$ChangeSelectedIndexBrandMakeUpStateImpl<T>) then) =
       __$$ChangeSelectedIndexBrandMakeUpStateImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({T data});
 }
 
 /// @nodoc
@@ -1380,44 +1623,71 @@ class __$$ChangeSelectedIndexBrandMakeUpStateImplCopyWithImpl<T, $Res>
       _$ChangeSelectedIndexBrandMakeUpStateImpl<T> _value,
       $Res Function(_$ChangeSelectedIndexBrandMakeUpStateImpl<T>) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_$ChangeSelectedIndexBrandMakeUpStateImpl<T>(
+      freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$ChangeSelectedIndexBrandMakeUpStateImpl<T>
     implements ChangeSelectedIndexBrandMakeUpState<T> {
-  const _$ChangeSelectedIndexBrandMakeUpStateImpl();
+  const _$ChangeSelectedIndexBrandMakeUpStateImpl(this.data);
+
+  @override
+  final T data;
 
   @override
   String toString() {
-    return 'ResultState<$T>.changeSelectedIndexBrandMakeUpState()';
+    return 'ResultState<$T>.changeSelectedIndexBrandMakeUpState(data: $data)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChangeSelectedIndexBrandMakeUpStateImpl<T>);
+            other is _$ChangeSelectedIndexBrandMakeUpStateImpl<T> &&
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeSelectedIndexBrandMakeUpStateImplCopyWith<T,
+          _$ChangeSelectedIndexBrandMakeUpStateImpl<T>>
+      get copyWith => __$$ChangeSelectedIndexBrandMakeUpStateImplCopyWithImpl<T,
+          _$ChangeSelectedIndexBrandMakeUpStateImpl<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() loading,
+    required TResult Function() categoryLoading,
     required TResult Function(T data) success,
+    required TResult Function(T data) categoriesSuccess,
     required TResult Function(NetworkExceptions networkExceptions) error,
-    required TResult Function() changeGridViewListViewState,
-    required TResult Function() changeNavState,
-    required TResult Function() changeSelectedIndexBrandState,
-    required TResult Function() changeSelectedIndexBrandMakeUpState,
-    required TResult Function() changeSelectedIndexTypeOfClothesState,
-    required TResult Function() searchIndexByNameState,
+    required TResult Function(NetworkExceptions networkExceptions)
+        categoryError,
+    required TResult Function(T data) changeSelectedIndexBrandState,
+    required TResult Function(T data) changeSelectedIndexBrandMakeUpState,
+    required TResult Function(T data) changeSelectedIndexTypeOfClothesState,
   }) {
-    return changeSelectedIndexBrandMakeUpState();
+    return changeSelectedIndexBrandMakeUpState(data);
   }
 
   @override
@@ -1425,16 +1695,16 @@ class _$ChangeSelectedIndexBrandMakeUpStateImpl<T>
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? idle,
     TResult? Function()? loading,
+    TResult? Function()? categoryLoading,
     TResult? Function(T data)? success,
+    TResult? Function(T data)? categoriesSuccess,
     TResult? Function(NetworkExceptions networkExceptions)? error,
-    TResult? Function()? changeGridViewListViewState,
-    TResult? Function()? changeNavState,
-    TResult? Function()? changeSelectedIndexBrandState,
-    TResult? Function()? changeSelectedIndexBrandMakeUpState,
-    TResult? Function()? changeSelectedIndexTypeOfClothesState,
-    TResult? Function()? searchIndexByNameState,
+    TResult? Function(NetworkExceptions networkExceptions)? categoryError,
+    TResult? Function(T data)? changeSelectedIndexBrandState,
+    TResult? Function(T data)? changeSelectedIndexBrandMakeUpState,
+    TResult? Function(T data)? changeSelectedIndexTypeOfClothesState,
   }) {
-    return changeSelectedIndexBrandMakeUpState?.call();
+    return changeSelectedIndexBrandMakeUpState?.call(data);
   }
 
   @override
@@ -1442,18 +1712,18 @@ class _$ChangeSelectedIndexBrandMakeUpStateImpl<T>
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
+    TResult Function()? categoryLoading,
     TResult Function(T data)? success,
+    TResult Function(T data)? categoriesSuccess,
     TResult Function(NetworkExceptions networkExceptions)? error,
-    TResult Function()? changeGridViewListViewState,
-    TResult Function()? changeNavState,
-    TResult Function()? changeSelectedIndexBrandState,
-    TResult Function()? changeSelectedIndexBrandMakeUpState,
-    TResult Function()? changeSelectedIndexTypeOfClothesState,
-    TResult Function()? searchIndexByNameState,
+    TResult Function(NetworkExceptions networkExceptions)? categoryError,
+    TResult Function(T data)? changeSelectedIndexBrandState,
+    TResult Function(T data)? changeSelectedIndexBrandMakeUpState,
+    TResult Function(T data)? changeSelectedIndexTypeOfClothesState,
     required TResult orElse(),
   }) {
     if (changeSelectedIndexBrandMakeUpState != null) {
-      return changeSelectedIndexBrandMakeUpState();
+      return changeSelectedIndexBrandMakeUpState(data);
     }
     return orElse();
   }
@@ -1463,19 +1733,17 @@ class _$ChangeSelectedIndexBrandMakeUpStateImpl<T>
   TResult map<TResult extends Object?>({
     required TResult Function(Idle<T> value) idle,
     required TResult Function(Loading<T> value) loading,
+    required TResult Function(CategoryLoading<T> value) categoryLoading,
     required TResult Function(Success<T> value) success,
+    required TResult Function(CatogriesSuccess<T> value) categoriesSuccess,
     required TResult Function(Error<T> value) error,
-    required TResult Function(ChangeGridViewListViewState<T> value)
-        changeGridViewListViewState,
-    required TResult Function(ChangeNavState<T> value) changeNavState,
+    required TResult Function(CategoryError<T> value) categoryError,
     required TResult Function(ChangeSelectedIndexBrandState<T> value)
         changeSelectedIndexBrandState,
     required TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)
         changeSelectedIndexBrandMakeUpState,
     required TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)
         changeSelectedIndexTypeOfClothesState,
-    required TResult Function(SearchIndexByNameState<T> value)
-        searchIndexByNameState,
   }) {
     return changeSelectedIndexBrandMakeUpState(this);
   }
@@ -1485,18 +1753,17 @@ class _$ChangeSelectedIndexBrandMakeUpStateImpl<T>
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Idle<T> value)? idle,
     TResult? Function(Loading<T> value)? loading,
+    TResult? Function(CategoryLoading<T> value)? categoryLoading,
     TResult? Function(Success<T> value)? success,
+    TResult? Function(CatogriesSuccess<T> value)? categoriesSuccess,
     TResult? Function(Error<T> value)? error,
-    TResult? Function(ChangeGridViewListViewState<T> value)?
-        changeGridViewListViewState,
-    TResult? Function(ChangeNavState<T> value)? changeNavState,
+    TResult? Function(CategoryError<T> value)? categoryError,
     TResult? Function(ChangeSelectedIndexBrandState<T> value)?
         changeSelectedIndexBrandState,
     TResult? Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
         changeSelectedIndexBrandMakeUpState,
     TResult? Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
         changeSelectedIndexTypeOfClothesState,
-    TResult? Function(SearchIndexByNameState<T> value)? searchIndexByNameState,
   }) {
     return changeSelectedIndexBrandMakeUpState?.call(this);
   }
@@ -1506,18 +1773,17 @@ class _$ChangeSelectedIndexBrandMakeUpStateImpl<T>
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Idle<T> value)? idle,
     TResult Function(Loading<T> value)? loading,
+    TResult Function(CategoryLoading<T> value)? categoryLoading,
     TResult Function(Success<T> value)? success,
+    TResult Function(CatogriesSuccess<T> value)? categoriesSuccess,
     TResult Function(Error<T> value)? error,
-    TResult Function(ChangeGridViewListViewState<T> value)?
-        changeGridViewListViewState,
-    TResult Function(ChangeNavState<T> value)? changeNavState,
+    TResult Function(CategoryError<T> value)? categoryError,
     TResult Function(ChangeSelectedIndexBrandState<T> value)?
         changeSelectedIndexBrandState,
     TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
         changeSelectedIndexBrandMakeUpState,
     TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
         changeSelectedIndexTypeOfClothesState,
-    TResult Function(SearchIndexByNameState<T> value)? searchIndexByNameState,
     required TResult orElse(),
   }) {
     if (changeSelectedIndexBrandMakeUpState != null) {
@@ -1529,8 +1795,14 @@ class _$ChangeSelectedIndexBrandMakeUpStateImpl<T>
 
 abstract class ChangeSelectedIndexBrandMakeUpState<T>
     implements ResultState<T> {
-  const factory ChangeSelectedIndexBrandMakeUpState() =
+  const factory ChangeSelectedIndexBrandMakeUpState(final T data) =
       _$ChangeSelectedIndexBrandMakeUpStateImpl<T>;
+
+  T get data;
+  @JsonKey(ignore: true)
+  _$$ChangeSelectedIndexBrandMakeUpStateImplCopyWith<T,
+          _$ChangeSelectedIndexBrandMakeUpStateImpl<T>>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1539,6 +1811,8 @@ abstract class _$$ChangeSelectedIndexTypeOfClothesStateImplCopyWith<T, $Res> {
           _$ChangeSelectedIndexTypeOfClothesStateImpl<T> value,
           $Res Function(_$ChangeSelectedIndexTypeOfClothesStateImpl<T>) then) =
       __$$ChangeSelectedIndexTypeOfClothesStateImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({T data});
 }
 
 /// @nodoc
@@ -1550,44 +1824,71 @@ class __$$ChangeSelectedIndexTypeOfClothesStateImplCopyWithImpl<T, $Res>
       _$ChangeSelectedIndexTypeOfClothesStateImpl<T> _value,
       $Res Function(_$ChangeSelectedIndexTypeOfClothesStateImpl<T>) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_$ChangeSelectedIndexTypeOfClothesStateImpl<T>(
+      freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$ChangeSelectedIndexTypeOfClothesStateImpl<T>
     implements ChangeSelectedIndexTypeOfClothesState<T> {
-  const _$ChangeSelectedIndexTypeOfClothesStateImpl();
+  const _$ChangeSelectedIndexTypeOfClothesStateImpl(this.data);
+
+  @override
+  final T data;
 
   @override
   String toString() {
-    return 'ResultState<$T>.changeSelectedIndexTypeOfClothesState()';
+    return 'ResultState<$T>.changeSelectedIndexTypeOfClothesState(data: $data)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChangeSelectedIndexTypeOfClothesStateImpl<T>);
+            other is _$ChangeSelectedIndexTypeOfClothesStateImpl<T> &&
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeSelectedIndexTypeOfClothesStateImplCopyWith<T,
+          _$ChangeSelectedIndexTypeOfClothesStateImpl<T>>
+      get copyWith => __$$ChangeSelectedIndexTypeOfClothesStateImplCopyWithImpl<
+          T, _$ChangeSelectedIndexTypeOfClothesStateImpl<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() loading,
+    required TResult Function() categoryLoading,
     required TResult Function(T data) success,
+    required TResult Function(T data) categoriesSuccess,
     required TResult Function(NetworkExceptions networkExceptions) error,
-    required TResult Function() changeGridViewListViewState,
-    required TResult Function() changeNavState,
-    required TResult Function() changeSelectedIndexBrandState,
-    required TResult Function() changeSelectedIndexBrandMakeUpState,
-    required TResult Function() changeSelectedIndexTypeOfClothesState,
-    required TResult Function() searchIndexByNameState,
+    required TResult Function(NetworkExceptions networkExceptions)
+        categoryError,
+    required TResult Function(T data) changeSelectedIndexBrandState,
+    required TResult Function(T data) changeSelectedIndexBrandMakeUpState,
+    required TResult Function(T data) changeSelectedIndexTypeOfClothesState,
   }) {
-    return changeSelectedIndexTypeOfClothesState();
+    return changeSelectedIndexTypeOfClothesState(data);
   }
 
   @override
@@ -1595,16 +1896,16 @@ class _$ChangeSelectedIndexTypeOfClothesStateImpl<T>
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? idle,
     TResult? Function()? loading,
+    TResult? Function()? categoryLoading,
     TResult? Function(T data)? success,
+    TResult? Function(T data)? categoriesSuccess,
     TResult? Function(NetworkExceptions networkExceptions)? error,
-    TResult? Function()? changeGridViewListViewState,
-    TResult? Function()? changeNavState,
-    TResult? Function()? changeSelectedIndexBrandState,
-    TResult? Function()? changeSelectedIndexBrandMakeUpState,
-    TResult? Function()? changeSelectedIndexTypeOfClothesState,
-    TResult? Function()? searchIndexByNameState,
+    TResult? Function(NetworkExceptions networkExceptions)? categoryError,
+    TResult? Function(T data)? changeSelectedIndexBrandState,
+    TResult? Function(T data)? changeSelectedIndexBrandMakeUpState,
+    TResult? Function(T data)? changeSelectedIndexTypeOfClothesState,
   }) {
-    return changeSelectedIndexTypeOfClothesState?.call();
+    return changeSelectedIndexTypeOfClothesState?.call(data);
   }
 
   @override
@@ -1612,18 +1913,18 @@ class _$ChangeSelectedIndexTypeOfClothesStateImpl<T>
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
+    TResult Function()? categoryLoading,
     TResult Function(T data)? success,
+    TResult Function(T data)? categoriesSuccess,
     TResult Function(NetworkExceptions networkExceptions)? error,
-    TResult Function()? changeGridViewListViewState,
-    TResult Function()? changeNavState,
-    TResult Function()? changeSelectedIndexBrandState,
-    TResult Function()? changeSelectedIndexBrandMakeUpState,
-    TResult Function()? changeSelectedIndexTypeOfClothesState,
-    TResult Function()? searchIndexByNameState,
+    TResult Function(NetworkExceptions networkExceptions)? categoryError,
+    TResult Function(T data)? changeSelectedIndexBrandState,
+    TResult Function(T data)? changeSelectedIndexBrandMakeUpState,
+    TResult Function(T data)? changeSelectedIndexTypeOfClothesState,
     required TResult orElse(),
   }) {
     if (changeSelectedIndexTypeOfClothesState != null) {
-      return changeSelectedIndexTypeOfClothesState();
+      return changeSelectedIndexTypeOfClothesState(data);
     }
     return orElse();
   }
@@ -1633,19 +1934,17 @@ class _$ChangeSelectedIndexTypeOfClothesStateImpl<T>
   TResult map<TResult extends Object?>({
     required TResult Function(Idle<T> value) idle,
     required TResult Function(Loading<T> value) loading,
+    required TResult Function(CategoryLoading<T> value) categoryLoading,
     required TResult Function(Success<T> value) success,
+    required TResult Function(CatogriesSuccess<T> value) categoriesSuccess,
     required TResult Function(Error<T> value) error,
-    required TResult Function(ChangeGridViewListViewState<T> value)
-        changeGridViewListViewState,
-    required TResult Function(ChangeNavState<T> value) changeNavState,
+    required TResult Function(CategoryError<T> value) categoryError,
     required TResult Function(ChangeSelectedIndexBrandState<T> value)
         changeSelectedIndexBrandState,
     required TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)
         changeSelectedIndexBrandMakeUpState,
     required TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)
         changeSelectedIndexTypeOfClothesState,
-    required TResult Function(SearchIndexByNameState<T> value)
-        searchIndexByNameState,
   }) {
     return changeSelectedIndexTypeOfClothesState(this);
   }
@@ -1655,18 +1954,17 @@ class _$ChangeSelectedIndexTypeOfClothesStateImpl<T>
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Idle<T> value)? idle,
     TResult? Function(Loading<T> value)? loading,
+    TResult? Function(CategoryLoading<T> value)? categoryLoading,
     TResult? Function(Success<T> value)? success,
+    TResult? Function(CatogriesSuccess<T> value)? categoriesSuccess,
     TResult? Function(Error<T> value)? error,
-    TResult? Function(ChangeGridViewListViewState<T> value)?
-        changeGridViewListViewState,
-    TResult? Function(ChangeNavState<T> value)? changeNavState,
+    TResult? Function(CategoryError<T> value)? categoryError,
     TResult? Function(ChangeSelectedIndexBrandState<T> value)?
         changeSelectedIndexBrandState,
     TResult? Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
         changeSelectedIndexBrandMakeUpState,
     TResult? Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
         changeSelectedIndexTypeOfClothesState,
-    TResult? Function(SearchIndexByNameState<T> value)? searchIndexByNameState,
   }) {
     return changeSelectedIndexTypeOfClothesState?.call(this);
   }
@@ -1676,18 +1974,17 @@ class _$ChangeSelectedIndexTypeOfClothesStateImpl<T>
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Idle<T> value)? idle,
     TResult Function(Loading<T> value)? loading,
+    TResult Function(CategoryLoading<T> value)? categoryLoading,
     TResult Function(Success<T> value)? success,
+    TResult Function(CatogriesSuccess<T> value)? categoriesSuccess,
     TResult Function(Error<T> value)? error,
-    TResult Function(ChangeGridViewListViewState<T> value)?
-        changeGridViewListViewState,
-    TResult Function(ChangeNavState<T> value)? changeNavState,
+    TResult Function(CategoryError<T> value)? categoryError,
     TResult Function(ChangeSelectedIndexBrandState<T> value)?
         changeSelectedIndexBrandState,
     TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
         changeSelectedIndexBrandMakeUpState,
     TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
         changeSelectedIndexTypeOfClothesState,
-    TResult Function(SearchIndexByNameState<T> value)? searchIndexByNameState,
     required TResult orElse(),
   }) {
     if (changeSelectedIndexTypeOfClothesState != null) {
@@ -1699,172 +1996,12 @@ class _$ChangeSelectedIndexTypeOfClothesStateImpl<T>
 
 abstract class ChangeSelectedIndexTypeOfClothesState<T>
     implements ResultState<T> {
-  const factory ChangeSelectedIndexTypeOfClothesState() =
+  const factory ChangeSelectedIndexTypeOfClothesState(final T data) =
       _$ChangeSelectedIndexTypeOfClothesStateImpl<T>;
-}
 
-/// @nodoc
-abstract class _$$SearchIndexByNameStateImplCopyWith<T, $Res> {
-  factory _$$SearchIndexByNameStateImplCopyWith(
-          _$SearchIndexByNameStateImpl<T> value,
-          $Res Function(_$SearchIndexByNameStateImpl<T>) then) =
-      __$$SearchIndexByNameStateImplCopyWithImpl<T, $Res>;
-}
-
-/// @nodoc
-class __$$SearchIndexByNameStateImplCopyWithImpl<T, $Res>
-    extends _$ResultStateCopyWithImpl<T, $Res, _$SearchIndexByNameStateImpl<T>>
-    implements _$$SearchIndexByNameStateImplCopyWith<T, $Res> {
-  __$$SearchIndexByNameStateImplCopyWithImpl(
-      _$SearchIndexByNameStateImpl<T> _value,
-      $Res Function(_$SearchIndexByNameStateImpl<T>) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$SearchIndexByNameStateImpl<T> implements SearchIndexByNameState<T> {
-  const _$SearchIndexByNameStateImpl();
-
-  @override
-  String toString() {
-    return 'ResultState<$T>.searchIndexByNameState()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SearchIndexByNameStateImpl<T>);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() idle,
-    required TResult Function() loading,
-    required TResult Function(T data) success,
-    required TResult Function(NetworkExceptions networkExceptions) error,
-    required TResult Function() changeGridViewListViewState,
-    required TResult Function() changeNavState,
-    required TResult Function() changeSelectedIndexBrandState,
-    required TResult Function() changeSelectedIndexBrandMakeUpState,
-    required TResult Function() changeSelectedIndexTypeOfClothesState,
-    required TResult Function() searchIndexByNameState,
-  }) {
-    return searchIndexByNameState();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? idle,
-    TResult? Function()? loading,
-    TResult? Function(T data)? success,
-    TResult? Function(NetworkExceptions networkExceptions)? error,
-    TResult? Function()? changeGridViewListViewState,
-    TResult? Function()? changeNavState,
-    TResult? Function()? changeSelectedIndexBrandState,
-    TResult? Function()? changeSelectedIndexBrandMakeUpState,
-    TResult? Function()? changeSelectedIndexTypeOfClothesState,
-    TResult? Function()? searchIndexByNameState,
-  }) {
-    return searchIndexByNameState?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? idle,
-    TResult Function()? loading,
-    TResult Function(T data)? success,
-    TResult Function(NetworkExceptions networkExceptions)? error,
-    TResult Function()? changeGridViewListViewState,
-    TResult Function()? changeNavState,
-    TResult Function()? changeSelectedIndexBrandState,
-    TResult Function()? changeSelectedIndexBrandMakeUpState,
-    TResult Function()? changeSelectedIndexTypeOfClothesState,
-    TResult Function()? searchIndexByNameState,
-    required TResult orElse(),
-  }) {
-    if (searchIndexByNameState != null) {
-      return searchIndexByNameState();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Idle<T> value) idle,
-    required TResult Function(Loading<T> value) loading,
-    required TResult Function(Success<T> value) success,
-    required TResult Function(Error<T> value) error,
-    required TResult Function(ChangeGridViewListViewState<T> value)
-        changeGridViewListViewState,
-    required TResult Function(ChangeNavState<T> value) changeNavState,
-    required TResult Function(ChangeSelectedIndexBrandState<T> value)
-        changeSelectedIndexBrandState,
-    required TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)
-        changeSelectedIndexBrandMakeUpState,
-    required TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)
-        changeSelectedIndexTypeOfClothesState,
-    required TResult Function(SearchIndexByNameState<T> value)
-        searchIndexByNameState,
-  }) {
-    return searchIndexByNameState(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Idle<T> value)? idle,
-    TResult? Function(Loading<T> value)? loading,
-    TResult? Function(Success<T> value)? success,
-    TResult? Function(Error<T> value)? error,
-    TResult? Function(ChangeGridViewListViewState<T> value)?
-        changeGridViewListViewState,
-    TResult? Function(ChangeNavState<T> value)? changeNavState,
-    TResult? Function(ChangeSelectedIndexBrandState<T> value)?
-        changeSelectedIndexBrandState,
-    TResult? Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
-        changeSelectedIndexBrandMakeUpState,
-    TResult? Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
-        changeSelectedIndexTypeOfClothesState,
-    TResult? Function(SearchIndexByNameState<T> value)? searchIndexByNameState,
-  }) {
-    return searchIndexByNameState?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Idle<T> value)? idle,
-    TResult Function(Loading<T> value)? loading,
-    TResult Function(Success<T> value)? success,
-    TResult Function(Error<T> value)? error,
-    TResult Function(ChangeGridViewListViewState<T> value)?
-        changeGridViewListViewState,
-    TResult Function(ChangeNavState<T> value)? changeNavState,
-    TResult Function(ChangeSelectedIndexBrandState<T> value)?
-        changeSelectedIndexBrandState,
-    TResult Function(ChangeSelectedIndexBrandMakeUpState<T> value)?
-        changeSelectedIndexBrandMakeUpState,
-    TResult Function(ChangeSelectedIndexTypeOfClothesState<T> value)?
-        changeSelectedIndexTypeOfClothesState,
-    TResult Function(SearchIndexByNameState<T> value)? searchIndexByNameState,
-    required TResult orElse(),
-  }) {
-    if (searchIndexByNameState != null) {
-      return searchIndexByNameState(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class SearchIndexByNameState<T> implements ResultState<T> {
-  const factory SearchIndexByNameState() = _$SearchIndexByNameStateImpl<T>;
+  T get data;
+  @JsonKey(ignore: true)
+  _$$ChangeSelectedIndexTypeOfClothesStateImplCopyWith<T,
+          _$ChangeSelectedIndexTypeOfClothesStateImpl<T>>
+      get copyWith => throw _privateConstructorUsedError;
 }
