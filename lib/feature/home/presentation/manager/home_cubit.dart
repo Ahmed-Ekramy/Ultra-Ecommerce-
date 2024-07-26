@@ -23,6 +23,8 @@ class HomeCubit extends Cubit<HomeState> {
   int selectedIndex = 0;
   bool isGridView = true;
   int searchIndexByName = 0;
+   List<ProductModel> productModel=[];
+   List<CategoryModel> categoryModel=[];
 
   void changeNav(value) {
     currentIndex = value;
@@ -56,7 +58,8 @@ class HomeCubit extends Cubit<HomeState> {
     data.fold((l) {
       return emit(GetProductsErrorState(l.message));
     }, (r) {
-      emit(GetProductsSuccessState(r));
+      productModel =r;
+      emit(GetProductsSuccessState());
     });
   }
 
@@ -65,7 +68,8 @@ class HomeCubit extends Cubit<HomeState> {
     data.fold((l) {
       return emit(GetCategoriesErrorState(l.message));
     }, (r) {
-      emit(GetCategoriesSuccessState(r));
+      categoryModel=r;
+      emit(GetCategoriesSuccessState());
     });
   }
 

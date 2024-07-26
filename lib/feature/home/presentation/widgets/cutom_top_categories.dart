@@ -19,20 +19,17 @@ class CustomDealProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
-      buildWhen: (previous, current) =>
-          current is GetProductsLoadingState ||
-          current is GetProductsSuccessState ||
-          current is GetProductsErrorState,
+
       builder: (context, state) {
         if (state is GetProductsLoadingState) {
           return const CustomShimmerProduct();
         }
-        else if (state is GetProductsSuccessState) {
+        else if (state is GetCategoriesSuccessState ||state is ChangeNavState) {
           return SizedBox(
             height: 300.h,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount:state. productModel.length,
+              itemCount: HomeCubit.get(context). productModel.length,
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {
@@ -40,11 +37,11 @@ class CustomDealProduct extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (_) => ProductDetailsView(
-                              productModel:state. productModel[index],
+                              productModel: HomeCubit.get(context). productModel[index],
                             )));
                   },
                   child: CustomProduct(
-                   state. productModel[index],
+                    HomeCubit.get(context). productModel[index],
                   ),
                 );
               },

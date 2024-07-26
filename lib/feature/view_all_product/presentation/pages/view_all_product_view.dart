@@ -34,7 +34,7 @@ class ViewAllProductView extends StatelessWidget {
                         mainAxisSpacing: 10.0,
                         childAspectRatio: 4 / 7,
                         children: List.generate(
-                            state.productModel.length,
+                            HomeCubit.get(context).productModel.length,
                                 (index) {
                               return
                                 InkWell(
@@ -44,11 +44,11 @@ class ViewAllProductView extends StatelessWidget {
                                         MaterialPageRoute(
                                             builder: (_) =>
                                                 ProductDetailsView(
-                                                  productModel: state. productModel[index],
+                                                  productModel:  HomeCubit.get(context). productModel[index],
                                                 )));
                                   },
                                   child: CustomProduct(
-                                   state. productModel[index],
+                                    HomeCubit.get(context). productModel[index],
                                   ),
                                 );
                             }

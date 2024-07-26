@@ -20,12 +20,12 @@ class CustomCategory extends StatelessWidget {
        if (state is GetCategoriesErrorState) {
           return Text(state.errorMessage);
         }
-       else if (state is GetCategoriesSuccessState) {
+       else if (state is GetCategoriesSuccessState ||state is ChangeNavState ) {
           return ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: state.categoryModel.length,
+            itemCount: HomeCubit.get(context).categoryModel.length,
             itemBuilder: (context, index) {
-              return CustomItemCategory(index, state.categoryModel[index]);
+              return CustomItemCategory(index,  HomeCubit.get(context).categoryModel[index]);
             },
           );
         }

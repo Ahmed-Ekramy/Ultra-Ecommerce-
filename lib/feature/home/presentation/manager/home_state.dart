@@ -16,8 +16,8 @@ final class SearchIndexByNameState extends HomeState {}
 
 final class GetProductsLoadingState extends HomeState {}
 final class GetProductsSuccessState extends HomeState {
-  final List<ProductModel> productModel;
-  GetProductsSuccessState(this.productModel);
+
+  GetProductsSuccessState();
 }
 final class GetProductsErrorState extends HomeState {
   final String errorMessage;
@@ -26,8 +26,8 @@ final class GetProductsErrorState extends HomeState {
 
 final class GetCategoriesLoadingState extends HomeState {}
 final class GetCategoriesSuccessState extends HomeState {
-  final List<CategoryModel> categoryModel;
-  GetCategoriesSuccessState(this.categoryModel);
+
+  GetCategoriesSuccessState();
 }
 final class GetCategoriesErrorState extends HomeState {
   final String errorMessage;
