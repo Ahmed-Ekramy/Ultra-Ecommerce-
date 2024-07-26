@@ -20,21 +20,21 @@ mixin _$ProductDetailsState<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(T data) success,
-    required TResult Function(NetworkExceptions networkExceptions) error,
+    required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(T data)? success,
-    TResult? Function(NetworkExceptions networkExceptions)? error,
+    TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(T data)? success,
-    TResult Function(NetworkExceptions networkExceptions)? error,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,7 +121,7 @@ class _$LoadingImpl<T> implements Loading<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(T data) success,
-    required TResult Function(NetworkExceptions networkExceptions) error,
+    required TResult Function(String error) error,
   }) {
     return loading();
   }
@@ -131,7 +131,7 @@ class _$LoadingImpl<T> implements Loading<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(T data)? success,
-    TResult? Function(NetworkExceptions networkExceptions)? error,
+    TResult? Function(String error)? error,
   }) {
     return loading?.call();
   }
@@ -141,7 +141,7 @@ class _$LoadingImpl<T> implements Loading<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(T data)? success,
-    TResult Function(NetworkExceptions networkExceptions)? error,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -256,7 +256,7 @@ class _$SuccessImpl<T> implements Success<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(T data) success,
-    required TResult Function(NetworkExceptions networkExceptions) error,
+    required TResult Function(String error) error,
   }) {
     return success(data);
   }
@@ -266,7 +266,7 @@ class _$SuccessImpl<T> implements Success<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(T data)? success,
-    TResult? Function(NetworkExceptions networkExceptions)? error,
+    TResult? Function(String error)? error,
   }) {
     return success?.call(data);
   }
@@ -276,7 +276,7 @@ class _$SuccessImpl<T> implements Success<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(T data)? success,
-    TResult Function(NetworkExceptions networkExceptions)? error,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -335,9 +335,7 @@ abstract class _$$ErrorImplCopyWith<T, $Res> {
           _$ErrorImpl<T> value, $Res Function(_$ErrorImpl<T>) then) =
       __$$ErrorImplCopyWithImpl<T, $Res>;
   @useResult
-  $Res call({NetworkExceptions networkExceptions});
-
-  $NetworkExceptionsCopyWith<$Res> get networkExceptions;
+  $Res call({String error});
 }
 
 /// @nodoc
@@ -351,36 +349,28 @@ class __$$ErrorImplCopyWithImpl<T, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? networkExceptions = null,
+    Object? error = null,
   }) {
     return _then(_$ErrorImpl<T>(
-      null == networkExceptions
-          ? _value.networkExceptions
-          : networkExceptions // ignore: cast_nullable_to_non_nullable
-              as NetworkExceptions,
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $NetworkExceptionsCopyWith<$Res> get networkExceptions {
-    return $NetworkExceptionsCopyWith<$Res>(_value.networkExceptions, (value) {
-      return _then(_value.copyWith(networkExceptions: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$ErrorImpl<T> implements Error<T> {
-  const _$ErrorImpl(this.networkExceptions);
+  const _$ErrorImpl({required this.error});
 
   @override
-  final NetworkExceptions networkExceptions;
+  final String error;
 
   @override
   String toString() {
-    return 'ProductDetailsState<$T>.error(networkExceptions: $networkExceptions)';
+    return 'ProductDetailsState<$T>.error(error: $error)';
   }
 
   @override
@@ -388,12 +378,11 @@ class _$ErrorImpl<T> implements Error<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorImpl<T> &&
-            (identical(other.networkExceptions, networkExceptions) ||
-                other.networkExceptions == networkExceptions));
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, networkExceptions);
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
@@ -406,9 +395,9 @@ class _$ErrorImpl<T> implements Error<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(T data) success,
-    required TResult Function(NetworkExceptions networkExceptions) error,
+    required TResult Function(String error) error,
   }) {
-    return error(networkExceptions);
+    return error(this.error);
   }
 
   @override
@@ -416,9 +405,9 @@ class _$ErrorImpl<T> implements Error<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(T data)? success,
-    TResult? Function(NetworkExceptions networkExceptions)? error,
+    TResult? Function(String error)? error,
   }) {
-    return error?.call(networkExceptions);
+    return error?.call(this.error);
   }
 
   @override
@@ -426,11 +415,11 @@ class _$ErrorImpl<T> implements Error<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(T data)? success,
-    TResult Function(NetworkExceptions networkExceptions)? error,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(networkExceptions);
+      return error(this.error);
     }
     return orElse();
   }
@@ -471,10 +460,9 @@ class _$ErrorImpl<T> implements Error<T> {
 }
 
 abstract class Error<T> implements ProductDetailsState<T> {
-  const factory Error(final NetworkExceptions networkExceptions) =
-      _$ErrorImpl<T>;
+  const factory Error({required final String error}) = _$ErrorImpl<T>;
 
-  NetworkExceptions get networkExceptions;
+  String get error;
   @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<T, _$ErrorImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;

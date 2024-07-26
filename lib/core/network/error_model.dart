@@ -3,10 +3,10 @@ part 'error_model.g.dart';
 
 @JsonSerializable()
 class ErrorModel {
-  String? field;
-  String? message;
+  int code;
+  String message;
 
-  ErrorModel(this.field, this.message);
+  ErrorModel({required this.code, required this.message});
 
   factory ErrorModel.fromJson(Map<String, dynamic> json) => _$ErrorModelFromJson(json);
 

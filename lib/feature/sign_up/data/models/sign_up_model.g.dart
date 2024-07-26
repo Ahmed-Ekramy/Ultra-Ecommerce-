@@ -109,7 +109,6 @@ Map<String, dynamic> _$IdentityToJson(Identity instance) => <String, dynamic>{
     };
 
 Data _$DataFromJson(Map<String, dynamic> json) => Data(
-      avatar: json['avatar'] as String,
       email: json['email'] as String,
       emailVerified: json['email_verified'] as bool,
       fullName: json['fullName'] as String,
@@ -119,7 +118,6 @@ Data _$DataFromJson(Map<String, dynamic> json) => Data(
     );
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
-      'avatar': instance.avatar,
       'email': instance.email,
       'email_verified': instance.emailVerified,
       'fullName': instance.fullName,

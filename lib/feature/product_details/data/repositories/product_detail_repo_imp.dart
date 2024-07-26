@@ -11,7 +11,7 @@ class ProductDetailRepoImp {
       var response = await apiService.getProductsDetail(id);
       return ApiResult.success(response);
     } catch (e) {
-      return ApiResult.failure(NetworkExceptions.getDioException(e));
+      return ApiResult.failure(  ErrorHandler.handle(e));
     }
   }
 }

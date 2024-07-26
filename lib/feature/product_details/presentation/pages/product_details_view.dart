@@ -6,8 +6,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:readmore/readmore.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:ultra/core/theming/colors.dart';
 import 'package:ultra/core/widget/custom_elevated_button.dart';
+import 'package:ultra/core/widget/custom_shimmer_product.dart';
 import 'package:ultra/feature/product_details/data/models/product_details_model.dart';
 import '../../../../core/di/injection.dart';
 import '../../../../core/network/network_exceptions.dart';
@@ -16,19 +18,21 @@ import '../../../home/data/models/product_model.dart';
 import '../manager/product_details_cubit.dart';
 import '../manager/product_details_state.dart';
 import '../widgets/custom_clothes_list.dart';
+import '../widgets/custom_shimmer_product_details.dart';
 
 class ProductDetailsView extends StatelessWidget {
   const ProductDetailsView({
     super.key,
     this.productModel,
   });
+
   final ProductModel? productModel;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<ProductDetailsCubit>()
-        ..getProductDetails(productModel?.productId ?? 0),
+        ..getProductDetails(productModel?.productid ?? 0),
       child: Scaffold(
           appBar: AppBar(
             leading: IconButton(
@@ -60,9 +64,12 @@ class ProductDetailsView extends StatelessWidget {
               ProductDetailsState<ProductDetailModel>>(
             builder: (context, state) {
               return state.when(loading: () {
-                return const Center(child: CircularProgressIndicator());
+                return
+                  const CudtomShimmerProductDetail();
+
               }, success: (ProductDetailModel productDetailsModel) {
-                return Padding(
+                return
+                  Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: 10.0.w, vertical: 20.h),
                   child: Column(
@@ -182,7 +189,7 @@ class ProductDetailsView extends StatelessWidget {
                     ],
                   ),
                 );
-              }, error: (NetworkExceptions networkExceptions) {
+              }, error: (error ) {
                 return const Center(child: CircularProgressIndicator());
               });
             },
@@ -190,3 +197,5 @@ class ProductDetailsView extends StatelessWidget {
     );
   }
 }
+
+

@@ -1,4 +1,5 @@
 
+import 'package:dartz/dartz.dart';
 import 'package:retrofit/http.dart';
 import 'package:ultra/core/network/apis.dart';
 import 'package:ultra/feature/login/data/models/login_request_body.dart';
@@ -11,20 +12,20 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../feature/login/data/models/login_model.dart';
+import 'network_error.dart';
 part 'api_service.g.dart';
 
 @RestApi(baseUrl: ConstantApis.baseUrl)
 abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
   @POST(ConstantApis.login)
-  Future<LoginModel> login(@Body() LoginRequestBody loginRequestBody);
+  Future< LoginModel> login(@Body() LoginRequestBody loginRequestBody);
 @POST(ConstantApis.signup)
   Future<SignUpModel> signup(@Body() SignUpRequestBody signUpRequestBody);
   @GET(ConstantApis.getProducts)
   Future< List<ProductModel>> getProducts();
- @GET("${ConstantApis.getProducts}/{id}")
+ @GET("${ConstantApis.getProductsDetail}/{id}")
   Future< ProductDetailModel> getProductsDetail( @Path("id") num id);
  @GET(ConstantApis.getCategories)
-  Future< CategoryModel> getCategories();
-
+  Future< List<CategoryModel>> getCategories();
 }

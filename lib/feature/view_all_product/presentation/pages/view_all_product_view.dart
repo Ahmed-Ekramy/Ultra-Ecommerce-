@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/di/injection.dart';
-import '../../../../core/network/network_exceptions.dart';
 import '../../../../core/widget/custom_error_product.dart';
 import '../../../../core/widget/custom_shimmer_product.dart';
 import '../../../home/presentation/manager/home_cubit.dart';
@@ -20,57 +19,52 @@ class ViewAllProductView extends StatelessWidget {
         create: (context) =>
         getIt<HomeCubit>()
           ..getProducts(),
-        child: BlocBuilder<HomeCubit, ResultState<dynamic>>(
+        child: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
-            return SafeArea(child: Scaffold(
-                body:
-                state.maybeWhen(
-                    idle: () {
-                      return const CircularProgressIndicator();
-                    },
-                    loading: () {
-                      return const CustomShimmerProduct();
-                    },
-                    success: (dynamic productModel) {
-                      return Padding(
-                        padding:  EdgeInsets.symmetric(vertical: 8.h),
-                        child: GridView.count(
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 10.0,
-                            mainAxisSpacing: 10.0,
-                            childAspectRatio: 4 / 7,
-                            children: List.generate(
-                                productModel.length,
-                                    (index) {
-                                  return
-                                    InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (_) =>
-                                                  ProductDetailsView(
-                                                    productModel: productModel[index],
-                                                  )));
-                                    },
-                                    child: CustomProduct(
-                                      productModel[index],
-                                    ),
-                                  );
-                                }
+            if (state is GetProductsLoadingState) {
+              return const CustomShimmerProduct();
+            } else if (state is GetProductsSuccessState) {
+              return  SafeArea(
+                child: Scaffold(
+                  body: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 8.h),
+                    child: GridView.count(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 10.0,
+                        mainAxisSpacing: 10.0,
+                        childAspectRatio: 4 / 7,
+                        children: List.generate(
+                            state.productModel.length,
+                                (index) {
+                              return
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (_) =>
+                                                ProductDetailsView(
+                                                  productModel: state. productModel[index],
+                                                )));
+                                  },
+                                  child: CustomProduct(
+                                   state. productModel[index],
+                                  ),
+                                );
+                            }
 
-                            )
-                        ),
-                      );
-                    },
-                    error: (NetworkExceptions error) {
-                      return CustomErrorProduct(error);
-                    },
-
-                    orElse: () {
-                      return null;
-                    }
-                )));
+                        )
+                    ),
+                  ),
+                ),
+              );
+            } else if (state is GetProductsErrorState) {
+              return CustomErrorProduct(state.errorMessage,
+              );
+            }
+            return const Scaffold(
+              body:   SizedBox.shrink()
+            );
           },
         )
     );

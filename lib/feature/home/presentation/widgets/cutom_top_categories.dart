@@ -11,58 +11,54 @@ import '../../../../core/widget/custom_error_product.dart';
 import '../../../product_details/presentation/pages/product_details_view.dart';
 import '../manager/home_state.dart';
 
-class CustomTopCategories extends StatelessWidget {
-  const CustomTopCategories({
+class CustomDealProduct extends StatelessWidget {
+  const CustomDealProduct({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, ResultState<dynamic>>(
+    return BlocBuilder<HomeCubit, HomeState>(
       buildWhen: (previous, current) =>
-      current is Loading ||
-          current is Success ||
-          current is Error,
-      builder: (context, ResultState<dynamic> state) {
-        return state.maybeWhen(
-          loading: () {
-            return const CustomShimmerProduct();
-          },
-          success: (dynamic productModel) {
-            return SizedBox(
-              height: 325.h,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: productModel.length,
-                itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) =>
-                                  ProductDetailsView(
-                                    productModel: productModel[index],
-                                  )));
-                    },
-                    child: CustomProduct(
-                      productModel[index],
-                    ),
-                  );
-                },
-              ),
-            );
-          },
-          error: (NetworkExceptions error) {
-            return CustomErrorProduct(
-                NetworkExceptions.getDioException(error));
-          },
-          orElse: () {
+          current is GetProductsLoadingState ||
+          current is GetProductsSuccessState ||
+          current is GetProductsErrorState,
+      builder: (context, state) {
+        if (state is GetProductsLoadingState) {
+          return const CustomShimmerProduct();
+        }
+        else if (state is GetProductsSuccessState) {
+          return SizedBox(
+            height: 300.h,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount:state. productModel.length,
+              itemBuilder: (context, index) {
+                return InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => ProductDetailsView(
+                              productModel:state. productModel[index],
+                            )));
+                  },
+                  child: CustomProduct(
+                   state. productModel[index],
+                  ),
+                );
+              },
+            ),
+          );
+        }
+        else if (state is GetProductsErrorState) {
+          return CustomErrorProduct(
+            state.errorMessage,
+          );
+        }
+
             return const SizedBox();
           },
-        );
-        return const SizedBox();
-      },
     );
   }
 }

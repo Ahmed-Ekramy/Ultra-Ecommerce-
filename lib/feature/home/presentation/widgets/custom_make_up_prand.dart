@@ -22,12 +22,12 @@ class CustomMakeUpBrand extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100.h,
-      child: BlocBuilder<HomeCubit, ResultState>(
+      height: 90.h,
+      child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           return ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: categoryModel.categories[index].children.length,
+            itemCount: categoryModel.children.length,
             itemBuilder: (context, index) {
               return InkWell(
                 onTap: () {
@@ -38,23 +38,23 @@ class CustomMakeUpBrand extends StatelessWidget {
                   child: Column(
                     children: [
                       CircleAvatar(
-                        radius: 30.w,
+                        radius: 30.r,
                         backgroundColor:
                             HomeCubit.get(context).selectedIndexBrandMakeUp ==
                                     index
                                 ? AppColors.primaryColor
                                 : AppColors.lightGreyColor,
                         child: Image.network(
-                          "https://ltfpjeeclvrtomahvqyd.supabase.co/storage/v1/object/public/${categoryModel.categories[index].products[index].imageUrl}",
-                          height: 60.h,
-                          fit: BoxFit.cover,
+                          "https://ltfpjeeclvrtomahvqyd.supabase.co/storage/v1/object/public/${categoryModel.products[index].imageUrl}",
+                          height: 80.h,
+                          fit: BoxFit.fill,
                         ),
                       ),
                       SizedBox(
                         height: 5.h,
                       ),
                       Text(
-                          categoryModel.categories[index].children[index].name
+                          categoryModel.children[index].name
                               .toString(),
                           style: CustomTextStyles.hankenW700S12Black),
                     ],

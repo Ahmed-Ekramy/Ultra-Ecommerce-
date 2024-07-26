@@ -2,20 +2,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'catogries_model.g.dart';
 @JsonSerializable()
 class CategoryModel {
-  @JsonKey(name: "categories")
-  final List<Category> categories;
-
-  CategoryModel({
-    required this.categories,
-  });
-
-  factory CategoryModel.fromJson(Map<String, dynamic> json) => _$CategoryModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CategoryModelToJson(this);
-}
-
-@JsonSerializable()
-class Category {
   @JsonKey(name: "parant")
   final Parant parant;
   @JsonKey(name: "children")
@@ -23,15 +9,15 @@ class Category {
   @JsonKey(name: "products")
   final List<Product> products;
 
-  Category({
+  CategoryModel({
     required this.parant,
     required this.children,
     required this.products,
   });
 
-  factory Category.fromJson(Map<String, dynamic> json) => _$CategoryFromJson(json);
+  factory CategoryModel.fromJson(Map<String, dynamic> json) => _$CategoryModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CategoryToJson(this);
+  Map<String, dynamic> toJson() => _$CategoryModelToJson(this);
 }
 
 @JsonSerializable()
@@ -48,6 +34,8 @@ class Child {
   final int parentcategoryid;
   @JsonKey(name: "createdat")
   final DateTime createdat;
+  @JsonKey(name: "imageurl")
+  final String imageurl;
 
   Child({
     required this.categoryid,
@@ -56,6 +44,7 @@ class Child {
     required this.bannerimageurl,
     required this.parentcategoryid,
     required this.createdat,
+    required this.imageurl,
   });
 
   factory Child.fromJson(Map<String, dynamic> json) => _$ChildFromJson(json);

@@ -5,6 +5,6 @@ part 'product_details_state.freezed.dart';
  class ProductDetailsState<T> with _$ProductDetailsState<T> {
   const factory ProductDetailsState.loading() = Loading<T>;
   const factory ProductDetailsState.success(T data) = Success<T>;
-  const factory ProductDetailsState.error(NetworkExceptions networkExceptions) =
+  const factory ProductDetailsState.error({required String error}) =
       Error<T>;
 }

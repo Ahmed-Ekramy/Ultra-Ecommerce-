@@ -4,19 +4,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/images.dart';
 import '../../../../core/theming/string.dart';
+import '../../data/models/catogries_model.dart';
 
 class CustomListMakeUp extends StatelessWidget {
-  const CustomListMakeUp({
+  const CustomListMakeUp(this.categoryModel,this.index,{
     super.key,
   });
-
+ final CategoryModel categoryModel;
+  final int index;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300.h,
+      height: 270.h,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 10,
+        itemCount: categoryModel.products.length,
         itemBuilder: (context, index) {
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.0.w),
@@ -32,15 +34,15 @@ class CustomListMakeUp extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.asset(
-                      AppImages.garnier,
-                      width: double.infinity,
-                      height: 115.h,
+                    Image.network(
+                      "https://ltfpjeeclvrtomahvqyd.supabase.co/storage/v1/object/public/${categoryModel.products[index].imageUrl}",
+                      height: 80.h,
+                      fit: BoxFit.fill,
                     ),
                     SizedBox(
                       height: 10.h,
                     ),
-                    Text("Garnier Pure Active",
+                    Text(categoryModel.products[index].name,
                         style: CustomTextStyles.hankenW700S16Black),
                     SizedBox(
                       height: 5.h,
@@ -48,7 +50,7 @@ class CustomListMakeUp extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          "skin care ",
+                          "${categoryModel.products[index].discount}%",
                           style: CustomTextStyles
                               .hankenW400S14GrayDark
                               .copyWith(
@@ -58,7 +60,7 @@ class CustomListMakeUp extends StatelessWidget {
                           width: 5.w,
                         ),
                         Text(
-                          "700000 EGP",
+                          "${categoryModel.products[index].price} \$",
                           style: CustomTextStyles
                               .hankenW700S12LightGray
                               .copyWith(
@@ -74,7 +76,7 @@ class CustomListMakeUp extends StatelessWidget {
                       height: 5.h,
                     ),
                     Text(
-                      "500000 EGP",
+                      "${categoryModel.products[index].price} \$",
                       style: CustomTextStyles.hankenW600S18Black
                           .copyWith(fontWeight: FontWeight.bold),
                     ),

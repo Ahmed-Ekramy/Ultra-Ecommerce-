@@ -1,11 +1,20 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../../core/network/network_exceptions.dart';
-part 'login_state.freezed.dart';
+import 'package:equatable/equatable.dart';
+import 'package:ultra/feature/login/data/models/login_model.dart';
 
-@freezed
-class LoginState<T> with _$LoginState <T>{
-  const factory LoginState.loading() = Loading<T>;
-  const factory LoginState.error( NetworkExceptions error) = Error<T>;
-  const factory LoginState.success( T data) = Success<T>;
-  const factory LoginState.obscureChangeState( T data) = ObscureChangeState<T>;
+ abstract class LoginState {
+}
+class LoginLoadingState extends  LoginState{
+}
+class LoginSuccessState extends  LoginState{
+ final LoginModel loginModel;
+  LoginSuccessState(this.loginModel);
+}
+class LoginErrorState extends  LoginState{
+final String error;
+  LoginErrorState(this.error);
+
+}
+class LoginObscureChangeState extends  LoginState{
+   final bool obscure;
+  LoginObscureChangeState(this.obscure);
 }

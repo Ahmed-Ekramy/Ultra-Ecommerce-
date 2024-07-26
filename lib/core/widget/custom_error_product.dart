@@ -7,7 +7,7 @@ import '../theming/string.dart';
 
 class CustomErrorProduct extends StatelessWidget {
    const CustomErrorProduct( this.dioException, {  super.key});
-   final NetworkExceptions dioException;
+   final String dioException;
   @override
   Widget build(BuildContext context) {
     return SizedBox(

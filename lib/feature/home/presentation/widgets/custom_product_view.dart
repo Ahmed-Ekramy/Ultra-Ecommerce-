@@ -15,7 +15,7 @@ class CustomProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 5.0.w),
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(5.0),
       decoration: BoxDecoration(
         border: Border.all(
             color: AppColors.lightGreyColor,

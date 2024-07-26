@@ -90,7 +90,7 @@ class _ApiService implements ApiService {
     )
             .compose(
               _dio.options,
-              '/products',
+              '/products/bestdeals',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -119,7 +119,7 @@ class _ApiService implements ApiService {
     )
             .compose(
               _dio.options,
-              '/products/${id}',
+              '/products/product//${id}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -133,13 +133,13 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<CategoryModel> getCategories() async {
+  Future<List<CategoryModel>> getCategories() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<CategoryModel>(Options(
+        .fetch<List<dynamic>>(_setStreamType<List<CategoryModel>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -155,7 +155,9 @@ class _ApiService implements ApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final _value = CategoryModel.fromJson(_result.data!);
+    var _value = _result.data!
+        .map((dynamic i) => CategoryModel.fromJson(i as Map<String, dynamic>))
+        .toList();
     return _value;
   }
 

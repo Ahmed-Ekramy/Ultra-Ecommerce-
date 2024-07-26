@@ -21,49 +21,33 @@ class SignUpView extends StatelessWidget {
     return SafeArea(
       child: BlocConsumer<SignUpCubit, SignUpState>(
         listener: (context, state) {
-          state.maybeWhen(
-            loading: () {
-              showDialog(
-                  context: context,
-                  builder: (context) => const Center(
-                      child: CircularProgressIndicator(
-                          color: AppColors.primaryColor)));
-            },
-            success: (value) {
+          if (state is SignUpLoading) {
+            showDialog(
+                context: context,
+                builder: (context) => const Center(
+                    child: CircularProgressIndicator(
+                        color: AppColors.primaryColor)));
+          }
+          else if (state is SignUpSuccess) {
+            {
               Navigator.pop(context);
               Navigator.pushNamedAndRemoveUntil(
                   context, Routes.home, (route) => false);
-            },
-            error: (NetworkExceptions value) {
-              Navigator.pop(context);
-              showDialog(
+            }
+          }
+          else if (state is SignUpError) {
+            Navigator.pop(context);
+            showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
-                  icon: const Icon(
-                    Icons.error,
-                    color: Colors.red,
-                    size: 32,
-                  ),
-                  content: Text(
-                    value.toString(),
-                    style: CustomTextStyles.hankenW700S14Primary,
-                  ),
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text(
-                        'Got it',
-                        style: CustomTextStyles.hankenW700S14Primary,
+                      icon: const Icon(
+                        Icons.error,
+                        color: Colors.red,
+                        size: 32,
                       ),
-                    ),
-                  ],
-                ),
-              );
-            },
-            orElse: () {},
-          );
+                      content: Text(state.error),
+                    ));
+          }
         },
         builder: (context, state) => Scaffold(
           body: SingleChildScrollView(

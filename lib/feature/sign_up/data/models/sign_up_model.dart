@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
+
 part 'sign_up_model.g.dart';
+
 @JsonSerializable()
 class SignUpModel {
   @JsonKey(name: "user")
@@ -12,7 +14,8 @@ class SignUpModel {
     required this.session,
   });
 
-  factory SignUpModel.fromJson(Map<String, dynamic> json) => _$SignUpModelFromJson(json);
+  factory SignUpModel.fromJson(Map<String, dynamic> json) =>
+      _$SignUpModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$SignUpModelToJson(this);
 }
@@ -41,7 +44,8 @@ class Session {
     required this.user,
   });
 
-  factory Session.fromJson(Map<String, dynamic> json) => _$SessionFromJson(json);
+  factory Session.fromJson(Map<String, dynamic> json) =>
+      _$SessionFromJson(json);
 
   Map<String, dynamic> toJson() => _$SessionToJson(this);
 }
@@ -108,7 +112,8 @@ class AppMetadata {
     required this.providers,
   });
 
-  factory AppMetadata.fromJson(Map<String, dynamic> json) => _$AppMetadataFromJson(json);
+  factory AppMetadata.fromJson(Map<String, dynamic> json) =>
+      _$AppMetadataFromJson(json);
 
   Map<String, dynamic> toJson() => _$AppMetadataToJson(this);
 }
@@ -146,15 +151,14 @@ class Identity {
     required this.email,
   });
 
-  factory Identity.fromJson(Map<String, dynamic> json) => _$IdentityFromJson(json);
+  factory Identity.fromJson(Map<String, dynamic> json) =>
+      _$IdentityFromJson(json);
 
   Map<String, dynamic> toJson() => _$IdentityToJson(this);
 }
 
 @JsonSerializable()
 class Data {
-  @JsonKey(name: "avatar")
-  final String avatar;
   @JsonKey(name: "email")
   final String email;
   @JsonKey(name: "email_verified")
@@ -169,7 +173,6 @@ class Data {
   final String sub;
 
   Data({
-    required this.avatar,
     required this.email,
     required this.emailVerified,
     required this.fullName,

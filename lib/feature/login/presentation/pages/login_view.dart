@@ -6,9 +6,11 @@ import 'package:ultra/core/theming/colors.dart';
 import 'package:ultra/core/theming/images.dart';
 import 'package:ultra/feature/login/presentation/manager/login_cubit.dart';
 import 'package:ultra/feature/login/presentation/manager/login_state.dart';
+import '../../../../core/helpers/app_regex.dart';
 import '../../../../core/routes/routing.dart';
 import '../../../../core/theming/string.dart';
 import '../../../../core/widget/custom_elevated_button.dart';
+import '../../../../core/widget/custom_text_form_field.dart';
 import '../widgets/custom_email_password.dart';
 
 class LoginView extends StatelessWidget {
@@ -16,170 +18,210 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<LoginCubit, LoginState<dynamic>>(
-      listenWhen: (previous, current) =>
-      current is Loading ||
-          current is Success || current is Error,
-      listener: (context, state) {
-        state.maybeWhen(
-            loading: () {
-              showDialog(
+    return BlocConsumer<LoginCubit, LoginState>(
+        listenWhen: (previous, current) =>
+            current is LoginLoadingState ||
+            current is LoginSuccessState ||
+            current is LoginErrorState,
+        listener: (context, state) {
+          if (state is LoginLoadingState) {
+            showDialog(
                 context: context,
                 builder: (context) => const Center(
-                child: CircularProgressIndicator(
-                color: AppColors.primaryColor
-              )) );
-            }, success: (value) {
-              Navigator.pop(context);
-              Navigator.pushNamedAndRemoveUntil(
-                  context, Routes.home, (route) => false);
-            },
-            error: ( NetworkExceptions value) {
-              Navigator.pop(context);
-              showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                  icon: const Icon(
-                    Icons.error,
-                    color: Colors.red,
-                    size: 32,
-                  ),
-                  content: Text(
-                    value.toString(),
-                    style: CustomTextStyles.hankenW700S14Primary,
-                  ),
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text(
-                        'Got it',
-                        style: CustomTextStyles.hankenW700S14Primary,
-                      ),
-                    ),
-                  ],
+                    child: CircularProgressIndicator(
+                        color: AppColors.primaryColor)));
+          } else if (state is LoginSuccessState) {
+            Navigator.pop(context);
+
+          } else if (state is LoginErrorState) {
+            Navigator.pop(context);
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                icon: const Icon(
+                  Icons.error,
+                  color: Colors.red,
+                  size: 32,
                 ),
-              );
-            },
-          orElse: () {},
-        );
-      },
-      child: SafeArea(
-          child: Scaffold(
-            body: SingleChildScrollView(
-              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-              child: Padding(
-                padding: EdgeInsets.only(top: 60.0.h, right: 20.w, left: 20.w),
-                child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Welcome back!",
-                        style: CustomTextStyles.hankenW400S45Black,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Text(
-                        "Sign in and Enjoy Latest Offers",
-                        style: CustomTextStyles.hankenW400S14Black,
-                      ),
-                      SizedBox(
-                        height: 40.h,
-                      ),
-                      CustomEmailPassword(),
-                      TextButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, Routes.verifyEmail);
-                          },
-                          child: Text(
-                            "Forget Password?",
-                            style: CustomTextStyles.hankenW400S12Black,
-                          )),
-                      SizedBox(
-                        height: 15.h,
-                      ),
-                      CustomElevationButton(
-                        onPressed: () {
-                          //validateThenDoLogin(context);
-                          Navigator.pushNamedAndRemoveUntil(
-                              context, Routes.home, (route) => false);
-                        },
-                        buttonName: "Login",
-                      ),
-                      SizedBox(
-                        height: 30.h,
-                      ),
-                      Center(
-                          child:
-                          Text("OR",
-                              style: CustomTextStyles.hankenW400S14Black)),
-                      SizedBox(
-                        height: 15.h,
-                      ),
-                      CustomElevationButton(
-                        buttonName: "Continue with Google",
-                        image: AppImages.google,
-                        backgroundButtonColor: Colors.white,
-                        borderColor: Colors.black,
-                        textColor: Colors.black,
-                      ),
-                      SizedBox(
-                        height: 15.h,
-                      ),
-                      CustomElevationButton(
-                        buttonName: "Continue with Apple",
-                        image: AppImages.apple,
-                        backgroundButtonColor: Colors.white,
-                        borderColor: Colors.black,
-                        textColor: Colors.black,
-                      ),
-                      SizedBox(
-                        height: 15.h,
-                      ),
-                      CustomElevationButton(
-                        buttonName: "Continue with Facebook",
-                        image: AppImages.facebook,
-                        backgroundButtonColor: Colors.white,
-                        borderColor: Colors.black,
-                        textColor: Colors.black,
-                      ),
-                      SizedBox(
-                        height: 15.h,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                content: Text(
+                  state.error.toString(),
+                  style: CustomTextStyles.hankenW700S14Primary,
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      'Got it',
+                      style: CustomTextStyles.hankenW700S14Primary,
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }
+        },
+        builder: (context, state) {
+          return SafeArea(
+            child: Scaffold(
+              body: SingleChildScrollView(
+                keyboardDismissBehavior:
+                    ScrollViewKeyboardDismissBehavior.onDrag,
+                child: Padding(
+                  padding:
+                      EdgeInsets.only(top: 60.0.h, right: 20.w, left: 20.w),
+                  child: Form(
+                    key: context.read<LoginCubit>().formKey,
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Don't have an account?",
-                            style: CustomTextStyles.hankenW400S12Black,
+                            "Welcome back!",
+                            style: CustomTextStyles.hankenW400S45Black,
+                          ),
+                          SizedBox(
+                            height: 5.h,
+                          ),
+                          Text(
+                            "Sign in and Enjoy Latest Offers",
+                            style: CustomTextStyles.hankenW400S14Black,
+                          ),
+                          SizedBox(
+                            height: 40.h,
+                          ),
+                          CustomTextFormField(
+                            validator: (value) {
+                              if (value == null ||
+                                  value.isEmpty ||
+                                  !AppRegex.isEmailValid(value)) {
+                                return 'Please enter a valid email';
+                              }
+                            },
+                            controller: LoginCubit.get(context).emailController,
+                            keyboardType: TextInputType.emailAddress,
+                            hintText: "Email",
+                            prefixIcon: Icons.email,
+                          ),
+                          SizedBox(
+                            height: 15.h,
+                          ),
+                          CustomTextFormField(
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter a valid password';
+                              }
+                            },
+                            obscureText: LoginCubit.get(context).isObscured,
+                            controller:
+                                LoginCubit.get(context).passwordController,
+                            keyboardType: TextInputType.visiblePassword,
+                            hintText: "Password",
+                            prefixIcon: Icons.password,
+                            suffixIcon: GestureDetector(
+                              onTap: () {
+                                LoginCubit.get(context).changeLoginObscure();
+                              },
+                              child: Icon(
+                                LoginCubit.get(context).isObscured
+                                    ? Icons.visibility_off_sharp
+                                    : Icons.visibility,
+                                size: 20.h,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10.h,
                           ),
                           TextButton(
                               onPressed: () {
-                                Navigator.pushNamed(context, Routes.register);
+                                Navigator.pushNamed(
+                                    context, Routes.verifyEmail);
                               },
                               child: Text(
-                                "Sign Up",
-                                style: CustomTextStyles.hankenW600S12Primary,
-                              ))
-                        ],
-                      ),
-
-                    ]
-
+                                "Forget Password?",
+                                style: CustomTextStyles.hankenW400S12Black,
+                              )),
+                          SizedBox(
+                            height: 15.h,
+                          ),
+                          CustomElevationButton(
+                            onPressed: () {
+                             // validateThenDoLogin(context);
+                              Navigator.pushNamedAndRemoveUntil(
+                                  context, Routes.home, (route) => false);
+                            },
+                            buttonName: "Login",
+                          ),
+                          SizedBox(
+                            height: 30.h,
+                          ),
+                          Center(
+                              child: Text("OR",
+                                  style: CustomTextStyles.hankenW400S14Black)),
+                          SizedBox(
+                            height: 15.h,
+                          ),
+                          CustomElevationButton(
+                            buttonName: "Continue with Google",
+                            image: AppImages.google,
+                            backgroundButtonColor: Colors.white,
+                            borderColor: Colors.black,
+                            textColor: Colors.black,
+                          ),
+                          SizedBox(
+                            height: 15.h,
+                          ),
+                          CustomElevationButton(
+                            buttonName: "Continue with Apple",
+                            image: AppImages.apple,
+                            backgroundButtonColor: Colors.white,
+                            borderColor: Colors.black,
+                            textColor: Colors.black,
+                          ),
+                          SizedBox(
+                            height: 15.h,
+                          ),
+                          CustomElevationButton(
+                            buttonName: "Continue with Facebook",
+                            image: AppImages.facebook,
+                            backgroundButtonColor: Colors.white,
+                            borderColor: Colors.black,
+                            textColor: Colors.black,
+                          ),
+                          SizedBox(
+                            height: 15.h,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Don't have an account?",
+                                style: CustomTextStyles.hankenW400S12Black,
+                              ),
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pushNamed(
+                                        context, Routes.register);
+                                  },
+                                  child: Text(
+                                    "Sign Up",
+                                    style:
+                                        CustomTextStyles.hankenW600S12Primary,
+                                  ))
+                            ],
+                          ),
+                        ]),
+                  ),
                 ),
-
               ),
             ),
-          )),
-    );
+          );
+        });
   }
 
   void validateThenDoLogin(BuildContext context) {
-    if (LoginCubit.get(context)
-        .formKey
-        .currentState!
-        .validate()) {
+    if (LoginCubit.get(context).formKey.currentState!.validate()) {
       context.read<LoginCubit>().login();
     }
   }

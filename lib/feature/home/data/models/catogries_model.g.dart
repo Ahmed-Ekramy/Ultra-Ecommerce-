@@ -8,17 +8,6 @@ part of 'catogries_model.dart';
 
 CategoryModel _$CategoryModelFromJson(Map<String, dynamic> json) =>
     CategoryModel(
-      categories: (json['categories'] as List<dynamic>)
-          .map((e) => Category.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-
-Map<String, dynamic> _$CategoryModelToJson(CategoryModel instance) =>
-    <String, dynamic>{
-      'categories': instance.categories,
-    };
-
-Category _$CategoryFromJson(Map<String, dynamic> json) => Category(
       parant: Parant.fromJson(json['parant'] as Map<String, dynamic>),
       children: (json['children'] as List<dynamic>)
           .map((e) => Child.fromJson(e as Map<String, dynamic>))
@@ -28,7 +17,8 @@ Category _$CategoryFromJson(Map<String, dynamic> json) => Category(
           .toList(),
     );
 
-Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
+Map<String, dynamic> _$CategoryModelToJson(CategoryModel instance) =>
+    <String, dynamic>{
       'parant': instance.parant,
       'children': instance.children,
       'products': instance.products,
@@ -41,6 +31,7 @@ Child _$ChildFromJson(Map<String, dynamic> json) => Child(
       bannerimageurl: json['bannerimageurl'],
       parentcategoryid: (json['parentcategoryid'] as num).toInt(),
       createdat: DateTime.parse(json['createdat'] as String),
+      imageurl: json['imageurl'] as String,
     );
 
 Map<String, dynamic> _$ChildToJson(Child instance) => <String, dynamic>{
@@ -50,6 +41,7 @@ Map<String, dynamic> _$ChildToJson(Child instance) => <String, dynamic>{
       'bannerimageurl': instance.bannerimageurl,
       'parentcategoryid': instance.parentcategoryid,
       'createdat': instance.createdat.toIso8601String(),
+      'imageurl': instance.imageurl,
     };
 
 Parant _$ParantFromJson(Map<String, dynamic> json) => Parant(

@@ -1,11 +1,36 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:equatable/equatable.dart';
 
-import '../../../../core/network/network_exceptions.dart';
-part 'sign_up_state.freezed.dart';
-@freezed
-class SignUpState<T> with _$SignUpState<T> {
-  const factory SignUpState.loading() = Loading<T>;
-  const factory SignUpState.error( NetworkExceptions error) = Error<T>;
-  const factory SignUpState.success( T data) = Success<T>;
-  const factory SignUpState.obscureChangeState( T data) = ObscureChangeState<T>;
+import '../../data/models/sign_up_model.dart';
+
+abstract class SignUpState extends Equatable {}
+
+class SignUpInitial extends SignUpState {
+  @override
+  List<Object> get props => [];
+}
+
+class SignUpLoading <T>extends SignUpState {
+  @override
+  List<Object> get props => [];
+}
+
+class SignUpSuccess extends SignUpState {
+  final SignUpModel signUpModel;
+  SignUpSuccess(this.signUpModel);
+  @override
+  List<Object> get props => [signUpModel];
+}
+
+class SignUpError extends SignUpState {
+  final String error;
+  SignUpError(this.error);
+  @override
+  List<Object> get props => [error];
+}
+
+class ObscureChangeState<T> extends SignUpState {
+  final bool data;
+  ObscureChangeState(this.data);
+  @override
+  List<Object> get props => [ data ];
 }

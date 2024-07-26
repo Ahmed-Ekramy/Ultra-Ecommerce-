@@ -16,8 +16,8 @@ class ProductDetailsCubit extends Cubit< ProductDetailsState <ProductDetailModel
       success: (ProductDetailModel productDetailsModel) {
         emit(ProductDetailsState.success(productDetailsModel));
       },
-      failure: (NetworkExceptions networkExceptions) {
-        emit(ProductDetailsState.error(networkExceptions));
+      failure: (error ) {
+        emit(ProductDetailsState.error( error: error.apiErrorModel.message));
       },
     );
   }

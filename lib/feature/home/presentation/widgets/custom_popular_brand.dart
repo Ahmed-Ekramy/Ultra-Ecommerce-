@@ -17,7 +17,7 @@ class CustomPopularBrand extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 100.h,
-      child: BlocBuilder<HomeCubit, ResultState>(
+      child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           return ListView.builder(
             scrollDirection: Axis.horizontal,

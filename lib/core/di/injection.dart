@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:ultra/feature/home/presentation/manager/home_cubit.dart';
 import 'package:ultra/feature/login/data/repositories/login_repo_imp.dart';
 import 'package:ultra/feature/login/presentation/manager/login_cubit.dart';
-import 'package:ultra/feature/search/presentation/manager/search_cubit.dart';
 import 'package:ultra/feature/sign_up/data/repositories/sign_up_repo.dart';
 import 'package:ultra/feature/sign_up/presentation/manager/sign_up_cubit.dart';
+
 import '../../feature/home/data/repositories/home repo_imp.dart';
+import '../../feature/home/presentation/manager/home_cubit.dart';
 import '../../feature/product_details/data/repositories/product_detail_repo_imp.dart';
 import '../../feature/product_details/presentation/manager/product_details_cubit.dart';
 import '../network/api_service.dart';
@@ -23,6 +23,5 @@ void initGetIt() {
   getIt.registerFactory<LoginRepo>( ( ) => LoginRepo(getIt()));
 getIt.registerFactory<SignUpCubit>( ( ) => SignUpCubit(getIt()));
   getIt.registerFactory<SignUpRepo>( ( ) => SignUpRepo(getIt()));
-
   getIt.registerFactory<ApiService>(() => ApiService(Dio()));
 }
