@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ultra/feature/categories_item_by_id/presentation/pages/category_item_id_view.dart';
 import 'package:ultra/feature/home/presentation/manager/home_state.dart';
 
+import '../../../../core/routes/routing.dart';
 import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/images.dart';
 import '../../../../core/theming/string.dart';
@@ -31,7 +33,14 @@ class CustomMakeUpBrand extends StatelessWidget {
             itemBuilder: (context, index) {
               return InkWell(
                 onTap: () {
-                  HomeCubit.get(context).changeSelectedBrandMakeUp(index);
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => CategoryItemView(
+                          index :index,
+                              id: categoryModel.children[index].categoryid,
+                      )
+                  ));
+                  HomeCubit.get(context).changeSelectedItemCategory(index);
+
                 },
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 10.0.w),

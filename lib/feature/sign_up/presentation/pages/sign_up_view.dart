@@ -5,7 +5,6 @@ import 'package:ultra/core/routes/routing.dart';
 import 'package:ultra/core/theming/colors.dart';
 
 import '../../../../core/helpers/app_regex.dart';
-import '../../../../core/network/network_exceptions.dart';
 import '../../../../core/theming/images.dart';
 import '../../../../core/theming/string.dart';
 import '../../../../core/widget/custom_elevated_button.dart';
@@ -27,15 +26,13 @@ class SignUpView extends StatelessWidget {
                 builder: (context) => const Center(
                     child: CircularProgressIndicator(
                         color: AppColors.primaryColor)));
-          }
-          else if (state is SignUpSuccess) {
+          } else if (state is SignUpSuccess) {
             {
               Navigator.pop(context);
               Navigator.pushNamedAndRemoveUntil(
                   context, Routes.home, (route) => false);
             }
-          }
-          else if (state is SignUpError) {
+          } else if (state is SignUpError) {
             Navigator.pop(context);
             showDialog(
                 context: context,

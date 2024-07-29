@@ -15,22 +15,23 @@ class CustomCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
-
       builder: (context, state) {
-       if (state is GetCategoriesErrorState) {
+        if (state is GetCategoriesErrorState) {
           return Text(state.errorMessage);
-        }
-       else if (state is GetCategoriesSuccessState ||state is ChangeNavState ) {
+        } else if (state is GetCategoriesSuccessState ||
+            state is ChangeNavState ||
+            state is ChangeSelectedItemCategoryState) {
           return ListView.builder(
+            shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: HomeCubit.get(context).categoryModel.length,
             itemBuilder: (context, index) {
-              return CustomItemCategory(index,  HomeCubit.get(context).categoryModel[index]);
+              return CustomItemCategory(
+                  index, HomeCubit.get(context).categoryModel[index]);
             },
           );
         }
-       return const CustomShimmerCategory();
-
+        return const CustomShimmerCategory();
       },
     );
   }

@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ultra/feature/home/data/repositories/home%20repo_imp.dart';
 import 'package:ultra/feature/home/presentation/manager/home_state.dart';
-import '../../../../core/network/network_exceptions.dart';
-import '../../../search/presentation/pages/search_tab.dart';
+import '../pages/tabs/search_tab.dart';
 import '../../data/models/catogries_model.dart';
 import '../../data/models/product_model.dart';
 import '../pages/tabs/home_tabs.dart';
@@ -43,9 +42,9 @@ class HomeCubit extends Cubit<HomeState> {
     emit(ChangeSelectedIndexBrandState());
   }
 
-  void changeSelectedBrandMakeUp(int index) {
+  void changeSelectedItemCategory(int index) {
     selectedIndexBrandMakeUp = index;
-    emit(ChangeSelectedIndexBrandMakeUpState());
+    emit(ChangeSelectedItemCategoryState());
   }
 
   void changeTypeOfClothes(int index) {

@@ -1,12 +1,6 @@
 import 'dart:developer';
-
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../core/network/network_exceptions.dart';
-import '../../../home/presentation/manager/home_state.dart';
-import '../../data/models/login_model.dart';
 import '../../data/models/login_request_body.dart';
 import '../../data/repositories/login_repo_imp.dart';
 import 'login_state.dart';

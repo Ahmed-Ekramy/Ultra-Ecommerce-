@@ -1,17 +1,23 @@
+import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:ultra/core/network/api_service.dart';
 import 'package:ultra/feature/product_details/data/models/product_details_model.dart';
-import '../../../../core/network/api_result.dart';
-import '../../../../core/network/network_exceptions.dart';
+
+import '../../../../core/network/network_error.dart';
+
 
 class ProductDetailRepoImp {
   ApiService apiService;
   ProductDetailRepoImp( this.apiService);
-  Future<ApiResult <ProductDetailModel>> getProductDetails( num id) async {
+  Future<Either<Failures,ProductDetailModel>> getProductDetails( int id) async {
     try {
       var response = await apiService.getProductsDetail(id);
-      return ApiResult.success(response);
+      return Right(response);
     } catch (e) {
-      return ApiResult.failure(  ErrorHandler.handle(e));
+     if (e is DioException) {
+        return Left(ServerFailure.fromDiorError(e));
+      }
+      return Left(ServerFailure(e.toString()));
     }
   }
 }

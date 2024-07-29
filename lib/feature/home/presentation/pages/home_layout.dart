@@ -5,7 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ultra/core/di/injection.dart';
 import 'package:ultra/feature/home/presentation/manager/home_cubit.dart';
 import '../../../../core/network/api_service.dart';
-import '../../../home/presentation/manager/home_state.dart';
+import '../manager/home_state.dart';
 
 class HomeLayout extends StatelessWidget {
   const HomeLayout({super.key});

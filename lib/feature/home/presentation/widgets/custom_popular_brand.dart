@@ -29,7 +29,8 @@ class CustomPopularBrand extends StatelessWidget {
                 },
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 10.0.w),
-                  child: Column(
+                  child:
+                  Column(
                     children: [
                       CircleAvatar(
                         radius: 30.w,

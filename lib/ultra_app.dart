@@ -16,20 +16,17 @@ class Ultra extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return BlocProvider(
-          create: (context) => getIt<HomeCubit>()..getProducts()..getCategories(),
-          child: MaterialApp(
-            theme: ThemeData(
-                bottomNavigationBarTheme: BottomNavigationBarThemeData(
-                    backgroundColor: Colors.white,
-                    selectedItemColor: Colors.black,
-                    unselectedItemColor: Colors.grey,
-                    selectedIconTheme: IconThemeData(size: 30.sp),
-                    unselectedIconTheme: IconThemeData(size: 25.sp))),
-            debugShowCheckedModeBanner: false,
-            initialRoute: '/',
-            onGenerateRoute: AppRoutes().generateRoute,
-          ),
+        return MaterialApp(
+          theme: ThemeData(
+              bottomNavigationBarTheme: BottomNavigationBarThemeData(
+                  backgroundColor: Colors.white,
+                  selectedItemColor: Colors.black,
+                  unselectedItemColor: Colors.grey,
+                  selectedIconTheme: IconThemeData(size: 30.sp),
+                  unselectedIconTheme: IconThemeData(size: 25.sp))),
+          debugShowCheckedModeBanner: false,
+          initialRoute: '/',
+          onGenerateRoute: AppRoutes().generateRoute,
         );
       },
     );

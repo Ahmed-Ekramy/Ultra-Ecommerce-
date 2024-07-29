@@ -6,7 +6,7 @@ import '../../../../core/theming/images.dart';
 import '../../../../core/theming/string.dart';
 import '../../data/models/catogries_model.dart';
 import 'custom_list_make_up.dart';
-import 'custom_make_up_prand.dart';
+import 'selected_item_category.dart';
 
 class CustomItemCategory extends StatelessWidget {
   const CustomItemCategory(this.index,  this.categoryModel,{super.key});

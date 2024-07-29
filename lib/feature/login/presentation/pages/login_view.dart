@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ultra/core/network/network_exceptions.dart';
 import 'package:ultra/core/theming/colors.dart';
 import 'package:ultra/core/theming/images.dart';
 import 'package:ultra/feature/login/presentation/manager/login_cubit.dart';
@@ -11,7 +10,6 @@ import '../../../../core/routes/routing.dart';
 import '../../../../core/theming/string.dart';
 import '../../../../core/widget/custom_elevated_button.dart';
 import '../../../../core/widget/custom_text_form_field.dart';
-import '../widgets/custom_email_password.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});

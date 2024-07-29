@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -6,14 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:readmore/readmore.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:ultra/core/theming/colors.dart';
 import 'package:ultra/core/widget/custom_elevated_button.dart';
-import 'package:ultra/core/widget/custom_shimmer_product.dart';
-import 'package:ultra/feature/product_details/data/models/product_details_model.dart';
 import '../../../../core/di/injection.dart';
-import '../../../../core/network/network_exceptions.dart';
 import '../../../../core/theming/string.dart';
+import '../../../../core/widget/custom_error_product.dart';
 import '../../../home/data/models/product_model.dart';
 import '../manager/product_details_cubit.dart';
 import '../manager/product_details_state.dart';
@@ -60,16 +56,37 @@ class ProductDetailsView extends StatelessWidget {
               ),
             ],
           ),
-          body: SingleChildScrollView(child: BlocBuilder<ProductDetailsCubit,
-              ProductDetailsState<ProductDetailModel>>(
+          body: SingleChildScrollView(
+              child: BlocBuilder<ProductDetailsCubit, ProductDetailsState>(
             builder: (context, state) {
-              return state.when(loading: () {
-                return
-                  const CudtomShimmerProductDetail();
-
-              }, success: (ProductDetailModel productDetailsModel) {
-                return
-                  Padding(
+              if (state is ProductDetailsFailureState) {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    icon: const Icon(
+                      Icons.error,
+                      color: Colors.red,
+                      size: 32,
+                    ),
+                    content: Text(
+                      state.error.toString(),
+                      style: CustomTextStyles.hankenW700S14Primary,
+                    ),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text(
+                          'Got it',
+                          style: CustomTextStyles.hankenW700S14Primary,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              } else if (state is ProductDetailsSuccessState) {
+                return Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: 10.0.w, vertical: 20.h),
                   child: Column(
@@ -83,7 +100,9 @@ class ProductDetailsView extends StatelessWidget {
                                 const Duration(seconds: 3),
                             autoPlay: false,
                             autoPlayCurve: Curves.ease),
-                        items: productDetailsModel.productImage
+                        items: ProductDetailsCubit.get(context)
+                            .productDetailModel
+                            ?.productImage
                             .map(
                               (e) => Padding(
                                 padding: const EdgeInsets.symmetric(
@@ -113,14 +132,16 @@ class ProductDetailsView extends StatelessWidget {
                         height: 10.h,
                       ),
                       Text(
-                        productDetailsModel.name,
+                        ProductDetailsCubit.get(context)
+                            .productDetailModel!
+                            .name,
                         style: CustomTextStyles.hankenW600S18Black,
                       ),
                       SizedBox(
                         height: 10.h,
                       ),
                       Text(
-                          "${productDetailsModel.highlights[0]}\n ${productDetailsModel.highlights[1]}\n ${productDetailsModel.highlights[2]}",
+                          "${ProductDetailsCubit.get(context).productDetailModel?.highlights[0]}\n ${ProductDetailsCubit.get(context).productDetailModel?.highlights[1]}\n ${ProductDetailsCubit.get(context).productDetailModel?.highlights[2]}",
                           style: CustomTextStyles.hankenW500S14Black
                               .copyWith(color: Colors.grey)),
                       SizedBox(
@@ -136,7 +157,9 @@ class ProductDetailsView extends StatelessWidget {
                       ReadMoreText(
                         style: CustomTextStyles.hankenW400S12Black
                             .copyWith(fontSize: 14.sp),
-                        productDetailsModel.description,
+                        ProductDetailsCubit.get(context)
+                            .productDetailModel!
+                            .description,
                         trimMode: TrimMode.Line,
                         trimLines: 4,
                         colorClickableText: Colors.pink,
@@ -168,7 +191,7 @@ class ProductDetailsView extends StatelessWidget {
                                 style: CustomTextStyles.hankenW400S14GrayDark,
                               ),
                               Text(
-                                "\$ ${productDetailsModel.price}",
+                                "\$ ${ProductDetailsCubit.get(context).productDetailModel?.price}",
                                 style: CustomTextStyles.hankenW600S18Black,
                               )
                             ],
@@ -189,13 +212,10 @@ class ProductDetailsView extends StatelessWidget {
                     ],
                   ),
                 );
-              }, error: (error ) {
-                return const Center(child: CircularProgressIndicator());
-              });
+              }
+              return const CudtomShimmerProductDetail();
             },
           ))),
     );
   }
 }
-
-

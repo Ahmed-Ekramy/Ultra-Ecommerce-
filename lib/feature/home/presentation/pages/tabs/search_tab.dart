@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ultra/core/widget/custom_text_form_field.dart';
-import '../../../../core/theming/colors.dart';
-import '../../../../core/theming/string.dart';
-import '../../../home/data/models/product_model.dart';
-import '../../../home/presentation/manager/home_cubit.dart';
-import '../../../home/presentation/manager/home_state.dart';
-import '../widgets/custom_gridview_search.dart';
-import '../widgets/custom_list_search.dart';
+import '../../../../../core/theming/colors.dart';
+import '../../../../../core/theming/string.dart';
+import '../../manager/home_cubit.dart';
+import '../../manager/home_state.dart';
+import '../../widgets/custom_gridview_search.dart';
+import '../../widgets/custom_list_search.dart';
+
 
 class SearchTab extends StatelessWidget {
   const SearchTab({super.key});
@@ -103,7 +103,7 @@ class SearchTab extends StatelessWidget {
                     ? SliverFixedExtentList(
                         itemExtent: 115.h,
                         delegate: SliverChildBuilderDelegate(
-                          (context, index) => const CustomListViewSearch(
+                          (context, index) =>  const CustomListViewSearch(
                             name: "Nike Free Terr Vista Next Nature",
                             label: "Men’s Shoes",
                             price: "\$120.00",

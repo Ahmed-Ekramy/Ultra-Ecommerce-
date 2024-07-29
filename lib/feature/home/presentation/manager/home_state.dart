@@ -10,7 +10,7 @@ final class HomeInitial extends HomeState {}
 final class ChangeGridViewListViewState extends HomeState {}
 final class ChangeNavState extends HomeState {}
 final class ChangeSelectedIndexBrandState extends HomeState {}
-final class ChangeSelectedIndexBrandMakeUpState extends HomeState {}
+final class ChangeSelectedItemCategoryState extends HomeState {}
 final class ChangeSelectedIndexTypeOfClothesState extends HomeState {}
 final class SearchIndexByNameState extends HomeState {}
 
@@ -26,7 +26,6 @@ final class GetProductsErrorState extends HomeState {
 
 final class GetCategoriesLoadingState extends HomeState {}
 final class GetCategoriesSuccessState extends HomeState {
-
   GetCategoriesSuccessState();
 }
 final class GetCategoriesErrorState extends HomeState {
