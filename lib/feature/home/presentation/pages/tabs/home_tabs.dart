@@ -29,10 +29,15 @@ class HomeTab extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Icon(
-                FontAwesomeIcons.cartPlus,
-                color: AppColors.darkGreyColor,
-                size: 24.sp,
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, Routes.cartView);
+                },
+                child: Icon(
+                  FontAwesomeIcons.cartPlus,
+                  color: AppColors.darkGreyColor,
+                  size: 24.sp,
+                ),
               ),
               Row(
                 children: [

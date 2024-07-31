@@ -46,13 +46,8 @@ class CustomDealProduct extends StatelessWidget {
               },
             ),
           );
-        } else if (state is GetProductsErrorState) {
-          return CustomErrorProduct(
-            state.errorMessage,
-          );
         }
-
-        return const SizedBox();
+        return const CustomShimmerProduct();
       },
     );
   }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ultra/core/theming/colors.dart';
 import 'package:ultra/core/theming/string.dart';
 import 'package:ultra/core/widget/custom_elevated_button.dart';
 
+import '../../../../../core/helpers/cache_helper.dart';
 import '../../../../../core/routes/routing.dart';
 import '../../widgets/custom_profile_item.dart';
 
@@ -105,7 +107,20 @@ class ProfileTab extends StatelessWidget {
             thickness: 1.h,
           ),
           SizedBox(height: 20.h,),
-          const CustomElevationButton(
+           CustomElevationButton(
+            onPressed: () {
+              CacheHelper.removeData("User");
+              Fluttertoast.showToast(
+                  msg: "Log out successful",
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.BOTTOM,
+                  timeInSecForIosWeb: 1,
+                  backgroundColor: Colors.red,
+                  textColor: Colors.white,
+                  fontSize: 16.0);
+              Navigator.pushNamedAndRemoveUntil(context,
+                  Routes.login, (Route<dynamic> route) => false);
+            },
             backgroundButtonColor: Colors.red,
             borderColor: Colors.red,
             buttonName: "Log Out",

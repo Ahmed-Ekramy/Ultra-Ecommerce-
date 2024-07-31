@@ -26,3 +26,4 @@ class BannerCategoryModel {
 
   Map<String, dynamic> toJson() => _$BannerCategoryModelToJson(this);
 }
+

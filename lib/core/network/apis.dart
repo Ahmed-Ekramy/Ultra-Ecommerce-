@@ -7,4 +7,6 @@ class ConstantApis {
   static const String getCategories = "/categories";
   static const String getCategoriesBrands = "/categories/brands/";
   static const String getCategoriesBanner = "/categories/banner/";
+  static const String getCart= "/cart";
+  static const String postCart= "/cart/item/";
 }

@@ -35,8 +35,6 @@ class Child {
   final int parentcategoryid;
   @JsonKey(name: "createdat")
   final DateTime createdat;
-  @JsonKey(name: "imageurl")
-  final String imageurl;
 
   Child({
     required this.categoryid,
@@ -45,7 +43,6 @@ class Child {
     required this.bannerimageurl,
     required this.parentcategoryid,
     required this.createdat,
-    required this.imageurl,
   });
 
   factory Child.fromJson(Map<String, dynamic> json) => _$ChildFromJson(json);

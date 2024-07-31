@@ -40,10 +40,10 @@ class CategoriesItemByIdRepo {
     }
   }
 
-  Future<Either<Failures, List<BannerCategoryModel>>>
-      getBannerCategoriesItemByIdRepo(num id) async {
+  Future<Either<Failures, BannerCategoryModel>>
+      getBannerCategoriesItemByIdRepo(int id) async {
     try {
-      var data = await apiService.getCategoriesBanner(2);
+      var data = await apiService.getCategoriesBanner(id);
       log("${data}xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
       return Right(data);
     } catch (e) {

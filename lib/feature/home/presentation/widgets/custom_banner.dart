@@ -44,7 +44,7 @@ class CustomBanner extends StatelessWidget {
               CustomElevationButton(
                 width: 130.w,
                 height: 50.h,
-                borderColor: AppColors.blackColor,
+                borderColor: Colors.black,
                 backgroundButtonColor: Colors.white,
                 textColor: AppColors.primaryColor,
                 onPressed: () {},

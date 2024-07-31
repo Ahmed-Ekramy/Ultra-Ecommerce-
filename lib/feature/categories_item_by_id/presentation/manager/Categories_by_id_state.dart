@@ -6,6 +6,7 @@ import '../../data/models/brand_category_model.dart';
 abstract class CategoriesByIdState{}
 
 class CategoriesByIdInitial extends CategoriesByIdState{}
+class ChangeSelectedIndexBrandCategoryState extends CategoriesByIdState{}
 
 class CategoriesByIdLoading extends CategoriesByIdState{}
 

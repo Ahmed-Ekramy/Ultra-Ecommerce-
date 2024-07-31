@@ -7,7 +7,8 @@ import 'core/network/api_service.dart';
 import 'core/routes/app_routes.dart';
 
 class Ultra extends StatelessWidget {
-  const Ultra({super.key});
+  final String route;
+  const Ultra(this.route, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +26,8 @@ class Ultra extends StatelessWidget {
                   selectedIconTheme: IconThemeData(size: 30.sp),
                   unselectedIconTheme: IconThemeData(size: 25.sp))),
           debugShowCheckedModeBanner: false,
-          initialRoute: '/',
-          onGenerateRoute: AppRoutes().generateRoute,
+            onGenerateRoute: (settings)=> AppRoutes.onGenrateRoute(settings),
+            initialRoute: route,
         );
       },
     );

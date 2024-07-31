@@ -31,7 +31,6 @@ Child _$ChildFromJson(Map<String, dynamic> json) => Child(
       bannerimageurl: json['bannerimageurl'],
       parentcategoryid: (json['parentcategoryid'] as num).toInt(),
       createdat: DateTime.parse(json['createdat'] as String),
-      imageurl: json['imageurl'] as String,
     );
 
 Map<String, dynamic> _$ChildToJson(Child instance) => <String, dynamic>{
@@ -41,7 +40,6 @@ Map<String, dynamic> _$ChildToJson(Child instance) => <String, dynamic>{
       'bannerimageurl': instance.bannerimageurl,
       'parentcategoryid': instance.parentcategoryid,
       'createdat': instance.createdat.toIso8601String(),
-      'imageurl': instance.imageurl,
     };
 
 Parant _$ParantFromJson(Map<String, dynamic> json) => Parant(

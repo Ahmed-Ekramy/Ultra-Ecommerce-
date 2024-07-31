@@ -55,6 +55,7 @@ dependencies:
   freezed_annotation: ^2.4.4
   carousel_slider: ^4.2.1
   readmore: ^3.0.0
+  fluttertoast: ^8.2.6
 dev_dependencies:
   flutter_test:
     sdk: flutter

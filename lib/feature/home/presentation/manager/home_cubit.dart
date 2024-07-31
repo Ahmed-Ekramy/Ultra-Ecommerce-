@@ -24,6 +24,8 @@ class HomeCubit extends Cubit<HomeState> {
   int searchIndexByName = 0;
    List<ProductModel> productModel=[];
    List<CategoryModel> categoryModel=[];
+   String ?errorProduct;
+   String ?errorCategory;
 
   void changeNav(value) {
     currentIndex = value;
@@ -55,6 +57,7 @@ class HomeCubit extends Cubit<HomeState> {
   void getProducts() async {
     var data = await homeRepoImp.getProducts();
     data.fold((l) {
+      errorProduct=l.message;
       return emit(GetProductsErrorState(l.message));
     }, (r) {
       productModel =r;
@@ -65,6 +68,7 @@ class HomeCubit extends Cubit<HomeState> {
   void getCategories() async {
     var data = await homeRepoImp.getCategories();
     data.fold((l) {
+      errorCategory=l.message;
       return emit(GetCategoriesErrorState(l.message));
     }, (r) {
       categoryModel=r;

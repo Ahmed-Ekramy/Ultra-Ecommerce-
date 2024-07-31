@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ultra/core/routes/routing.dart';
 import 'package:ultra/feature/product_details/presentation/pages/product_details_view.dart';
 import 'package:ultra/feature/sign_up/presentation/manager/sign_up_cubit.dart';
+import '../../feature/cart/presentation/pages/cart_view.dart';
 import '../../feature/categories_item_by_id/presentation/pages/category_item_id_view.dart';
 import '../../feature/forget_password/presentation/pages/verify_code_view.dart';
 import '../../feature/forget_password/presentation/pages/verify_email_view.dart';
@@ -19,7 +20,7 @@ import '../../feature/view_all_product/presentation/pages/view_all_product_view.
 import '../di/injection.dart';
 
 class AppRoutes {
-  Route generateRoute(RouteSettings settings) {
+ static Route onGenrateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.login:
         return MaterialPageRoute(
@@ -70,7 +71,12 @@ class AppRoutes {
       case Routes.categoryItemView:
         return MaterialPageRoute(
             builder: (_) {
-              return  CategoryItemView();
+              return  const CategoryItemView();
+            });
+ case Routes.cartView:
+        return MaterialPageRoute(
+            builder: (_) {
+              return  const CartView();
             });
 
       default:

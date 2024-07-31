@@ -106,7 +106,7 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<ProductDetailModel> getProductsDetail(num id) async {
+  Future<ProductDetailModel> getProductsDetail(int id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -162,7 +162,7 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<List<ProductCategoryModel>> getProductsByCategory(num id) async {
+  Future<List<ProductCategoryModel>> getProductsByCategory(int id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -192,7 +192,7 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<List<BrandCategoryModel>> getCategoriesBrands(num id) async {
+  Future<List<BrandCategoryModel>> getCategoriesBrands(int id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -222,13 +222,13 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<List<BannerCategoryModel>> getCategoriesBanner(num id) async {
+  Future<BannerCategoryModel> getCategoriesBanner(int id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<List<dynamic>>(_setStreamType<List<BannerCategoryModel>>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BannerCategoryModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -244,10 +244,78 @@ class _ApiService implements ApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    var _value = _result.data!
-        .map((dynamic i) =>
-            BannerCategoryModel.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final _value = BannerCategoryModel.fromJson(_result.data!);
+    return _value;
+  }
+
+  @override
+  Future<void> addItemToCart(
+    String id,
+    String authorization,
+    String contentType,
+    CartItemModel cartItemModel,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{
+      r'Authorization': authorization,
+      r'Content-Type': contentType,
+    };
+    _headers.removeWhere((k, v) => v == null);
+    final _data = <String, dynamic>{};
+    _data.addAll(cartItemModel.toJson());
+    await _dio.fetch<void>(_setStreamType<void>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+      contentType: contentType,
+    )
+        .compose(
+          _dio.options,
+          '/cart/item//${id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
+  }
+
+  @override
+  Future<CartModel> getCart(
+    String contentType,
+    String authorization,
+    String id,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{
+      r'Content-Type': contentType,
+      r'Authorization': authorization,
+    };
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<CartModel>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+      contentType: contentType,
+    )
+            .compose(
+              _dio.options,
+              '/cart/${id}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = CartModel.fromJson(_result.data!);
     return _value;
   }
 

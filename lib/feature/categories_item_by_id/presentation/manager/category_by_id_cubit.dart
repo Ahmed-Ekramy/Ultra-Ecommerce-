@@ -5,18 +5,23 @@ import 'package:ultra/feature/categories_item_by_id/data/models/banner_category_
 import 'package:ultra/feature/categories_item_by_id/data/models/brand_category_model.dart';
 import 'package:ultra/feature/categories_item_by_id/data/repositories/categories_item%20_by_id_repo.dart';
 import 'package:ultra/feature/categories_item_by_id/presentation/manager/Categories_by_id_state.dart';
+import 'package:ultra/feature/home/presentation/manager/home_state.dart';
 
 import '../../data/models/product_by_category_model.dart';
 
 class CategoryByIdCubit extends Cubit<CategoriesByIdState> {
   CategoryByIdCubit(this.categoriesItemByIdRepo)
-      : super(CategoriesByIdInitial());
+      : super(CategoriesByIdLoading());
   CategoriesItemByIdRepo categoriesItemByIdRepo;
   static CategoryByIdCubit get(context) => BlocProvider.of(context);
   List<ProductCategoryModel> products = [];
   List<BrandCategoryModel> brands = [];
-  List<BannerCategoryModel> banners = [];
-
+  BannerCategoryModel? banner;
+  int selectedIndexBrandCategory = 0;
+  void changeSelectedIndexBrandCategory(int index) {
+    selectedIndexBrandCategory = index;
+    emit(ChangeSelectedIndexBrandCategoryState());
+  }
   void getProductCategoriesById(int id) async {
     emit(CategoriesByIdLoading());
     var result =
@@ -43,15 +48,15 @@ class CategoryByIdCubit extends Cubit<CategoriesByIdState> {
     });
   }
 
-  void getBannerCategoriesById() async {
+  void getBannerCategoriesById( int id) async {
     emit(CategoriesByIdLoading());
     var result =
-        await categoriesItemByIdRepo.getBannerCategoriesItemByIdRepo(2);
+        await categoriesItemByIdRepo.getBannerCategoriesItemByIdRepo(id);
     result.fold((l) {
       emit(BannerCategoriesByIdError(error: l.message));
     }, (r) {
-      log (r[0].imageUrl.toString());
-      banners = r;
+      log (r.imageUrl.toString());
+      banner = r;
       emit(BrandCategoriesByIdSuccess());
     });
   }

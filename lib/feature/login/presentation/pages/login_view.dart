@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ultra/core/theming/colors.dart';
 import 'package:ultra/core/theming/images.dart';
 import 'package:ultra/feature/login/presentation/manager/login_cubit.dart';
 import 'package:ultra/feature/login/presentation/manager/login_state.dart';
 import '../../../../core/helpers/app_regex.dart';
+import '../../../../core/helpers/cache_helper.dart';
 import '../../../../core/routes/routing.dart';
 import '../../../../core/theming/string.dart';
 import '../../../../core/widget/custom_elevated_button.dart';
@@ -29,10 +31,29 @@ class LoginView extends StatelessWidget {
                     child: CircularProgressIndicator(
                         color: AppColors.primaryColor)));
           } else if (state is LoginSuccessState) {
-            Navigator.pop(context);
-
+            print(state.loginModel.accessToken);
+            CacheHelper.saveData(key: "UserId", value: state.loginModel.id);
+            CacheHelper.saveData(key: "User", value: state.loginModel.accessToken);
+            Fluttertoast.showToast(
+                msg: "Login Successful",
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 1,
+                backgroundColor: Colors.greenAccent,
+                textColor: Colors.white,
+                fontSize: 16.0);
+            Navigator.pushNamedAndRemoveUntil(
+                context, Routes.home, (route) => false);
           } else if (state is LoginErrorState) {
             Navigator.pop(context);
+            Fluttertoast.showToast(
+                msg: "Login Failed",
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 1,
+                backgroundColor: Colors.redAccent,
+                textColor: Colors.white,
+                fontSize: 16.0);
             showDialog(
               context: context,
               builder: (context) => AlertDialog(
@@ -145,9 +166,8 @@ class LoginView extends StatelessWidget {
                           ),
                           CustomElevationButton(
                             onPressed: () {
-                             // validateThenDoLogin(context);
-                              Navigator.pushNamedAndRemoveUntil(
-                                  context, Routes.home, (route) => false);
+                              validateThenDoLogin(context);
+
                             },
                             buttonName: "Login",
                           ),

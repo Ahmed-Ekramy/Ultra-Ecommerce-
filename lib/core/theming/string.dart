@@ -92,6 +92,13 @@ class CustomTextStyles{
       color: Colors.white,
     ),
   );
+   static final  TextStyle hankenW600S16White = GoogleFonts.hankenGrotesk(
+    textStyle: TextStyle(
+      fontSize: 16.sp,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+    ),
+  );
    static final  TextStyle hankenW500S10White = GoogleFonts.hankenGrotesk(
     textStyle: TextStyle(
       fontSize: 10.sp,

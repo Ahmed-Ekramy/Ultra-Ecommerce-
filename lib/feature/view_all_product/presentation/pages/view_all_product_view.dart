@@ -59,7 +59,8 @@ class ViewAllProductView extends StatelessWidget {
                 ),
               );
             } else if (state is GetProductsErrorState) {
-              return CustomErrorProduct(state.errorMessage,
+              return CustomErrorProduct(
+                state.errorMessage,
               );
             }
             return const Scaffold(

@@ -56,7 +56,7 @@ class CustomTextFormField extends StatelessWidget {
           hintStyle: CustomTextStyles.hankenW400S14GrayDark,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(borderRadius ?? 5),
-            borderSide: BorderSide(color: Colors.grey, width: 1.2.w),
+            borderSide: BorderSide(color: borderColor ?? AppColors.greyColor, width: 1.2.w),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(borderRadius ?? 5),
